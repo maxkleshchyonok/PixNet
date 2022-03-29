@@ -1,0 +1,77 @@
+.profInfo{
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: 236px;
+  top: 174px;
+}
+
+.ava{
+  position: absolute;
+  width: 70%;
+  height: 90%;
+  left: 1em;
+  top: 1em;
+  border: 0.5px solid #B1B1B1;
+  box-shadow: 2px 5px 10px 3px #B1B1B1;
+}
+
+.username{
+  position: absolute;
+  width: 350px;
+  height: 49px;
+  left: 8em;
+  font-family: 'Noto Sans';
+  font-size: 36px;
+  line-height: 49px;
+}
+
+.status{
+  position: absolute;
+  width: 60%;
+  height: 5%;
+  left: 115%;
+  top: 40%;
+  border-radius: 15px;
+  border: 0.5px solid rgba(177, 177, 177, 1);
+  font-family: "Noto Sans";
+  font-size: 10px
+}
+
+
+
+.friendsNum{
+  position: absolute;
+  width: 112px;
+  height: 33px;
+  left: 300px;
+  top: 130px;
+  font-family: "Noto Sans";
+}
+
+.fripostLine{
+  position: absolute;
+  width: 33.24px;
+  left: 415px;
+  top: 160px;
+  border: 0.5px solid #B1B1B1;
+  transform: rotate(-90deg);
+}
+
+.postsNum{
+  position: absolute;
+  width: 112px;
+  height: 33px;
+  left: 500px;
+  top: 130px;
+  font-family: "Noto Sans";
+}
+
+.line{
+  position: absolute;
+  width: 500%;
+  height: 0;
+  left: 1%;
+  top: 130%;
+  border: 0.1px solid #B1B1B1;
+}

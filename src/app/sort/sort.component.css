@@ -1,0 +1,34 @@
+.sortBy{
+  position: absolute;
+  width: 86px;
+  height: 126px;
+  top: 2%;
+  left: 5%;
+}
+.sortHeaderBox{
+  position: absolute;
+  width: 76px;
+  height: 32px;
+  left: 1315px;
+  top: 499px;
+  border: 0.3px solid #B1B1B1;
+  box-sizing: border-box;
+}
+
+.sortHeader{
+  font-family: "Noto Sans";
+  line-height: 0;
+  margin-left: 9px;
+
+}
+
+.sortOptBox{
+  position: absolute;
+  width: 86px;
+  height: 85px;
+  left: 1311px;
+  top: 540px;
+
+  border: 0.3px solid #B1B1B1;
+  box-sizing: border-box;
+}
