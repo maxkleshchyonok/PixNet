@@ -21,7 +21,8 @@
   width: 350px;
   height: 49px;
   left: 8em;
-  font-family: 'Noto Sans';
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 36px;
   line-height: 49px;
 }
@@ -34,8 +35,9 @@
   top: 40%;
   border-radius: 15px;
   border: 0.5px solid rgba(177, 177, 177, 1);
-  font-family: "Noto Sans";
-  font-size: 10px
+  font-family: "Roboto";
+  font-weight: 100;
+  font-size: 15px
 }
 
 
@@ -46,7 +48,8 @@
   height: 33px;
   left: 300px;
   top: 130px;
-  font-family: "Noto Sans";
+  font-family: "Roboto";
+  font-weight: 100;
 }
 
 .fripostLine{
@@ -64,7 +67,8 @@
   height: 33px;
   left: 500px;
   top: 130px;
-  font-family: "Noto Sans";
+  font-family: "Roboto";
+  font-weight: 100;
 }
 
 .line{

@@ -11,8 +11,8 @@
   position: absolute;
   width: 60px;
   height: 60px;
-  left: 5%;
-  top: 4px;
+  left: 5em;
+  top: 0.3em;
 }
 
 .logoText{
@@ -20,9 +20,8 @@
   width: 60.05px;
   height: 40px;
   left: 150px;
-  font-family: 'Noto Sans';
-  font-style: normal;
-  font-weight: 300;
+  font-family: 'Roboto';
+  font-weight: 100;
   font-size: 36px;
   line-height: 0;
   color: #000000;
@@ -35,7 +34,7 @@
   left: 959px;
   top: 20px;
 
-  font-family: 'Noto Sans';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
   font-size: 24px;
@@ -48,7 +47,7 @@
   left: 1036px;
   top: 20px;
 
-  font-family: 'Noto Sans';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
   font-size: 24px;
@@ -61,7 +60,7 @@
   left: 1139px;
   top: 20px;
 
-  font-family: 'Noto Sans';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 100;
   font-size: 24px;

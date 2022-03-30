@@ -1,0 +1,20 @@
+.addButt{
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  left: 87em;
+  top: 44em;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #E998F6 -28.5%, rgba(233, 152, 246, 0) 92.5%);
+  border: 0.5px solid #B1B1B1;
+  box-sizing: border-box;
+}
+
+
+.plusImg{
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  left: 89.2em;
+  top: 46.2em;
+}

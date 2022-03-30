@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProfileInfoComponent } from './profile-info/profile-info.component';
 import { SortComponent } from './sort/sort.component';
 import { PostComponent } from './post/post.component';
+import { AddPostButtonComponent } from './add-post-button/add-post-button.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PostComponent } from './post/post.component';
     HeaderComponent,
     ProfileInfoComponent,
     SortComponent,
-    PostComponent
+    PostComponent,
+    AddPostButtonComponent
   ],
   imports: [
     BrowserModule
