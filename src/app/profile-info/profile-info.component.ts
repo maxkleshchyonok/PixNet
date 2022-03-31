@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StatusElement} from "../status/status.component";
 
 @Component({
   selector: 'app-profile-info',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-info.component.css']
 })
 export class ProfileInfoComponent implements OnInit {
+
+  public status=''
+
+  statusElements: StatusElement[] = [
+    {status:``}
+  ]
 
   constructor() { }
 

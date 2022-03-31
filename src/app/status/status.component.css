@@ -1,0 +1,8 @@
+.status{
+  position: absolute;
+  width: 100px;
+  left: 18.5em;
+  top: 6em;
+  font-family: Roboto;
+  font-weight: 300;
+}

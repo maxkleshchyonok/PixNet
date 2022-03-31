@@ -75,3 +75,16 @@
   display: flex;
   list-style-type: none;
 }
+
+.menu{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 80em;
+  top: 1.45em;
+}
+
+.humburg{
+  width: 25px;
+  height: 25px;
+}

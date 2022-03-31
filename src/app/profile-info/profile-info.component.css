@@ -31,8 +31,8 @@
   position: absolute;
   width: 60%;
   height: 5%;
-  left: 115%;
-  top: 40%;
+  left: 19.5em;
+  top: 55%;
   border-radius: 15px;
   border: 0.5px solid rgba(177, 177, 177, 1);
   font-family: "Roboto";
@@ -40,14 +40,21 @@
   font-size: 15px
 }
 
-
+.statusLook{
+  position: absolute;
+  width: 200px;
+  font-family: Roboto;
+  font-weight: 300;
+  left: 18.5em;
+  top: 6em;
+}
 
 .friendsNum{
   position: absolute;
   width: 112px;
   height: 33px;
   left: 300px;
-  top: 130px;
+  top: 180px;
   font-family: "Roboto";
   font-weight: 100;
 }
@@ -55,8 +62,8 @@
 .fripostLine{
   position: absolute;
   width: 33.24px;
-  left: 415px;
-  top: 160px;
+  left: 412px;
+  top: 205px;
   border: 0.5px solid #B1B1B1;
   transform: rotate(-90deg);
 }
@@ -66,7 +73,7 @@
   width: 112px;
   height: 33px;
   left: 500px;
-  top: 130px;
+  top: 180px;
   font-family: "Roboto";
   font-weight: 100;
 }
