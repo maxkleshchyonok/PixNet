@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Posts} from "../../postsStore";
+import {Component, OnInit} from '@angular/core';
+import {Posts} from "../../../postsStore";
+import {Post} from "./post";
 
 @Component({
   selector: 'app-post',
@@ -7,8 +8,11 @@ import {Posts} from "../../postsStore";
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  Posts = Posts
-  constructor() { }
+
+  public posts: Post[] = Posts;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

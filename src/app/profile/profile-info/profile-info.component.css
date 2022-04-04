@@ -10,7 +10,7 @@
   position: absolute;
   width: 70%;
   height: 90%;
-  left: 1em;
+  left: 4em;
   top: 1em;
   border: 0.5px solid #B1B1B1;
   box-shadow: 2px 5px 10px 3px #B1B1B1;
@@ -45,8 +45,8 @@
   width: 200px;
   font-family: Roboto;
   font-weight: 300;
-  left: 18.5em;
-  top: 6em;
+  left: 20em;
+
 }
 
 .friendsNum{

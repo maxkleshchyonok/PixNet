@@ -1,7 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-export interface StatusElement{
-  status:string
+export interface ProfileInfoElement {
+  avatar: string
+  userName: string
+  status: string
+  friendsNum: number
+  postsNum: number
 }
 
 @Component({
@@ -12,8 +16,10 @@ export interface StatusElement{
 export class StatusComponent implements OnInit {
 
   @Input()
-  elements: StatusElement[]=[]
-  constructor() { }
+  elements: ProfileInfoElement[] = []
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

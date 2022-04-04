@@ -1,0 +1,31 @@
+
+<!--<div class="post">-->
+<!--  <img class="postImg" src="../../assets/img/edin.jpg"/>-->
+<!--  <p class="postDescr">Spending time in Edinbrgh</p>-->
+<!--  <div class="like">-->
+<!--    <img class="likeButt" src="../../assets/img/like0.png"/>-->
+<!--    <p class="likeNum">118</p>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+
+
+<div class="allpost">
+  <ul class="posts">
+    <li class="post" *ngFor="let post of posts">
+      <img class="postImg" src="{{post.image}}"/>
+      <p class="postDescr">{{post.postDescr}}</p>
+      <div class="like">
+        <img class="likeButt" src="../../../assets/img/like0.png"/>
+        <p class="likeNum">{{post.likeNum}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
