@@ -1,22 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ProfileInfoElement} from "./status";
+import {ProfileInfo} from "../../../Store";
 
-export interface ProfileInfoElement {
-  avatar: string
-  userName: string
-  status: string
-  friendsNum: number
-  postsNum: number
-}
 
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css']
 })
+
 export class StatusComponent implements OnInit {
 
-  @Input()
-  elements: ProfileInfoElement[] = []
+  public elements: ProfileInfoElement[] = ProfileInfo
 
   constructor() {
   }

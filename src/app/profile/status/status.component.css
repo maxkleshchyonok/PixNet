@@ -1,8 +1,90 @@
+.profInfo{
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: 236px;
+  top: 174px;
+}
+
+.img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.ava{
+  position: absolute;
+  width: 70%;
+  height: 90%;
+  left: 4em;
+  top: 1em;
+  border: 0.5px solid #B1B1B1;
+  box-shadow: 2px 5px 10px 3px #B1B1B1;
+}
+
+.username{
+  position: absolute;
+  width: 350px;
+  height: 49px;
+  left: 8em;
+  top: 10px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 49px;
+}
+
 .status{
   position: absolute;
-  width: 100px;
-  left: 18.5em;
-  top: 6em;
-  font-family: Roboto;
-  font-weight: 300;
+  width: 150%;
+  height: 25%;
+  left: 17em;
+  top: 3.5em;
+  font-family: "Roboto";
+  font-weight: 100;
+  font-size: 17px;
+  overflow: hidden;
 }
+
+.friendsNum{
+  position: absolute;
+  width: 112px;
+  height: 33px;
+  left: 300px;
+  top: 180px;
+  font-family: "Roboto";
+  font-weight: 100;
+}
+
+
+
+.postsNum{
+  position: absolute;
+  width: 112px;
+  height: 33px;
+  left: 500px;
+  top: 180px;
+  font-family: "Roboto";
+  font-weight: 100;
+}
+
+.fripostLine{
+  position: absolute;
+  width: 33.24px;
+  left: 412px;
+  top: 190px;
+  border: 0.5px solid #B1B1B1;
+  transform: rotate(-90deg);
+}
+
+.line{
+  position: absolute;
+  width: 500%;
+  height: 0;
+  left: 1%;
+  top: 130%;
+  border: 0.1px solid #B1B1B1;
+}
+

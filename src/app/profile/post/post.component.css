@@ -31,6 +31,7 @@
   position: absolute;
   width: 299px;
   height: 299px;
+  object-fit: cover;
 
 }
 

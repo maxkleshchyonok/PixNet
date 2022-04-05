@@ -1,8 +1,13 @@
 <div *ngFor="let element of elements">
-  <div class="status">
-    {{element.userName}}
-    {{element.status}};
-    {{element.friendsNum}};
-    {{element.postsNum}}
+  <div class="profInfo">
+    <div class="ava"><img class="img" src="{{element.avatar}}"/></div>
+    <div class="username">{{element.userName}}</div>
+    <div class="status">{{element.status}}</div>
+    <div class="friendsNum">{{element.friendsNum}} Friends</div>
+    <div class="fripostLine"></div>
+    <div class="postsNum">{{element.postsNum}} Posts</div>
+    <div class="line"></div>
   </div>
 </div>
+
+
