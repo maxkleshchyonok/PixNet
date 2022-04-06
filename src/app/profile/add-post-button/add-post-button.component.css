@@ -3,11 +3,12 @@
   width: 100px;
   height: 100px;
   left: 84.3em;
-  top: 44em;
+  top: 40em;
   border-radius: 50px;
   background: linear-gradient(135deg, #E998F6 -28.5%, rgba(233, 152, 246, 0) 92.5%);
   border: 0.5px solid #B1B1B1;
   box-sizing: border-box;
+  box-shadow: 1px 4px 10px 1px #B1B1B1;
 }
 
 
@@ -16,5 +17,5 @@
   width: 30px;
   height: 30px;
   left: 86.5em;
-  top: 46.2em;
+  top: 42.2em;
 }

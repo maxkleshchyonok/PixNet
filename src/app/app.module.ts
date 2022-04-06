@@ -9,6 +9,7 @@ import { SortComponent } from './profile/sort/sort.component';
 import { PostComponent } from './profile/post/post.component';
 import { AddPostButtonComponent } from './profile/add-post-button/add-post-button.component';
 import { StatusComponent } from './profile/status/status.component';
+import { SubscribeButtonComponent } from './profile/subscribe-button/subscribe-button.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StatusComponent } from './profile/status/status.component';
     SortComponent,
     PostComponent,
     AddPostButtonComponent,
-    StatusComponent
+    StatusComponent,
+    SubscribeButtonComponent
   ],
   imports: [
     BrowserModule,
