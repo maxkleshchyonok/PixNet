@@ -1,8 +1,3 @@
-<a href="#">
-<!--  <div class="button">-->
-<!--    <p class="text"><button>Follow</button></p>-->
-<!--  </div>-->
-  <button class="button" [ngClass]="{'followup':isFollow==true,'unfollow':isFollow==false}" (click)="onClick()">
-    {{isFollow == true ? 'Unfollow' : (isFollow == false ? 'Follow' : '')}}
-  </button>
-</a>
+<button class="button" [ngClass]="{'followup':isFollow==true,'unfollow':isFollow==false}" (click)="onClick()">
+  {{isFollow == true ? 'Unfollow' : (isFollow == false ? 'Follow' : '')}}
+</button>
