@@ -14,6 +14,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {FriendsComponent} from "./friends/friends/friends.component";
 import {FeedComponent} from "./feed/feed/feed.component";
 import {ProfileComponent} from "./profile/profile/profile.component";
+import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ProfileComponent} from "./profile/profile/profile.component";
     SubscribeButtonComponent,
     FriendsComponent,
     FeedComponent,
-    ProfileComponent
+    ProfileComponent,
+    StartPageComponent
   ],
   imports: [
     BrowserModule,
