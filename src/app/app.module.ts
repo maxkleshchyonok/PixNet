@@ -15,6 +15,11 @@ import {FriendsComponent} from "./friends/friends/friends.component";
 import {FeedComponent} from "./feed/feed/feed.component";
 import {ProfileComponent} from "./profile/profile/profile.component";
 import { StartPageComponent } from './start-page/start-page.component';
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 @NgModule({
   declarations: [
@@ -34,7 +39,11 @@ import { StartPageComponent } from './start-page/start-page.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

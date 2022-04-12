@@ -1,5 +1,5 @@
 .container{
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   left: 0px;
@@ -32,8 +32,10 @@
 
 .slogan{
   position: absolute;
-  left: 765px;
-  width: 620px;
+  /*left: 765px;*/
+  /*width: 620px;*/
+  left: 12em;
+  width: 10em;
   font-family: Roboto;
   font-weight: 100;
   font-size: 64px;
@@ -43,8 +45,10 @@
   position: absolute;
   width: 50%;
   height: 60%;
-  left: 700px;
-  top: 285px;
+  /*left: 700px;*/
+  /*top: 285px;*/
+  left: 44em;
+  top: 17.5em;
 }
 
 .registr{
@@ -87,3 +91,5 @@
   font-weight: 100;
   font-size: 24px;
 }
+
+
