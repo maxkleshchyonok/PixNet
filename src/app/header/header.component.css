@@ -74,6 +74,12 @@
 .navlist{
   display: flex;
   list-style-type: none;
+
+}
+
+.navlist li:hover > ul{
+  display: block;
+
 }
 
 .menu{
@@ -82,9 +88,50 @@
   height: 60px;
   left: 87em;
   top: 1.45em;
+
 }
 
 .humburg{
   width: 25px;
   height: 25px;
 }
+
+.menupopup{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+}
+
+.menupopup:hover{
+}
+
+.menulist{
+  position: absolute;
+  min-width: 110px;
+  min-height: 50px;
+  background: white;
+  border-style: solid;
+  border-color: #e3e3e3;
+  border-width: 1px;
+  left: 1340px;
+  top: 80px;
+  list-style-type: none;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+  display: none;
+
+}
+
+.logoutBut{
+  margin-top: 10px;
+  border: none;
+  background-color: transparent;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+  cursor: pointer;
+
+}
+

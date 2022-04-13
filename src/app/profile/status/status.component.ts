@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProfileInfoElement} from "./status";
 import {ProfileInfo} from "../../../Store";
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
+import firebase from "firebase/compat/app";
 
 
 @Component({
@@ -11,12 +14,20 @@ import {ProfileInfo} from "../../../Store";
 
 export class StatusComponent implements OnInit {
 
-  public elements: ProfileInfoElement[] = ProfileInfo
+  public elements: ProfileInfoElement[] = ProfileInfo;
 
-  constructor() {
+  public user: firebase.User | null = null;
+
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.authService.user$.subscribe((value: firebase.User | null) => {
+        this.user = value;
+        console.log(value?.displayName)
+      }
+    )
   }
 
 }

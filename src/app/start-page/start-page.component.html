@@ -12,11 +12,19 @@
   <div class="registr">
     <p class="login">Log In</p>
   </div>
+  <!--  <nav>-->
+  <!--    <a routerLink="/profile">-->
+  <!--      <div class="gobutt">-->
+  <!--        <p class="gotxt">Go!</p>-->
+  <!--      </div>-->
+  <!--    </a>-->
+  <!--  </nav>-->
   <nav>
     <a routerLink="/profile">
-      <div class="gobutt">
-        <p class="gotxt">Go!</p>
-      </div>
+      <button class="gobutt" (click)="login()">
+        <img class="googlogo" src="assets/img/googlogo.png">
+        <p class="buttxt">Sign in with Google</p>
+      </button>
     </a>
   </nav>
 </div>

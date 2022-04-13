@@ -1,7 +1,8 @@
 <div *ngFor="let element of elements">
   <div class="profInfo">
     <div class="ava"><img class="img" src="{{element.avatar}}"/></div>
-    <div class="username">{{element.userName}}</div>
+<!--    <div class="username">{{element.userName}}</div>-->
+    <div class="username">{{user?.displayName}}</div>
     <div class="status">{{element.status}}</div>
     <div class="friendsNum">{{element.friendsNum}} Friends</div>
     <div class="fripostLine"></div>
