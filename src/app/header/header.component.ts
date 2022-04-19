@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from "firebase/compat";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,18 +10,21 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  public user: firebase.User | null = null;
+  // public user: firebase.User | null = null;
 
   constructor(private authService: AuthService,
               private router: Router) {
   }
 
-  public ngOnInit(): void {
-    this.authService.user$.subscribe((value: firebase.User | null) => {
-        this.user = value;
-        console.log(value?.displayName)
-      }
-    )
+  // public ngOnInit(): void {
+  //   this.authService.user$.subscribe((value: firebase.User | null) => {
+  //       this.user = value;
+  //       console.log(value?.displayName)
+  //     }
+  //   )
+  // }
+
+  public ngOnInit() {
   }
 
   public logout(): void{

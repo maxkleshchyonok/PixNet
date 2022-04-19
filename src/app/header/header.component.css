@@ -121,17 +121,20 @@
   font-weight: 100;
   font-size: 20px;
   display: none;
-
+  padding-top: 10px;
 }
 
 .logoutBut{
-  margin-top: 10px;
   border: none;
   background-color: transparent;
   font-family: Roboto;
   font-weight: 100;
   font-size: 20px;
   cursor: pointer;
-
 }
+
+.menulist li{
+  margin-bottom: 10px;
+}
+
 

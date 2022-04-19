@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProfileInfoElement} from "./status";
 import {ProfileInfo} from "../../../Store";
-import {AuthService} from "../../../services/auth.service";
+import {AuthService} from "../../../services/auth/auth.service";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat/app";
 

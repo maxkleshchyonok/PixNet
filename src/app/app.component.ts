@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Posts} from "../Store";
 import firebase from "firebase/compat/app";
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../services/auth/auth.service";
 import {Router} from "@angular/router";
 
 
