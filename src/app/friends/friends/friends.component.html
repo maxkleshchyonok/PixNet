@@ -1,1 +1,13 @@
-<div class="container">friends will be here</div>
+<div class="container">
+  <ng-container *ngFor="let user of (users | async)">
+    <ng-container *ngIf="user.id">
+      <div class="element">{{user.id}}</div>
+      <button (click)="getInfo(user.id)">Get info</button>
+      <button (click)="delete(user.id)">Delete</button>
+      <button (click)="update(user.id)">Update</button>
+      <div>{{user.name}}</div>
+      <div>{{user.surname}}</div>
+      <button (click)="addUser()">Add user</button>
+    </ng-container>
+  </ng-container>
+</div>

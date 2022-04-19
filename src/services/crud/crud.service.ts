@@ -43,6 +43,7 @@ export class CrudService {
     return (from(this.angularFirestore
       .collection(collectionName)
       .add(object)) as Observable<DocumentReference<T>>).pipe(take(1));
+    from(this.angularFirestore.collection(collectionName).add(object)).pipe(take(1))
   }
 
   public updateObject(collectionName: string, id: string, data: {}): Observable<void> {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import firebase from "firebase/compat";
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
+import {ReplaySubject} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  // public user: firebase.User | null = null;
+  public user$: ReplaySubject<firebase.User | null> = this.authService.user$;
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -23,6 +24,8 @@ export class HeaderComponent implements OnInit {
   //     }
   //   )
   // }
+
+
 
   public ngOnInit() {
   }
