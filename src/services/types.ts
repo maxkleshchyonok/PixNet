@@ -12,4 +12,11 @@ export type ID = {
   id: string;
 }
 
+export type Post = {
+  id:number;
+  image: string;
+  postDescr: string;
+  likeNum: number
+}
+
 export type UserStore = User & ID;

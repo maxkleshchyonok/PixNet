@@ -17,3 +17,4 @@ export const ProfileInfo: ProfileInfoElement[] = [
     postsNum: 4
   }
 ]
+

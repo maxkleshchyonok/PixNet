@@ -1,5 +1,20 @@
-<a href="#">
+<!--<a href="#">-->
+<!--<div class="addButt">-->
+<!--    <img class="plusImg" src="../../../assets/img/plus.png"/>-->
+<!--</div>-->
+<!--</a>-->
+
+
 <div class="addButt">
-    <img class="plusImg" src="../../../assets/img/plus.png"/>
+  <ng-container *ngFor="let post of (posts | async)">
+    <ng-container *ngIf="post.id">
+      <button class="button" (click)="addPost()">
+        <img class="plusImg" src="../../../assets/img/plus.png"/>
+      </button>
+    </ng-container>
+  </ng-container>
 </div>
-</a>
+
+
+
+
