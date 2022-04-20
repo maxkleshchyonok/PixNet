@@ -5,16 +5,22 @@
 <!--</a>-->
 
 
-<div class="addButt">
-  <ng-container *ngFor="let post of (posts | async)">
-    <ng-container *ngIf="post.id">
-      <button class="button" (click)="addPost()">
-        <img class="plusImg" src="../../../assets/img/plus.png"/>
-      </button>
-    </ng-container>
-  </ng-container>
-</div>
+<!--<div class="addButt">-->
+<!--  <ng-container *ngFor="let post of (posts | async)">-->
+<!--    <ng-container *ngIf="post.id">-->
+<!--      <button class="button" (click)="addPost()">-->
+<!--        <img class="plusImg" src="../../../assets/img/plus.png"/>-->
+<!--      </button>-->
+<!--    </ng-container>-->
+<!--  </ng-container>-->
+<!--</div>-->
 
+
+<div class="addButt">
+  <button class="button" (click)="addPost()">
+    <img class="plusImg" src="../../../assets/img/plus.png"/>
+  </button>
+</div>
 
 
 

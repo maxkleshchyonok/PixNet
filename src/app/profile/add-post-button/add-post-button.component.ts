@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import firebase from "firebase/compat";
-import {Post} from "../../../services/types";
+import {Post, PostStore} from "../../../services/types";
 import {Collections} from "../../../services/crud/collections";
 import {AuthService} from "../../../services/auth/auth.service";
 import {CrudService} from "../../../services/crud/crud.service";
@@ -14,14 +14,14 @@ import DocumentReference = firebase.firestore.DocumentReference;
 })
 export class AddPostButtonComponent {
 
-  public posts: Observable<Post[]> = this.crudService.handleData<Post>(Collections.POSTS);
+  public posts: Observable<PostStore[]> = this.crudService.handleData<PostStore>(Collections.POSTS);
 
   constructor(private authService: AuthService, private crudService: CrudService) {
   }
 
   public addPost(): void {
     const post: Post = {
-    id: 3, image:"https://www.amadriapark.com/wp-content/uploads/sites/5/2018/08/ap-excursion-Venice.jpg", postDescr:"Holiday in Venice", likeNum: 116
+     image:"https://www.amadriapark.com/wp-content/uploads/sites/5/2018/08/ap-excursion-Venice.jpg", postDescr:"Holiday in Venice", likeNum: 116
   }
     this.crudService.createObject(Collections.POSTS, post).subscribe((value: DocumentReference<Post>) => console.log(value));
   }

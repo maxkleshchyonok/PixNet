@@ -1,5 +1,5 @@
 export interface Post {
-  id:number;
+  // id:string;
   image: string;
   postDescr: string;
   likeNum: number
