@@ -17,6 +17,8 @@ export class PostComponent {
 
   public posts: Observable<PostStore[]> = this.crudService.handleData<PostStore>(Collections.POSTS);
 
+  public isLike: boolean = false;
+
   constructor(private authService: AuthService, private crudService: CrudService) {
   }
 
@@ -25,6 +27,9 @@ export class PostComponent {
     this.crudService.deleteObject(Collections.POSTS, id).subscribe();
   }
 
+  onClick() {
+    this.isLike = !this.isLike
+  }
 
   // public posts: Post[] = Posts;
 

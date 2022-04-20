@@ -54,19 +54,19 @@
   color: #000000;
 }
 
-.likeButt{
-  position: absolute;
-  width: 30px;
-  height: 24px;
-  margin-left: 15.5em;
-  margin-top: 19.8em;
-}
+/*.likeButt{*/
+/*  position: absolute;*/
+/*  width: 30px;*/
+/*  height: 24px;*/
+/*  margin-left: 15.5em;*/
+/*  margin-top: 19.8em;*/
+/*}*/
 
 .likeNum{
   position: absolute;
   width: 30px;
   height: 22px;
-  margin-left: 15.5em;
+  margin-left: 15.4em;
   margin-top: 21.5em;
   font-family: 'Roboto';
 }
@@ -95,3 +95,23 @@
   font-size: 25px;
   cursor: pointer;
 }
+
+.liketogg{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 21.5em;
+  top: 25em;
+  background: transparent;
+  border: none !important;
+  cursor: pointer;
+}
+
+.likeButt{
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  margin-top: -1em;
+  margin-left: -1.1em;
+}
+
