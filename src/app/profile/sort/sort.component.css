@@ -33,3 +33,41 @@
   border: 0.3px solid #B1B1B1;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 575px) {
+  .sortBy{
+    position: absolute;
+    width: 86px;
+    height: 126px;
+    top: 2%;
+    left: 5%;
+  }
+  .sortHeaderBox{
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    left: 5px;
+    top: 285px;
+    border: 0.3px solid #B1B1B1;
+    box-sizing: border-box;
+  }
+
+  .sortHeader{
+    font-family: "Roboto";
+    font-weight: 300;
+    line-height: 0;
+    margin-left: 9px;
+    font-size: 10px;
+  }
+
+  .sortOptBox{
+    position: absolute;
+    width: 86px;
+    height: 85px;
+    left: 10px;
+    top: 10px;
+
+    border: 0.3px solid #B1B1B1;
+    box-sizing: border-box;
+  }
+}

@@ -27,24 +27,27 @@
 <!--  </ul>-->
 <!--</div>-->
 
-<div class="allpost">
-  <ul class="posts">
-    <li class="post" *ngFor="let post of (posts | async)">
-      <img class="postImg" src="{{post.image}}"/>
-      <p class="postDescr">{{post.postDescr}}</p>
-      <div class="like">
-        <button class="liketogg" (click)="onClick()">
-          <img class="likeButt" src="{{isLike==true?'../../../assets/img/like0.png':(isLike==false?'../../../assets/img/like.png':'')}}">
-        </button>
-        <p class="likeNum">{{post.likeNum}}</p>
-      </div>
-      <div class="delete">
-        <button class="deletebutt" (click)="delete(post.id)">X</button>
-      </div>
-    </li>
-  </ul>
+<div class="container">
+  <div class="allpost">
+    <ul class="posts">
+      <li class="post" *ngFor="let post of (posts | async)">
+        <img class="postImg" src="{{post.image}}"/>
+        <p class="postDescr">{{post.postDescr}}</p>
+        <div class="like">
+          <button class="liketogg" (click)="onClick()">
+            <img class="likeButt"
+                 src="{{isLike==true?'../../../assets/img/like0.png':(isLike==false?'../../../assets/img/like.png':'')}}">
+          </button>
+          <p class="likeNum">{{post.likeNum}}</p>
+        </div>
+        <div class="delete">
+          <button class="deletebutt" (click)="delete(post.id)">X</button>
+          <button (click)="update(post.id)">update</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
-
 
 
 

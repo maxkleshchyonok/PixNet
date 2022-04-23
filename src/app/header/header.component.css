@@ -138,3 +138,120 @@
 }
 
 
+@media screen and (max-width: 575px) {
+  .header {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(90.69deg, #E998F6 -35.79%,
+    rgba(233, 152, 246, 0) 100%);}
+
+  .headLogo {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 1em;
+    top: 0.5em;
+  }
+
+  .logoText{
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    top: 0.5em;
+    left: 3em;
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 0;
+    color: #000000;
+  }
+
+  .feed{
+    display: none;
+  }
+
+  .friends{
+    display: none;
+  }
+
+  .mypage{
+    display: none;
+  }
+
+  .header a{
+    color: black;
+    text-decoration: none;
+  }
+
+  .navlist li:hover > ul{
+    display: block;
+    top: 70px;
+  }
+
+  .menu{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 80%;
+    top: 0.9em;
+
+  }
+
+  .humburg{
+    width: 20px;
+    height: 20px;
+  }
+
+  .menupopup{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+  }
+
+  .menupopup:hover{
+  }
+
+  .menulist{
+    position: absolute;
+    min-width: 90px;
+    min-height: 100px;
+    background: white;
+    border-style: solid;
+    border-color: #e3e3e3;
+    border-width: 1px;
+    left: 60%;
+    top: -100%;
+    transition: all 1s ease 0s;
+    list-style-type: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 16px;
+    display: none;
+    padding-top: 10px;
+    z-index: 1;
+  }
+
+  .logoutBut{
+    margin-left: -0.4em;
+    border: none;
+    background-color: transparent;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .menulist li{
+    margin-bottom: 5px;
+  }
+
+  .hide{
+    display: none;
+  }
+
+}
+

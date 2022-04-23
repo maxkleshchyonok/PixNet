@@ -6,7 +6,7 @@ import {CrudService} from "../../../services/crud/crud.service";
 import {Collections} from "../../../services/crud/collections";
 import {Observable} from "rxjs";
 import {AuthService} from "../../../services/auth/auth.service";
-import {PostStore} from "../../../services/types";
+import {Post, PostStore, User} from "../../../services/types";
 
 @Component({
   selector: 'app-post',
@@ -29,6 +29,16 @@ export class PostComponent {
 
   onClick() {
     this.isLike = !this.isLike
+  }
+
+  public update(id: string): void {
+    const post: Post = {
+      image: "https://media.istockphoto.com/photos/melbourne-central-business-district-picture-id600688368?k=20&m=600688368&s=612x612&w=0&h=hbN7pEOSGuyzbygdh-vgj5mmBeGne2NHDYlojpfmoTw=",
+      postDescr: "Visited Melbourne",
+      likeNum: 117
+
+    }
+    this.crudService.updateObject(Collections.POSTS, id, post).subscribe();
   }
 
   // public posts: Post[] = Posts;

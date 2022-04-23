@@ -81,10 +81,107 @@
 
 .line{
   position: absolute;
-  width: 500%;
+  width: 80%;
   height: 0;
-  left: 1%;
-  top: 130%;
+  left: 13em;
+  top: 31em;
   border: 0.1px solid #B1B1B1;
 }
 
+@media screen and (max-width: 575px) {
+  .profInfo{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 1em;
+    top: 8em;
+  }
+
+  .img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+
+  .ava{
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    left: 1em;
+    top: -1em;
+    border: 0.5px solid #B1B1B1;
+    box-shadow: 2px 5px 10px 3px #B1B1B1;
+  }
+
+  .username{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    margin-top: -1em;
+    margin-left: -1em;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: horizontal;
+  }
+
+  .status{
+    position: absolute;
+    width: 150%;
+    height: 25%;
+    left: 10.1em;
+    margin-top: 0.1em;
+    font-family: "Roboto";
+    font-weight: 100;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  .friendsNum{
+    position: absolute;
+    width: 112px;
+    height: 33px;
+    left: 9em;
+    top: 6.75em;
+    font-family: "Roboto";
+    font-weight: 100;
+  }
+
+
+
+  .postsNum{
+    position: absolute;
+    width: 112px;
+    height: 33px;
+    left: 14em;
+    top: 6.75em;
+    font-family: "Roboto";
+    font-weight: 100;
+  }
+
+  .fripostLine{
+    position: absolute;
+    width: 23px;
+    left: 12.7em;
+    top: 7.2em;
+    border: 0.5px solid #d4d4d4;
+    transform: rotate(-90deg);
+  }
+
+  .line{
+    position: absolute;
+    /*width: 670%;*/
+    width: 95%;
+    height: 0;
+    left: 1%;
+    top: 18em;
+    border: 0.1px solid #d4d4d4;
+  }
+}
