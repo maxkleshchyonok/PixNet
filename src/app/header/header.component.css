@@ -137,6 +137,16 @@
   margin-bottom: 10px;
 }
 
+.menufeed{
+  display: none;
+}
+.menufriends{
+  display: none;
+}
+
+.menuprofile{
+  display: none;
+}
 
 @media screen and (max-width: 575px) {
   .header {
@@ -247,6 +257,17 @@
 
   .menulist li{
     margin-bottom: 5px;
+  }
+
+  .menufeed{
+    display: block;
+  }
+  .menufriends{
+    display: block;
+  }
+
+  .menuprofile{
+    display: block;
   }
 
   .hide{

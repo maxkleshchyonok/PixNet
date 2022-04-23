@@ -105,7 +105,99 @@
   top: 0.13em;
 }
 
+@media screen and (max-width: 575px) {
+  .container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
 
+    background: linear-gradient(116.71deg, #E998F6 -10%, rgba(233, 152, 246, 0) 98.16%);
+  }
+
+  .logo{
+    position: absolute;
+    left: -1%;
+    top: 5%;
+  }
+
+  .logoImg{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+  }
+
+  .logoTxt{
+    position: absolute;
+    left: 210px;
+    top: 24px;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 45px;
+  }
+
+  .slogan{
+    display: none;
+  }
+
+  .macbook{
+    display: none;
+  }
+
+  .registr{
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    left: 35px;
+    /*top: 150px;*/
+    top: 30%;
+    background: #FFFFFF;
+    border: 0.5px solid #B1B1B1;
+    box-sizing: border-box;
+    box-shadow: 2px 5px 10px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+  }
+
+  .login{
+    position: absolute;
+    left: 38%;
+    top: 1%;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 25px;
+  }
+
+  .gobutt{
+    position: absolute;
+    width: 90%;
+    height: 51px;
+    left: 5%;
+    top: 45%;
+    /*background: #E998F6;*/
+    background: linear-gradient(-25deg, #E998F6 -50%, rgba(233, 152, 246, 0) 80%);
+    border-radius: 15px;
+    border-width: 0.1px;
+    border-color: #dedade;
+    border-bottom: none;
+    border-right: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .buttxt{
+    position: absolute;
+    left: 22%;
+    top: -8px;
+  }
+
+  .googlogo{
+    position: absolute;
+    width: 15%;
+    left: 0.5em;
+    top: 0.3em;
+  }
+}
 
 
 

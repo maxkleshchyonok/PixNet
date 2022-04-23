@@ -37,4 +37,31 @@
   left: 1383px;
 }
 
+@media screen and (max-width: 575px) {
+  .addButt{
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    left: 75%;
+    top: 85%;
+    border-radius: 50px;
+    background: #E998F6;
+    border: 0.5px solid #B1B1B1;
+    box-sizing: border-box;
+    box-shadow: 1px 4px 10px 1px rgba(177, 177, 177, 0.62);
+  }
+
+  .button{
+
+  }
+
+  .plusImg{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 25%;
+    left: 28%;
+
+  }
+}
 
