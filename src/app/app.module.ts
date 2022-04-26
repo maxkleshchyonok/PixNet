@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +20,9 @@ import {environment} from "../environments/environment";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import { PopUpComponent } from './profile/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     FriendsComponent,
     FeedComponent,
     ProfileComponent,
-    StartPageComponent
+    StartPageComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,10 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

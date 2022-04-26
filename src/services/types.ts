@@ -6,6 +6,7 @@ export type UserCredential = firebase.auth.UserCredential;
 export type User = {
   name: string;
   surname: string;
+  email: string
 };
 
 export type ID = {
@@ -15,7 +16,7 @@ export type ID = {
 export type Post = {
   image: string;
   postDescr: string;
-  likeNum: number
+  // likeNum: number
 }
 
 export type UserStore = User & ID;

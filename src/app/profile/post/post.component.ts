@@ -35,7 +35,7 @@ export class PostComponent {
     const post: Post = {
       image: "https://media.istockphoto.com/photos/melbourne-central-business-district-picture-id600688368?k=20&m=600688368&s=612x612&w=0&h=hbN7pEOSGuyzbygdh-vgj5mmBeGne2NHDYlojpfmoTw=",
       postDescr: "Visited Melbourne",
-      likeNum: 117
+      // likeNum: 117
 
     }
     this.crudService.updateObject(Collections.POSTS, id, post).subscribe();

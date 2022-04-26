@@ -3,3 +3,12 @@
   top: 100px;
 }
 
+.user{
+  margin-top: 20px;
+}
+
+.form{
+  position: absolute;
+  top: 15%;
+  left: 40%;
+}

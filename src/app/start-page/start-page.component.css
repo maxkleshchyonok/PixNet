@@ -77,9 +77,11 @@
   position: absolute;
   width: 300px;
   height: 51px;
-  left: 185px;
-  top: 520px;
+  /*left: 185px;*/
+  /*top: 520px;*/
   /*background: #E998F6;*/
+  left: 7%;
+  top: 45%;
   background: linear-gradient(-25deg, #E998F6 -50%, rgba(233, 152, 246, 0) 80%);
   border-radius: 15px;
   border-width: 0.1px;
@@ -159,11 +161,11 @@
 
   .login{
     position: absolute;
-    left: 38%;
-    top: 1%;
+    left: 36%;
+    top: -2%;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 25px;
+    font-size: 200%;
   }
 
   .gobutt{
@@ -181,14 +183,21 @@
     border-right: none;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 20px;
+    /*font-size: 20px;*/
+    font-size: 130%;
     cursor: pointer;
+    white-space: nowrap;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .buttxt{
     position: absolute;
     left: 22%;
     top: -8px;
+    overflow: hidden;
+
   }
 
   .googlogo{
