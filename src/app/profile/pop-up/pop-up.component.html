@@ -1,32 +1,32 @@
-
 <div class="content">
-<form class="form" [formGroup]="myForm">
-  <div class="form_group">
-    <label class="form_label">
-    </label>
-<!--    <input class="form_input" [formControlName]="formControls.image" placeholder="Image:">-->
-<!--    <div *ngIf="isControlValid(formControls.image)">-->
-<!--      <div class="notification">Please provide an image</div>-->
-<!--    </div>-->
-    <input type="file"
-           id="file"
-           [formControlName]="formControls.image"
-           (change)="onFileSelected($event)"
-           name="image"
-           autocomplete="off"
-    />
-  </div>
-  <div class="form_group">
-    <label class="form_label">
-    </label>
-    <input class="form_input" [formControlName]="formControls.postDescr" placeholder="Post description:">
-    <div *ngIf="isControlValid(formControls.postDescr)">
-      <div class="notification">Please provide post description</div>
+  <form class="form" [formGroup]="myForm">
+    <div class="form_group">
+      <label class="form_label">
+      </label>
+      <!--    <input class="form_input" [formControlName]="formControls.image" placeholder="Image:">-->
+      <!--    <div *ngIf="isControlValid(formControls.image)">-->
+      <!--      <div class="notification">Please provide an image</div>-->
+      <!--    </div>-->
+      <input type="file"
+             id="file"
+             [formControlName]="formControls.image"
+             (change)="onFileSelected($event)"
+             name="image"
+             autocomplete="off"
+      />
     </div>
-  </div>
-  <button class="post" [disabled]="myForm.invalid" (click)="submitForm()">Post</button>
-  <button class="close" (click)="closeDialog()">
-    Close
-  </button>
-</form>
+    <div class="form_group">
+      <label class="form_label">
+      </label>
+      <input class="form_input" [formControlName]="formControls.postDescr" placeholder="Post description:">
+      <div *ngIf="isControlValid(formControls.postDescr)">
+        <div class="notification">Please provide post description</div>
+      </div>
+    </div>
+    <button  [ngClass]="{'post': myForm.invalid==false, 'postBlock':myForm.invalid==true}"
+             [disabled]="myForm.invalid" (click)="submitForm()">Post</button>
+    <button class="close" (click)="closeDialog()">
+      Close
+    </button>
+  </form>
 </div>
