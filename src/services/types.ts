@@ -14,8 +14,8 @@ export type ID = {
 }
 
 export type Post = {
-  image: string;
-  postDescr: string;
+  image: string | null;
+  postDescr: string | null;
   // likeNum: number
 }
 

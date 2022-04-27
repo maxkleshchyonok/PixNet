@@ -9,7 +9,8 @@ import {CrudService} from "../../../services/crud/crud.service";
 import DocumentReference = firebase.firestore.DocumentReference;
 import firebase from "firebase/compat/app";
 import {Observable} from "rxjs";
-
+import {UploadService} from "../../../services/crud/upload.service";
+import {combineLatest, takeWhile} from "rxjs";
 
 
 @Component({
@@ -24,25 +25,29 @@ export class PopUpComponent implements OnInit {
   public myForm: FormGroup = new FormGroup({});
   public formControls: typeof PostControls = PostControls;
 
+  public imageLink: string | null = "";
+
+  public progress: string | undefined = "";
+
   constructor(private dialogRef: MatDialog,
               private authService: AuthService,
-              private crudService: CrudService
+              private crudService: CrudService,
+              private uploadService: UploadService
   ) { }
 
   public ngOnInit(): void {
     this.myForm.valueChanges.subscribe(value => console.log(value));
     this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
     this.myForm.addControl(PostControls.postDescr, new FormControl("", Validators.required));
-    // this.myForm.addControl(PostControls.likeNum, new FormControl("", Validators.required))
   }
 
   public submitForm(): void {
     if (this.myForm.valid) {
       const post: Post = {
-        image: this.myForm?.controls[PostControls.image].value,
+        image: this.imageLink,
         postDescr: this.myForm?.controls[PostControls.postDescr].value,
-        // likeNum: this.myForm?.controls[PostControls.likeNum].value
       }
+      console.log(post)
       this.addPost(post);
       this.myForm?.reset();
       this.dialogRef.closeAll()
@@ -66,6 +71,25 @@ export class PopUpComponent implements OnInit {
 
   public closeDialog(): void{
     this.dialogRef.closeAll()
+  }
+
+  public onFileSelected(event: Event): void {
+    if (event) {
+      const eventTarget = (<HTMLInputElement>event?.target);
+      if (eventTarget && eventTarget.files) {
+        const file: File = eventTarget.files[0];
+        combineLatest(this.uploadService.uploadFileAndGetMetadata('test', file))
+          .pipe(
+            takeWhile(([, link]) => {
+              return !link;
+            }, true),
+          )
+          .subscribe(([percent, link]) => {
+            this.progress = percent;
+            this.imageLink = link;
+          });
+      }
+    }
   }
 
 }

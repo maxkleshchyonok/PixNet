@@ -8,8 +8,9 @@
       <div class="element">{{user.id}}</div>
       <button (click)="getInfo(user.id)">Get info</button>
       <button (click)="delete(user.id)">Delete</button>
+<!--      <button (click)="update(user.id)">Update</button>-->
       <button (click)="update(user.id)">Update</button>
-<!--      <button (click)="addUser()">Add user</button>-->
+      <!--      <button (click)="addUser()">Add user</button>-->
     </ng-container>
   </ng-container>
 <!--  <button (click)="addUser()">Add user</button>-->
@@ -45,3 +46,19 @@
   </div>
   <button [disabled]="myForm.invalid" (click)="submitForm()">Send</button>
 </form>
+
+<div class="imageForm">
+<div class="child-one">
+  <p>child-one works!</p>
+</div>
+<div class="form-group col-12">
+  <input type="file"
+         id="file"
+         (change)="onFileSelected($event)"
+         name="image"
+         autocomplete="off"
+  />
+</div>
+<img  *ngIf="imageLink" [src]="imageLink"/>
+<progress max="100" [value]="progress" ></progress>
+</div>

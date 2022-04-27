@@ -1,23 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-//
-// @Component({
-//   selector: 'app-friends',
-//   templateUrl: './friends.component.html',
-//   styleUrls: ['./friends.component.css']
-// })
-// export class FriendsComponent implements OnInit {
-//
-//   public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
-//
-//   constructor(private authService: AuthService, private crudService: CrudService) { }
-//
-//
-//
-//   ngOnInit(): void {
-//   }
-//
-// }
-
 import {Component, OnInit} from '@angular/core';
 import firebase from "firebase/compat/app";
 import {Observable} from "rxjs";
@@ -28,6 +8,8 @@ import {CrudService} from "../../../services/crud/crud.service";
 import {User, UserStore} from "../../../services/types";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserControls} from "../../models/controls.enum";
+import {UploadService} from "../../../services/crud/upload.service";
+import {combineLatest, takeWhile} from "rxjs";
 
 @Component({
   selector: 'app-friends',
@@ -40,7 +22,13 @@ export class FriendsComponent implements OnInit{
   public myForm: FormGroup = new FormGroup({});
   public formControls: typeof UserControls = UserControls;
 
-  constructor(private authService: AuthService, private crudService: CrudService) {
+  public imageLink: string | null = "";
+
+  public progress: string | undefined = "";
+
+  constructor(private authService: AuthService,
+              private crudService: CrudService,
+              private uploadService: UploadService) {
   }
 
   public ngOnInit(): void {
@@ -107,6 +95,25 @@ export class FriendsComponent implements OnInit{
       return control.invalid && (control.dirty || control.touched);
     } else {
       return false;
+    }
+  }
+
+  public onFileSelected(event: Event): void {
+    if (event) {
+      const eventTarget = (<HTMLInputElement>event?.target);
+      if (eventTarget && eventTarget.files) {
+        const file: File = eventTarget.files[0];
+        combineLatest(this.uploadService.uploadFileAndGetMetadata('test', file))
+          .pipe(
+            takeWhile(([, link]) => {
+              return !link;
+            }, true),
+          )
+          .subscribe(([percent, link]) => {
+            this.progress = percent;
+            this.imageLink = link;
+          });
+      }
     }
   }
 

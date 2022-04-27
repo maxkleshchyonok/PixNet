@@ -38,7 +38,7 @@ import { PopUpComponent } from './profile/pop-up/pop-up.component';
     FeedComponent,
     ProfileComponent,
     StartPageComponent,
-    PopUpComponent
+    PopUpComponent,
   ],
   imports: [
     BrowserModule,
