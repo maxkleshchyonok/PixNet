@@ -7,9 +7,7 @@ import UserCredential = firebase.auth.UserCredential;
 import {CrudService} from "../crud/crud.service";
 import {Collections} from "../crud/collections";
 import {switchMap, tap, filter, map} from "rxjs/operators";
-import {User, UserStore} from "../types";
-import {collection, getFirestore, query, where} from "@angular/fire/firestore";
-import {user} from "@angular/fire/auth";
+import {User} from "../types";
 
 @Injectable({
   providedIn: 'root'
@@ -18,36 +16,30 @@ export class AuthService {
 
   public user$: ReplaySubject<firebase.User | null> = new ReplaySubject<firebase.User | null>(1)
 
-  public userStore: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
-
-  public db = getFirestore();
-
-  public usersRef = collection(this.db, "users" );
-
-  public q = query(this.usersRef, where("email", "==", ""))
-
-
   constructor(private afAuth: AngularFireAuth,
-              private crudService: CrudService,
-              ) {
+              private crudService: CrudService) {
     this.afAuth.authState.pipe(
-      filter((value: firebase.User | null)=> !!value),
       tap((value: firebase.User | null) => this.user$.next(value)),
-      switchMap((value: firebase.User | null) => {
-        const user: User = {
-          name: value?.displayName!,
-          surname: value?.displayName!,
-          email: value?.email!,
-
-        }
-        return this.crudService.createObject(Collections.USERS, user)
-      })
-    )
-      // .subscribe((value: firebase.User | null) =>
-      //   this.user$.next(value))
-      .subscribe();
+      filter((value: firebase.User | null) => !!value),
+      switchMap((userFromLogin: firebase.User | null) => {
+        return this.crudService.handleMailData(Collections.USERS, userFromLogin?.email!).pipe(
+          map(userFromStore => {
+            if (userFromStore.length !== 0) {
+              return null;
+            } else {
+              const user: User = {
+                email: userFromLogin?.email!,
+                name: userFromLogin?.displayName!,
+                img: userFromLogin?.photoURL!,
+                id: userFromLogin?.uid!
+              }
+              return user;
+            }
+          }),
+          filter((value: User | null) => !!value),
+          switchMap(newUser => this.crudService.createObject(Collections.USERS, newUser)))
+      })).subscribe()
   }
-
 
 
   public googleSignIn(): Observable<UserCredential> {

@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {CrudService} from "../../services/crud/crud.service";
 import {switchMap, tap} from "rxjs/operators";
 import {Collections} from "../../services/crud/collections";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-start-page',
@@ -14,6 +15,8 @@ import {Collections} from "../../services/crud/collections";
 export class StartPageComponent implements OnInit {
 
   public user: firebase.User | null = null;
+
+  private subscriptions: Array<Subscription> = []
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -38,6 +41,7 @@ export class StartPageComponent implements OnInit {
   public login(): void {
     this.authService.googleSignIn().subscribe()
   }
+
 
   // public logout(): void{
   //   this.authService.signOut().subscribe(()=> this.router.navigate(["/"]))
