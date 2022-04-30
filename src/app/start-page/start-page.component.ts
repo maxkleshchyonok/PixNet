@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import firebase from "firebase/compat";
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
+import {CrudService} from "../../services/crud/crud.service";
+import {switchMap, tap} from "rxjs/operators";
+import {Collections} from "../../services/crud/collections";
 
 @Component({
   selector: 'app-start-page',
@@ -13,7 +16,8 @@ export class StartPageComponent implements OnInit {
   public user: firebase.User | null = null;
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private crudService: CrudService) {
   }
 
   public ngOnInit(): void {
@@ -23,6 +27,13 @@ export class StartPageComponent implements OnInit {
       }
     )
   }
+
+  // ngOnInit(): void {
+  //   this.authService.user$.pipe(
+  //     tap((value: firebase.User | null) => this.user = value),
+  //     switchMap((user) => this.crudService.createObject(Collections.USERS, user))
+  //   ).subscribe()
+  // }
 
   public login(): void {
     this.authService.googleSignIn().subscribe()

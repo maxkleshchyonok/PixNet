@@ -4,6 +4,9 @@ import {ProfileInfo} from "../../../Store";
 import {AuthService} from "../../../services/auth/auth.service";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat/app";
+import {Collections} from "../../../services/crud/collections";
+import {CrudService} from "../../../services/crud/crud.service";
+import {switchMap, tap} from "rxjs/operators";
 
 
 @Component({
@@ -19,7 +22,8 @@ export class StatusComponent implements OnInit {
   public user: firebase.User | null = null;
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private crudService: CrudService) {
   }
 
   public ngOnInit(): void {
@@ -29,5 +33,12 @@ export class StatusComponent implements OnInit {
       }
     )
   }
+
+  // ngOnInit(): void {
+  //   this.authService.user$.pipe(
+  //     tap((value: firebase.User | null) => this.user = value),
+  //       switchMap((user) => this.crudService.createObject(Collections.USERS, user))
+  //   ).subscribe()
+  // }
 
 }

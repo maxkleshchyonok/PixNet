@@ -1,64 +1,64 @@
-<div class="container">
-  <ng-container *ngFor="let user of (users | async)">
-    <ng-container *ngIf="user.id">
+<!--<div class="container">-->
+<!--  <ng-container *ngFor="let user of (users | async)">-->
+<!--    <ng-container *ngIf="user.id">-->
 
-      <div class="user">{{user.name}}</div>
-      <div>{{user.surname}}</div>
-      <div>{{user.email}}</div>
-      <div class="element">{{user.id}}</div>
-      <button (click)="getInfo(user.id)">Get info</button>
-      <button (click)="delete(user.id)">Delete</button>
+<!--      <div class="user">{{user.name}}</div>-->
+<!--      <div>{{user.surname}}</div>-->
+<!--      <div>{{user.email}}</div>-->
+<!--      <div class="element">{{user.id}}</div>-->
+<!--      <button (click)="getInfo(user.id)">Get info</button>-->
+<!--      <button (click)="delete(user.id)">Delete</button>-->
+<!--&lt;!&ndash;      <button (click)="update(user.id)">Update</button>&ndash;&gt;-->
 <!--      <button (click)="update(user.id)">Update</button>-->
-      <button (click)="update(user.id)">Update</button>
-      <!--      <button (click)="addUser()">Add user</button>-->
-    </ng-container>
-  </ng-container>
-<!--  <button (click)="addUser()">Add user</button>-->
-</div>
+<!--      &lt;!&ndash;      <button (click)="addUser()">Add user</button>&ndash;&gt;-->
+<!--    </ng-container>-->
+<!--  </ng-container>-->
+<!--&lt;!&ndash;  <button (click)="addUser()">Add user</button>&ndash;&gt;-->
+<!--</div>-->
 
-<form class="form" [formGroup]="myForm">
-  <div>
-    <label>
-      Name:
-      <input [formControlName]="formControls.name" placeholder="Your name">
-    </label>
-    <div *ngIf="isControlValid(formControls.name)">
-      Please provide a name.
-    </div>
-  </div>
-  <div>
-    <label>
-      Surname:
-      <input [formControlName]="formControls.surname" placeholder="Your name">
-    </label>
-    <div *ngIf="isControlValid(formControls.surname)">
-      Please provide a name.
-    </div>
-  </div>
-  <div>
-    <label>
-      Email:
-      <input [formControlName]="formControls.email" placeholder="Your email">
-    </label>
-    <div *ngIf="isControlValid(formControls.email)">
-      Please provide a valid email address.
-    </div>
-  </div>
-  <button [disabled]="myForm.invalid" (click)="submitForm()">Send</button>
-</form>
+<!--<form class="form" [formGroup]="myForm">-->
+<!--  <div>-->
+<!--    <label>-->
+<!--      Name:-->
+<!--      <input [formControlName]="formControls.name" placeholder="Your name">-->
+<!--    </label>-->
+<!--    <div *ngIf="isControlValid(formControls.name)">-->
+<!--      Please provide a name.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label>-->
+<!--      Surname:-->
+<!--      <input [formControlName]="formControls.surname" placeholder="Your name">-->
+<!--    </label>-->
+<!--    <div *ngIf="isControlValid(formControls.surname)">-->
+<!--      Please provide a name.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label>-->
+<!--      Email:-->
+<!--      <input [formControlName]="formControls.email" placeholder="Your email">-->
+<!--    </label>-->
+<!--    <div *ngIf="isControlValid(formControls.email)">-->
+<!--      Please provide a valid email address.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <button [disabled]="myForm.invalid" (click)="submitForm()">Send</button>-->
+<!--</form>-->
 
-<div class="imageForm">
-<div class="child-one">
-  <p>child-one works!</p>
-</div>
-<div class="form-group col-12">
-  <input type="file"
-         id="file"
-         (change)="onFileSelected($event)"
-         name="image"
-         autocomplete="off"
-  />
-</div>
-<img  *ngIf="imageLink" [src]="imageLink"/>
-<progress max="100" [value]="progress" ></progress>
-</div>
+<!--<div class="imageForm">-->
+<!--<div class="child-one">-->
+<!--  <p>child-one works!</p>-->
+<!--</div>-->
+<!--<div class="form-group col-12">-->
+<!--  <input type="file"-->
+<!--         id="file"-->
+<!--         (change)="onFileSelected($event)"-->
+<!--         name="image"-->
+<!--         autocomplete="off"-->
+<!--  />-->
+<!--</div>-->
+<!--<img  *ngIf="imageLink" [src]="imageLink"/>-->
+<!--<progress max="100" [value]="progress" ></progress>-->
+<!--</div>-->

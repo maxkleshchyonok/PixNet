@@ -19,5 +19,5 @@ export type Post = {
   // likeNum: number
 }
 
-export type UserStore = User & ID;
+export type UserStore = User & ID | null;
 export type PostStore = Post & ID;
