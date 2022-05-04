@@ -1,0 +1,33 @@
+.content{
+  /*position: absolute;*/
+  /*left: 40%;*/
+  /*top:40%*/
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 14%;
+}
+
+.body{
+  position: fixed;
+  top: 5%;
+  width: 70%;
+  height: 80%;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 16px 50px #9a9a9a;
+  font-family: Roboto;
+  background: white;
+}
+
+.close{
+  background: transparent;
+  border: none !important;
+  position: relative;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+  margin-left: 104%;
+  top: -8%;
+  cursor: pointer;
+}

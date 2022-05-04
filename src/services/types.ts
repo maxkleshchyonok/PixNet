@@ -23,7 +23,8 @@ export type ID = {
 export type Post = {
   image: string | null;
   postDescr: string | null;
-  // likeNum: number
+  likes: string[];
+  // isLiked: boolean
 }
 
 export type UserStore = User & ID | null;

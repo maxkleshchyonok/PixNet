@@ -20,7 +20,7 @@ export class CrudService {
     return snapshot.pipe(map((value: firebase.firestore.DocumentSnapshot<T>) =>  value.data()));
   }
 
-  public getDate<T>(collectionName: string): Observable<T[]> {
+  public getData<T>(collectionName: string): Observable<T[]> {
     return this.handleData<T>(collectionName).pipe(take(1));
   }
 
@@ -44,6 +44,24 @@ export class CrudService {
       .collection(collectionName, ref => {
         const query: firebase.firestore.Query = ref;
         return query.where('email', '==', value);
+      })
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data: any = a.payload.doc.data();
+            const {id} = a.payload.doc;
+            return {id, ...data} as T;
+          }),
+        ),
+      );
+  }
+
+  public handleIdData<T>(collectionName: string, value: string): Observable<T[]> {
+    return this.angularFirestore
+      .collection(collectionName, ref => {
+        const query: firebase.firestore.Query = ref;
+        return query.where('id', '==', value);
       })
       .snapshotChanges()
       .pipe(

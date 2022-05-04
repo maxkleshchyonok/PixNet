@@ -23,6 +23,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import { PopUpComponent } from './profile/pop-up/pop-up.component';
+import { PostModalComponent } from './profile/post-modal/post-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PopUpComponent } from './profile/pop-up/pop-up.component';
     ProfileComponent,
     StartPageComponent,
     PopUpComponent,
+    PostModalComponent,
   ],
   imports: [
     BrowserModule,

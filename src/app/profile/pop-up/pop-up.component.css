@@ -3,7 +3,7 @@
   /*justify-content: center;*/
   /*align-items: center;*/
   /*height: 100vh;*/
-  position: absolute;
+  position: fixed;
   left: 40%;
   top: 40%;
 }
@@ -94,6 +94,8 @@
   font-weight: 300;
   color: #f56868;
 }
+
+
 
 
 @media screen and (max-width: 575px) {

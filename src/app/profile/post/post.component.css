@@ -32,7 +32,7 @@
   width: 299px;
   height: 299px;
   object-fit: cover;
-
+  cursor: pointer;
 }
 
 .postDescr{
@@ -54,31 +54,28 @@
   color: #000000;
 }
 
-/*.likeButt{*/
-/*  position: absolute;*/
-/*  width: 30px;*/
-/*  height: 24px;*/
-/*  margin-left: 15.5em;*/
-/*  margin-top: 19.8em;*/
-/*}*/
-
-.likeNum{
-  position: absolute;
-  width: 30px;
-  height: 22px;
-  margin-left: 15.4em;
-  margin-top: 21.5em;
-  font-family: 'Roboto';
-}
-
 .delete{
+  width: 120px;
+  height: 90px;
   position: absolute;
   margin-left: 11.5em;
-  margin-top: -1.5em;
+  margin-top: -17em;
   font-family: Roboto;
   font-weight: 100;
   font-size: 25px;
   display: none;
+}
+
+.update{
+  position: relative;
+  margin-left: -4%;
+  background: transparent;
+  /*border: none !important;*/
+  border: 0.5px solid #B1B1B1;
+  cursor: pointer;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 19px;
 }
 
 .post:hover .delete{
@@ -92,27 +89,28 @@
   border: none !important;
   font-family: Roboto;
   font-weight: 100;
-  font-size: 25px;
+  font-size: 23px;
   cursor: pointer;
 }
 
 .liketogg{
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  left: 21.5em;
-  top: 25em;
+  position: relative;
+  margin-top: 105%;
+  margin-left: 80%;
   background: transparent;
   border: none !important;
   cursor: pointer;
 }
 
 .likeButt{
-  position: absolute;
   width: 30px;
   height: 25px;
-  margin-top: -1em;
-  margin-left: -1.1em;
+}
+
+.likeNum{
+  position: relative;
+  margin-left: 85%;
+  margin-top: -0.1%;
 }
 
 @media screen and (max-width: 1200px) {

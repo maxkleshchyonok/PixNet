@@ -1,54 +1,23 @@
-<!--<div class="allpost">-->
-<!--  <ul class="posts">-->
-<!--    <li class="post" *ngFor="let post of posts">-->
-<!--      <img class="postImg" src="{{post.image}}"/>-->
-<!--      <p class="postDescr">{{post.postDescr}}</p>-->
-<!--      <div class="like">-->
-<!--        <img class="likeButt" src="../../../assets/img/like0.png"/>-->
-<!--        <p class="likeNum">{{post.likeNum}}</p>-->
-<!--      </div>-->
-<!--    </li>-->
-<!--  </ul>-->
-<!--</div>-->
-
-<!--<div class="allpost">-->
-<!--  <ul class="posts">-->
-<!--    <li class="post" *ngFor="let post of (posts | async)">-->
-<!--      <img class="postImg" src="{{post.image}}"/>-->
-<!--      <p class="postDescr">{{post.postDescr}}</p>-->
-<!--      <div class="like">-->
-<!--        <img class="likeButt" src="../../../assets/img/like0.png"/>-->
-<!--        <p class="likeNum">{{post.likeNum}}</p>-->
-<!--      </div>-->
-<!--      <div class="delete">-->
-<!--        <button class="deletebutt" (click)="delete(post.id)">X</button>-->
-<!--      </div>-->
-<!--    </li>-->
-<!--  </ul>-->
-<!--</div>-->
-
 <div class="container">
   <div class="allpost">
     <ul class="posts">
       <li class="post" *ngFor="let post of (posts | async)">
-        <img class="postImg" src="{{post.image}}"/>
-<!--        <img  *ngIf="imageLink" [src]="imageLink"/>-->
+        <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />
         <p class="postDescr">{{post.postDescr}}</p>
         <div class="like">
-          <button class="liketogg" (click)="onClick()">
+          <button class="liketogg" (click)="updateLikes(post.id)">
             <img class="likeButt"
-                 src="{{isLike==true?'../../../assets/img/like0.png':(isLike==false?'../../../assets/img/like.png':'')}}">
+                 src="{{isLike==false?'../../../assets/img/like0.png':(isLike==true?'../../../assets/img/like.png':'')}}">
           </button>
-<!--          <p class="likeNum">{{post.likeNum}}</p>-->
+          <p class="likeNum">{{post.likes.length}}</p>
         </div>
         <div class="delete">
           <button class="deletebutt" (click)="delete(post.id)">X</button>
-          <button (click)="update(post.id)">update</button>
+          <button class="update" (click)="update(post.id)">Update</button>
         </div>
       </li>
     </ul>
   </div>
 </div>
-
 
 

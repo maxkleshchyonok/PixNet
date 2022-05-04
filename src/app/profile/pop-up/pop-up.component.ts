@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostControls, UserControls} from "../../models/controls.enum";
@@ -19,6 +19,8 @@ import {combineLatest, takeWhile} from "rxjs";
   styleUrls: ['./pop-up.component.css']
 })
 export class PopUpComponent implements OnInit {
+
+
 
   public posts: Observable<PostStore[]> = this.crudService.handleData<PostStore>(Collections.POSTS);
 
@@ -46,6 +48,7 @@ export class PopUpComponent implements OnInit {
       const post: Post = {
         image: this.imageLink,
         postDescr: this.myForm?.controls[PostControls.postDescr].value,
+        likes: []
       }
       console.log(post)
       this.addPost(post);
