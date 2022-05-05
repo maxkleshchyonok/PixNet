@@ -4,10 +4,11 @@
       <li class="post" *ngFor="let post of (posts | async)">
         <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />
         <p class="postDescr">{{post.postDescr}}</p>
-        <div class="like">
+        <div class="like" *ngIf="userId">
           <button class="liketogg" (click)="updateLikes(post.id)">
             <img class="likeButt"
-                 src="{{isLike==false?'../../../assets/img/like0.png':(isLike==true?'../../../assets/img/like.png':'')}}">
+                 src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">
+<!--            <img class="likeButt" src="../../../assets/img/like0.png">-->
           </button>
           <p class="likeNum">{{post.likes.length}}</p>
         </div>
