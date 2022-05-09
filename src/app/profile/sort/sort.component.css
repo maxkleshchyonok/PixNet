@@ -2,25 +2,25 @@
   position: absolute;
   width: 86px;
   height: 126px;
-  top: 2%;
-  left: 5%;
+  left: 85%;
+  top: 65%;
 }
 .sortHeaderBox{
   position: absolute;
   width: 76px;
   height: 32px;
-  left: 80em;
-  top: 32em;
   border: 0.3px solid #B1B1B1;
   box-sizing: border-box;
 }
 
 .sortHeader{
+  position: relative;
   font-family: "Roboto";
   font-weight: 100;
   line-height: 0;
-  margin-left: 9px;
-
+  margin-left: 13%;
+  margin-top: 20%;
+  font-size: 18px;
 }
 
 .sortOptBox{

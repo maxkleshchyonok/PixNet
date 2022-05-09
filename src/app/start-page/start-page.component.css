@@ -22,9 +22,9 @@
 }
 
 .logoTxt{
-  position: absolute;
-  left: 270px;
-  top: 32px;
+  position: relative;
+  margin-left: 400%;
+  margin-top: 160%;
   font-family: Roboto;
   font-weight: 100;
   font-size: 55px;
@@ -32,13 +32,13 @@
 
 .slogan{
   position: absolute;
-  /*left: 765px;*/
-  /*width: 620px;*/
-  left: 12em;
-  width: 10em;
+  width: 40%;
+  margin-top: 5%;
+  margin-left: 42%;
   font-family: Roboto;
   font-weight: 100;
   font-size: 64px;
+  line-height: 100%;
 }
 
 .macbook{
@@ -65,9 +65,9 @@
 }
 
 .login{
-  position: absolute;
-  left: 120px;
-  top: -20px;
+  position: relative;
+  margin-left: 35%;
+  margin-top: 10%;
   font-family: Roboto;
   font-weight: 100;
   font-size: 42px;
@@ -95,9 +95,9 @@
 }
 
 .buttxt{
-  position: absolute;
-  left: 70px;
-  top: -13.5px;
+  position: relative;
+  margin-left: 15%;
+  margin-top: 3%;
 }
 
 .googlogo{

@@ -2,22 +2,16 @@
   position: fixed;
   width: 100px;
   height: 100px;
-  left: 84.3em;
-  top: 40em;
+  /*left: 84.3em;*/
+  /*top: 40em;*/
+  left: 85%;
+  top: 80%;
   border-radius: 50px;
   background: linear-gradient(135deg, #E998F6 -28.5%, rgba(233, 152, 246, 0) 92.5%);
   border: 0.5px solid #B1B1B1;
   box-sizing: border-box;
   box-shadow: 1px 4px 10px 1px #B1B1B1;
 }
-
-/*.plusImg{*/
-/*  position: fixed;*/
-/*  width: 30px;*/
-/*  height: 30px;*/
-/*  left: 86.5em;*/
-/*  top: 42.2em;*/
-/*}*/
 
 .button{
   width: 100px;
@@ -30,11 +24,11 @@
 }
 
 .plusImg{
-  position: fixed;
+  position: relative;
   width: 30px;
   height: 30px;
-  top: 673px;
-  left: 1383px;
+  margin-top: -4%;
+  margin-left: -2%;
 }
 
 
