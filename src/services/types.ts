@@ -4,10 +4,12 @@ export type FireBaseUser = firebase.User | null;
 export type UserCredential = firebase.auth.UserCredential;
 
 export type User = {
-  id: string;
+  // id: string;
   img: string;
   name: string;
-  email: string
+  email: string;
+  followers: string[];
+  following: string[]
 };
 
 export type ID = {

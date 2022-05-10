@@ -2,7 +2,7 @@
   position: absolute;
   width: 100px;
   height: 30px;
-  left: 30.8em;
+  left: 27em;
   top: 21em;
   font-family: Roboto;
   font-weight: 100;
@@ -11,6 +11,7 @@
   border: 0.5px solid #B1B1B1;
   box-sizing: border-box;
   box-shadow: 1px 4px 10px 1px #B1B1B1;
+  cursor: pointer;
 }
 
 .followup{

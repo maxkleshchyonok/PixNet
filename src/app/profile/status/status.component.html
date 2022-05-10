@@ -1,13 +1,30 @@
-<div *ngFor="let element of elements">
-  <div class="profInfo">
-    <div class="ava"><img class="img" src="{{element.avatar}}"/></div>
-    <!--    <div class="username">{{element.userName}}</div>-->
-    <div class="username">{{user?.displayName}}</div>
-    <div class="status">{{element.status}}</div>
-    <div class="friendsNum">{{element.friendsNum}} Friends</div>
+<!--<div *ngFor="let user of (users | async)">-->
+<!--  <div class="profInfo" *ngIf="userId" >-->
+<!--    <div class="ava"><img class="img" src="{{user?.img}}"/></div>-->
+<!--    <div class="username">{{user?.name!}}</div>-->
+<!--&lt;!&ndash;    <div class="username">{{userName}}</div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <div class="status">{{element.status}}</div>&ndash;&gt;-->
+<!--    <div class="friendsNum">{{user?.followers?.length}} Followers</div>-->
+<!--    <div class="fripostLine"></div>-->
+<!--    <div class="postsNum">{{user?.following?.length}} Following</div>-->
+<!--  </div>-->
+<!--  <button class="testfolowbut" (click)="updateFollowers(user?.id!)" >add fol</button>-->
+<!--</div>-->
+<!--<div class="line"></div>-->
+
+
+<div *ngFor="let user of (users | async)">
+  <div class="profInfo" *ngIf="userId" >
+    <div class="ava"><img class="img" src="{{user?.img}}"/></div>
+    <div class="username">{{user?.name!}}</div>
+    <!--    <div class="username">{{userName}}</div>-->
+    <!--    <div class="status">{{element.status}}</div>-->
+    <div class="friendsNum">{{user?.followers?.length}} Followers</div>
     <div class="fripostLine"></div>
-    <div class="postsNum">{{element.postsNum}} Posts</div>
-    <!--    <div class="line"></div>-->
+    <div class="postsNum">{{user?.following?.length}} Following</div>
+    <button class="button" [ngClass]="{'followup':isFollow==true,'unfollow':isFollow==false}" (click)="updateFollowers(user?.id!)">
+      {{!user?.followers?.includes(userId) ? 'Follow' : 'Unfollow'}}
+    </button>
   </div>
 </div>
 <div class="line"></div>
