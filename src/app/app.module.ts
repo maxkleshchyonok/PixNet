@@ -11,7 +11,7 @@ import { AddPostButtonComponent } from './profile/add-post-button/add-post-butto
 import { StatusComponent } from './profile/status/status.component';
 import { SubscribeButtonComponent } from './profile/subscribe-button/subscribe-button.component';
 import {AppRoutingModule} from "./app-routing.module";
-// import {FriendsComponent} from "./friends/friends/friends.component";
+import {FriendsComponent} from "./friends/friends/friends.component";
 import {FeedComponent} from "./feed/feed/feed.component";
 import {ProfileComponent} from "./profile/profile/profile.component";
 import { StartPageComponent } from './start-page/start-page.component';
@@ -35,7 +35,7 @@ import { PostModalComponent } from './profile/post-modal/post-modal.component';
     AddPostButtonComponent,
     StatusComponent,
     SubscribeButtonComponent,
-    // FriendsComponent,
+    FriendsComponent,
     FeedComponent,
     ProfileComponent,
     StartPageComponent,

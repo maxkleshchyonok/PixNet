@@ -3,6 +3,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {from, map, Observable, take} from "rxjs";
 import firebase from "firebase/compat/app";
 import DocumentReference = firebase.firestore.DocumentReference;
+import WhereFilterOp = firebase.firestore.WhereFilterOp;
 
 @Injectable({
   providedIn: 'root'
@@ -57,11 +58,11 @@ export class CrudService {
       );
   }
 
-  public handleIdData<T>(collectionName: string, value: string): Observable<T[]> {
+  public handleIdData<T>(collectionName: string, operator: WhereFilterOp, value: string): Observable<T[]> {
     return this.angularFirestore
       .collection(collectionName, ref => {
         const query: firebase.firestore.Query = ref;
-        return query.where('id', '==', value);
+        return query.where('userID', operator, value);
       })
       .snapshotChanges()
       .pipe(
@@ -74,6 +75,7 @@ export class CrudService {
         ),
       );
   }
+
 
   public createObject<T>(collectionName: string, object: T): Observable<DocumentReference<T>> {
     return (from(this.angularFirestore

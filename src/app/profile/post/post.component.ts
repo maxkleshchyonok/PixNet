@@ -12,6 +12,7 @@ import Firestore = firebase.firestore.Firestore;
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
 import {PostModalComponent} from "../post-modal/post-modal.component";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-post',
@@ -22,17 +23,25 @@ export class PostComponent implements OnInit{
 
   public posts: Observable<PostStore[]> = this.crudService.handleData<PostStore>(Collections.POSTS);
 
+  public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
+
+  public showingUserEmail: string = '';
+
   public isLike: boolean = false;
 
   public userId: string | undefined = '';
 
   constructor(private authService: AuthService,
               private crudService: CrudService,
-              private dialogRef: MatDialog) {
+              private dialogRef: MatDialog,
+              public activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
+    // this.authService.user$.subscribe((value: firebase.User | null) => this.showingUserEmail = value?.email!)
+
+    console.log(this.showingUserEmail + '----------')
   }
 
   public delete(id: string): void {
@@ -49,6 +58,7 @@ export class PostComponent implements OnInit{
       image: "https://media.istockphoto.com/photos/melbourne-central-business-district-picture-id600688368?k=20&m=600688368&s=612x612&w=0&h=hbN7pEOSGuyzbygdh-vgj5mmBeGne2NHDYlojpfmoTw=",
       postDescr: "Visited Melbourne",
       likes: [],
+      creator: ''
     }
     this.crudService.updateObject(Collections.POSTS, id, post).subscribe();
   }

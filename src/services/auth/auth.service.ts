@@ -31,7 +31,7 @@ export class AuthService {
                 email: userFromLogin?.email!,
                 name: userFromLogin?.displayName!,
                 img: userFromLogin?.photoURL!,
-                // id: userFromLogin?.uid!,
+                userID: userFromLogin?.uid!,
                 followers: [],
                 following: []
               }

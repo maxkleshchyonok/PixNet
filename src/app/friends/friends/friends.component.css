@@ -1,6 +1,21 @@
 .container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  list-style-type: none;
+}
+
+.all{
   position: absolute;
-  top: 100px;
+  width: 100%;
+  height: 100%;
+  top:100px
+}
+
+.everyUser{
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .user{

@@ -1,24 +1,109 @@
-<div class="container">
-  <div class="allpost">
-    <ul class="posts">
-      <li class="post" *ngFor="let post of (posts | async)">
-        <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />
-        <p class="postDescr">{{post.postDescr}}</p>
-        <div class="like" *ngIf="userId">
-          <button class="liketogg" (click)="updateLikes(post.id)">
-            <img class="likeButt"
-                 src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">
-<!--            <img class="likeButt" src="../../../assets/img/like0.png">-->
-          </button>
-          <p class="likeNum">{{post.likes.length}}</p>
+<!--<div class="container">-->
+<!--  <div class="allpost">-->
+<!--    <ul class="posts">-->
+<!--      <li class="post" *ngFor="let post of (posts | async)">-->
+<!--        <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />-->
+<!--        <p class="postDescr">{{post.postDescr}}</p>-->
+<!--        <div class="like" *ngIf="userId">-->
+<!--          <button class="liketogg" (click)="updateLikes(post.id)">-->
+<!--            <img class="likeButt"-->
+<!--                 src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">-->
+<!--&lt;!&ndash;            <img class="likeButt" src="../../../assets/img/like0.png">&ndash;&gt;-->
+<!--          </button>-->
+<!--          <p class="likeNum">{{post.likes.length}}</p>-->
+<!--        </div>-->
+<!--        <div class="delete">-->
+<!--          <button class="deletebutt" (click)="delete(post.id)">X</button>-->
+<!--          <button class="update" (click)="update(post.id)">Update</button>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div class="container" >-->
+<!--  <div class="allpost">-->
+<!--    <ul class="posts" *ngFor="let user of (users | async)">-->
+<!--      <li class="post" *ngFor="let post of (posts | async) ">-->
+<!--        <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />-->
+<!--        <p class="postDescr">{{post.postDescr}}</p>-->
+<!--        <div class="like" *ngIf="userId">-->
+<!--          <button class="liketogg" (click)="updateLikes(post.id)">-->
+<!--            <img class="likeButt"-->
+<!--                 src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">-->
+<!--            &lt;!&ndash;            <img class="likeButt" src="../../../assets/img/like0.png">&ndash;&gt;-->
+<!--          </button>-->
+<!--          <p class="likeNum">{{post.likes.length}}</p>-->
+<!--        </div>-->
+<!--        <div class="delete">-->
+<!--          <button class="deletebutt" (click)="delete(post.id)">X</button>-->
+<!--          <button class="update" (click)="update(post.id)">Update</button>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div *ngFor="let user of (users | async)">-->
+<!--  <div *ngFor="let post of (posts | async)">-->
+<!--    <div *ngIf="user?.email === post.creator && user?.id === this.activatedRoute.snapshot.paramMap.get('id')">-->
+
+<!--      <div class="container">-->
+<!--        <div>-->
+<!--          <ul>-->
+<!--            <li>-->
+<!--              <img  src="{{post.image}}" (click)="openPostModal()" />-->
+<!--              <p >{{post.postDescr}}</p>-->
+<!--              <div  *ngIf="userId">-->
+<!--                <button  (click)="updateLikes(post.id)">-->
+<!--                  <img-->
+<!--                       src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">-->
+<!--                </button>-->
+<!--                <p >{{post.likes.length}}</p>-->
+<!--              </div>-->
+<!--              <div >-->
+<!--                <button  (click)="delete(post.id)">X</button>-->
+<!--                <button  (click)="update(post.id)">Update</button>-->
+<!--              </div>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div *ngFor="let user of (users | async)">
+  <div *ngFor="let post of (posts | async)">
+    <div *ngIf="user?.email === post.creator && user?.id === this.activatedRoute.snapshot.paramMap.get('id')">
+
+      <div class="container" >
+        <div class="allpost">
+          <ul class="posts">
+            <li class="post">
+              <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />
+              <p class="postDescr">{{post.postDescr}}</p>
+              <div class="like" *ngIf="userId">
+                <button class="liketogg" (click)="updateLikes(post.id)">
+                  <img class="likeButt"
+                       src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">
+                  <!--            <img class="likeButt" src="../../../assets/img/like0.png">-->
+                </button>
+                <p class="likeNum">{{post.likes.length}}</p>
+              </div>
+              <div class="delete">
+                <button class="deletebutt" (click)="delete(post.id)">X</button>
+                <button class="update" (click)="update(post.id)">Update</button>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="delete">
-          <button class="deletebutt" (click)="delete(post.id)">X</button>
-          <button class="update" (click)="update(post.id)">Update</button>
-        </div>
-      </li>
-    </ul>
+      </div>
+
+    </div>
   </div>
 </div>
-
-

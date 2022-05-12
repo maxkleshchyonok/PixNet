@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PostControls, UserControls} from "../../models/controls.enum";
-import {Post, PostStore, User} from "../../../services/types";
+import {Post, PostStore, User, UserStore} from "../../../services/types";
 import {Collections} from "../../../services/crud/collections";
 import {AuthService} from "../../../services/auth/auth.service";
 import {CrudService} from "../../../services/crud/crud.service";
@@ -20,16 +20,19 @@ import {combineLatest, takeWhile} from "rxjs";
 })
 export class PopUpComponent implements OnInit {
 
-
-
   public posts: Observable<PostStore[]> = this.crudService.handleData<PostStore>(Collections.POSTS);
 
   public myForm: FormGroup = new FormGroup({});
+
   public formControls: typeof PostControls = PostControls;
 
   public imageLink: string | null = "";
 
   public progress: string | undefined = "";
+
+  public userEmail: string | undefined = '';
+
+  public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS)
 
   constructor(private dialogRef: MatDialog,
               private authService: AuthService,
@@ -41,6 +44,8 @@ export class PopUpComponent implements OnInit {
     this.myForm.valueChanges.subscribe(value => console.log(value));
     this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
     this.myForm.addControl(PostControls.postDescr, new FormControl("", Validators.required));
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
+
   }
 
   public submitForm(): void {
@@ -48,8 +53,10 @@ export class PopUpComponent implements OnInit {
       const post: Post = {
         image: this.imageLink,
         postDescr: this.myForm?.controls[PostControls.postDescr].value,
-        likes: []
+        likes: [],
+        creator: this?.userEmail!,
       }
+      console.log(this.userEmail)
       console.log(post)
       this.addPost(post);
       this.myForm?.reset();

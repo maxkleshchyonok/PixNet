@@ -13,6 +13,9 @@ export class HeaderComponent implements OnInit {
 
   public user$: ReplaySubject<firebase.User | null> = this.authService.user$;
 
+  public userId: string | undefined = '';
+
+
   constructor(private authService: AuthService,
               private router: Router) {
   }
@@ -26,6 +29,8 @@ export class HeaderComponent implements OnInit {
   // }
 
   public ngOnInit() {
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
+
   }
 
   public logout(): void{

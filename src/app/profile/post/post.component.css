@@ -121,6 +121,9 @@
   filter: brightness(0) saturate(100%) invert(48%) sepia(33%) saturate(1102%) hue-rotate(313deg) brightness(93%) contrast(98%);
 }
 
+
+
+
 @media screen and (max-width: 1200px) {
   .container{
     width: 1140px;

@@ -4,7 +4,7 @@ export type FireBaseUser = firebase.User | null;
 export type UserCredential = firebase.auth.UserCredential;
 
 export type User = {
-  // id: string;
+  userID: string;
   img: string;
   name: string;
   email: string;
@@ -17,9 +17,11 @@ export type ID = {
 }
 
 export type Post = {
+  // id: string;
   image: string | null;
   postDescr: string | null;
   likes: string[];
+  creator: string;
 }
 
 export type UserStore = User & ID | null;
