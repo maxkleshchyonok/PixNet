@@ -77,14 +77,12 @@
 <!--</div>-->
 
 
+<div class="container">
 <div *ngFor="let user of (users | async)">
-  <div *ngFor="let post of (posts | async)">
+  <div class="newTestPosts" *ngFor="let post of (posts | async)">
     <div *ngIf="user?.email === post.creator && user?.id === this.activatedRoute.snapshot.paramMap.get('id')">
-
-      <div class="container" >
-        <div class="allpost">
-          <ul class="posts">
-            <li class="post">
+            <div class="posts">
+              <div class="post">
               <img class="postImg" src="{{post.image}}" (click)="openPostModal()" />
               <p class="postDescr">{{post.postDescr}}</p>
               <div class="like" *ngIf="userId">
@@ -99,11 +97,9 @@
                 <button class="deletebutt" (click)="delete(post.id)">X</button>
                 <button class="update" (click)="update(post.id)">Update</button>
               </div>
-            </li>
-          </ul>
-        </div>
+              </div>
       </div>
-
     </div>
   </div>
+</div>
 </div>

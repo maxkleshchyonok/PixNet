@@ -42,6 +42,7 @@ export class StatusComponent implements OnInit {
 
   public currentUser: UserStore[] | undefined;
 
+  public userEmail: string = '';
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -51,6 +52,8 @@ export class StatusComponent implements OnInit {
 
   public ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
+
     console.log(this.userId + ' айди моё')
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),

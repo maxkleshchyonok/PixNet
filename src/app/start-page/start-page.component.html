@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngFor="let user of (users | async)">
   <div class="logo">
     <img class="logoImg" src="assets/img/logo.png"/>
     <p class="logoTxt">Pix</p>
@@ -12,7 +12,7 @@
   <div class="registr">
     <p class="login">Log In</p>
     <nav>
-      <a routerLink="/profile">
+      <a routerLink="/feed">
         <button class="gobutt" (click)="login()">
           <img class="googlogo" src="assets/img/googlogo.png">
           <p class="buttxt">Sign in with Google</p>

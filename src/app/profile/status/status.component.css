@@ -83,10 +83,10 @@
 
 .line{
   position: absolute;
-  width: 80%;
+  width: 500%;
   height: 0;
-  top: 60%;
-  left: 12%;
+  top: 130%;
+  margin-left: -20%;
   border: 0.1px solid #B1B1B1;
 }
 

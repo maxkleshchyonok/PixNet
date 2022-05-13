@@ -1,8 +1,8 @@
 <div class="header">
   <img class="headLogo" src="../../assets/img/logo.png" alt="logo"/>
   <p class="logoText">Pix</p>
-  <ng-container *ngIf="(user$ | async)">
-    <ul class="navlist">
+  <ng-container *ngFor="let user of (users | async)">
+    <ul class="navlist" *ngIf="userEmail === user?.email" >
       <li>
         <nav>
           <a class="feed" routerLink="/feed">Feed</a>
@@ -15,7 +15,7 @@
       </li>
       <li>
         <nav>
-          <a class="mypage" routerLink="/profile/{{userId}}">My page</a>
+          <a class="mypage" routerLink="/profile/{{user?.id}}">My page</a>
         </nav>
       </li>
       <li>
@@ -37,7 +37,7 @@
           </li>
           <li>
             <nav>
-              <a class="menuprofile" routerLink="/profile/{{userId}}">My page</a>
+              <a class="menuprofile" routerLink="/profile/{{user?.id}}">My page</a>
             </nav>
           </li>
           <li>

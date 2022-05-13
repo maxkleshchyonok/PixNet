@@ -1,6 +1,8 @@
-<div class="addButt">
-  <button class="button" (click)="openDialog()">
+<div *ngFor="let user of (users | async)">
+<div class="addButt" *ngIf="userEmail === user?.email && user?.id === this.activatedRoute.snapshot.paramMap.get('id')" >
+  <button class="button"
+          (click)="openDialog()">
     <img class="plusImg" src="../../../assets/img/plus.png"/>
   </button>
 </div>
-
+</div>

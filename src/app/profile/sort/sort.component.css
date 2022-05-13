@@ -1,9 +1,11 @@
 .sortBy{
-  position: absolute;
+  position: static;
   width: 86px;
   height: 126px;
-  left: 85%;
-  top: 65%;
+  /*left: 85%;*/
+  /*top: 65%;*/
+  margin-top: 35%;
+  margin-left: 85.5%;
 }
 .sortHeaderBox{
   position: absolute;

@@ -3,6 +3,10 @@ import firebase from "firebase/compat";
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
 import {ReplaySubject} from "rxjs";
+import {UserStore} from "../../services/types";
+import {Collections} from "../../services/crud/collections";
+import {Observable} from "rxjs";
+import {CrudService} from "../../services/crud/crud.service";
 
 @Component({
   selector: 'app-header',
@@ -13,11 +17,15 @@ export class HeaderComponent implements OnInit {
 
   public user$: ReplaySubject<firebase.User | null> = this.authService.user$;
 
+  public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
+
   public userId: string | undefined = '';
 
+  public userEmail: string = '';
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private crudService: CrudService) {
   }
 
   // public ngOnInit(): void {
@@ -30,7 +38,7 @@ export class HeaderComponent implements OnInit {
 
   public ngOnInit() {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
   }
 
   public logout(): void{
