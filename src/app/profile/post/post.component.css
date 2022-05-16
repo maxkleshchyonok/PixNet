@@ -158,7 +158,7 @@
 @media screen and (max-width: 575px) {
   .container{
     width: 100%;
-    padding: 0 15px;
+    margin-top: 20%;
   }
 
   .allpost{
@@ -176,8 +176,10 @@
   }
 
   .post{
-    width: 90%;
-    height: 400px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    width: 70%;
+    height: 90%;
     border: 0.5px solid #B1B1B1;
     box-sizing: border-box;
     box-shadow: 2px 5px 10px 3px #B1B1B1;

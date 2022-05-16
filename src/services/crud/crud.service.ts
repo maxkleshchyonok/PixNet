@@ -76,6 +76,26 @@ export class CrudService {
       );
   }
 
+  public handleEmailData<T>(collectionName: string, operator: WhereFilterOp, value: string): Observable<T[]> {
+    return this.angularFirestore
+      .collection(collectionName, ref => {
+        const query: firebase.firestore.Query = ref;
+        return query.where('email', operator, value);
+      })
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data: any = a.payload.doc.data();
+            console.log(data)
+            const {id} = a.payload.doc;
+            console.log(id)
+            return {id, ...data} as T;
+          }),
+        ),
+      );
+  }
+
 
   public createObject<T>(collectionName: string, object: T): Observable<DocumentReference<T>> {
     return (from(this.angularFirestore
