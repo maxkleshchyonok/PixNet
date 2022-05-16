@@ -22,6 +22,7 @@ export class StatusComponent implements OnInit {
   public elements: ProfileInfoElement[] = ProfileInfo;
 
   public user: firebase.User | null = null;
+
   public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS)
 
   public username: string = '';
@@ -42,9 +43,8 @@ export class StatusComponent implements OnInit {
 
   public authID: string | undefined = '';
 
-  public testId: string = 'vxlmLsJM29x23oqyYD4n';
+  public userOnScreen: string | null = this.activatedRoute.snapshot.paramMap.get('id');
 
-  public testUserEmail: string = 'maximilianthefirstlegendary@gmail.com';
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -55,8 +55,6 @@ export class StatusComponent implements OnInit {
   public ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
-
-    // if(this.userEmail ===  this.user?.email)
 
     console.log(this.userId + ' айди моё')
     this.authService.user$.pipe(
@@ -80,59 +78,6 @@ export class StatusComponent implements OnInit {
 
   }
 
-
-  // public updateFollowers(id: string): any {
-  //   console.log(id)
-  //   this.authService.user$.pipe(
-  //     filter((value: firebase.User | null) => !!value),
-  //     switchMap((value: firebase.User | null) => {
-  //       return this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
-  //         map((user) => {
-  //           const userIndex = user?.followers.indexOf(value?.uid!);
-  //           console.log(user)
-  //           console.log(userIndex);
-  //           if (userIndex === -1) {
-  //             this.isFollow = true;
-  //             return user?.followers.concat(value?.uid!)
-  //           } else {
-  //             const newArr: any = user?.followers.splice(userIndex!, 1);
-  //             this.isFollow = false;
-  //             return user?.followers;
-  //           }
-  //         }),
-  //         switchMap(followers => this.crudService.updateObject(Collections.USERS, id, {followers})
-  //         )
-  //       )
-  //     })
-  //   ).subscribe();
-  // }
-
-  // public updateFollowers(id: string): any {
-  //   console.log(id)
-  //   this.authService.user$.pipe(
-  //     filter((value: firebase.User | null) => !!value),
-  //     switchMap((value: firebase.User | null) => {
-  //       return this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
-  //         map((user) => {
-  //           const userIndex = user?.followers.indexOf(value?.uid!);
-  //           console.log(user)
-  //           console.log(userIndex);
-  //           if (userIndex === -1) {
-  //             this.isFollow = true;
-  //             return user?.followers.concat(value?.uid!)
-  //           } else {
-  //             const newArr: any = user?.followers.splice(userIndex!, 1);
-  //             this.isFollow = false;
-  //             return user?.followers;
-  //           }
-  //         }),
-  //         switchMap(followers => this.crudService.updateObject(Collections.USERS, id, {followers})
-  //         )
-  //       )
-  //     })
-  //   ).subscribe();
-  // }
-
   public updateFollowers(id: string) {
     this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
       map((userFromStore: UserStore | undefined) => {
@@ -152,37 +97,15 @@ export class StatusComponent implements OnInit {
       )).subscribe()
   }
 
-
-  // public updateFollowing(id: string) {
-  //   this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
-  //     map((currentUserFromStore: UserStore | undefined) => {
-  //       const followingInd = currentUserFromStore?.following.indexOf(this.userID);
-  //       console.log(this.authID + 'это аус айди')
-  //       if (followingInd == -1) {
-  //         return {
-  //           following: currentUserFromStore?.following.concat(this.userID),
-  //         }
-  //       } else {
-  //         const newArray: string[] | undefined = currentUserFromStore?.following.splice(followingInd!, 1)
-  //         return {
-  //           following: currentUserFromStore?.following
-  //         }
-  //       }
-  //     }),
-  //     switchMap(newFollowing => this.crudService.updateObject(Collections.USERS, id, {...newFollowing}))
-  //   ).subscribe()
-  // }
-
-
   public updateFollowing(id: string) {
-    console.log(id + 'это имейл')
+    console.log(id + 'это айди меня')
     this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
       map((userFromStore: UserStore | undefined) => {
 
-        const userIndex = userFromStore?.following.indexOf(this.userId!);
+        const userIndex = userFromStore?.following.indexOf(this.userOnScreen!);
         if (userIndex === -1) {
           return {
-            following: userFromStore?.following.concat(this.userId!),
+            following: userFromStore?.following.concat(this.userOnScreen!),
           }
         } else {
           const newArr: string[] | undefined = userFromStore?.following.splice(userIndex!, 1);

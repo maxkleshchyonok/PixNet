@@ -3,8 +3,23 @@
 <div class="container" *ngFor="let user of (users | async)">
   <nav>
   <div class="everyUser" routerLink="/profile/{{user?.id}}">
-    {{user?.name!}}
+    <img class="avatar" src="{{user?.img!}}"/>
+    <div class="name">{{user?.name!}}</div>
   </div>
   </nav>
 </div>
 </div>
+
+
+<!--<app-header></app-header>-->
+<!--<div class="all">-->
+<!--<div class="container" *ngFor="let user of (users | async)">-->
+<!--  <nav>-->
+<!--  <div class="everyUser" *ngIf="user?.id === friends" routerLink="/profile/{{user?.id}}">-->
+<!--    <img class="avatar" src="{{user?.img!}}"/>-->
+<!--    <div class="name">{{user?.name!}}</div>-->
+<!--  </div>-->
+<!--  </nav>-->
+<!--</div>-->
+<!--</div>-->
+
