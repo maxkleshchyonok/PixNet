@@ -8,7 +8,10 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class PostModalComponent implements OnInit {
 
-
+  @Input()
+  public image: string | null = '';
+  @Input()
+  public postDescr: string | null = '';
 
   constructor(private dialogRef: MatDialog) { }
 

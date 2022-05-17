@@ -24,5 +24,11 @@ export type Post = {
   creator: string;
 }
 
+export type Comment = {
+  userId: string;
+  text: string;
+  time: number;
+}
+
 export type UserStore = User & ID | null;
 export type PostStore = Post & ID;

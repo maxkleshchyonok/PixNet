@@ -21,6 +21,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PostComponent implements OnInit{
 
+  public user: firebase.User | null = null;
+
   public posts: Observable<PostStore[]> = this.crudService.handleData<PostStore>(Collections.POSTS);
 
   public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
@@ -31,6 +33,10 @@ export class PostComponent implements OnInit{
 
   public userId: string | undefined = '';
 
+  public userEmail: string = '';
+
+  public postsOnScreen: PostStore[] = []
+
   constructor(private authService: AuthService,
               private crudService: CrudService,
               private dialogRef: MatDialog,
@@ -39,9 +45,20 @@ export class PostComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-    // this.authService.user$.subscribe((value: firebase.User | null) => this.showingUserEmail = value?.email!)
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
 
-    console.log(this.showingUserEmail + '----------')
+    this.authService.user$.pipe(
+      tap((value: firebase.User | null) => this.user = value),
+      filter((value: firebase.User | null) => !!value),
+
+      switchMap(() => {
+        return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userEmail).pipe(
+          tap((currentUser: PostStore[]) => {
+            console.log(currentUser[0])
+            if(currentUser[0].creator == this.userEmail){this.postsOnScreen = currentUser;}
+            }))
+      })
+    ).subscribe();
   }
 
   public delete(id: string): void {
@@ -90,8 +107,10 @@ export class PostComponent implements OnInit{
     ).subscribe();
   }
 
-  public openPostModal(): void{
-    this.dialogRef.open(PostModalComponent)
+  public openPostModal(image: string | null, postDescr: string | null): void{
+    let popUp = this.dialogRef.open(PostModalComponent);
+    popUp.componentInstance.image = image;
+    popUp.componentInstance.postDescr = postDescr;
   }
 
 }

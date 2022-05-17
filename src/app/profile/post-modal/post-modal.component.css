@@ -1,33 +1,60 @@
-.content{
-  /*position: absolute;*/
-  /*left: 40%;*/
-  /*top:40%*/
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  left: 14%;
-}
+/*.content{*/
+/*  !*position: absolute;*!*/
+/*  !*left: 40%;*!*/
+/*  !*top:40%*!*/
+/*  position: absolute;*/
+/*  width: 90%;*/
+/*  height: 90%;*/
+/*  left: 5%;*/
+/*}*/
 
-.body{
-  position: fixed;
-  top: 5%;
-  width: 70%;
-  height: 80%;
-  padding: 32px;
-  border-radius: 10px;
-  box-shadow: 0 16px 50px #9a9a9a;
-  font-family: Roboto;
-  background: white;
+/*.body{*/
+/*  position: relative;*/
+/*  top: 5%;*/
+
+/*  !*width: 70%;*!*/
+/*  !*height: 80%;*!*/
+/*  width: auto;*/
+/*  height: auto;*/
+/*  padding: 32px;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 16px 50px #9a9a9a;*/
+/*  font-family: Roboto;*/
+/*  background: white;*/
+/*}*/
+
+/*.image{*/
+/*  display: block;*/
+/*}*/
+
+/*.close{*/
+/*  background: transparent;*/
+/*  border: none !important;*/
+/*  position: relative;*/
+/*  font-family: Roboto;*/
+/*  font-weight: 100;*/
+/*  font-size: 20px;*/
+/*  margin-left: 104%;*/
+/*  top: -8%;*/
+/*  cursor: pointer;*/
+/*}*/
+
+
+
+
+.image{
+  max-height: 70%;
+  max-width: 70%;
+  margin-left: 15%;
 }
 
 .close{
-  background: transparent;
-  border: none !important;
-  position: relative;
-  font-family: Roboto;
-  font-weight: 100;
-  font-size: 20px;
-  margin-left: 104%;
-  top: -8%;
-  cursor: pointer;
+    margin-left: 99%;
+    background: transparent;
+    border: none !important;
+    position: relative;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 25px;
+    cursor: pointer;
 }
