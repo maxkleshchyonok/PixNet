@@ -29,8 +29,10 @@ export type Comment = {
   userName: string
   text: string;
   time: number;
-  postId: string
+  postId: string;
+  userEmail: string | null
 }
 
 export type UserStore = User & ID | null;
 export type PostStore = Post & ID;
+export type CommentStore = Comment & ID;

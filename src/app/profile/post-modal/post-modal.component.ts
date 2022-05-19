@@ -4,12 +4,13 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
 import {CommentControls, PostControls} from "../../models/controls.enum";
 import firebase from "firebase/compat";
 import {AuthService} from "../../../services/auth/auth.service";
-import {Comment, PostStore, UserStore} from "../../../services/types";
+import {Comment, CommentStore, PostStore, UserStore} from "../../../services/types";
 import {Collections} from "../../../services/crud/collections";
 import {CrudService} from "../../../services/crud/crud.service";
 import DocumentReference = firebase.firestore.DocumentReference;
 import {Observable, of} from "rxjs";
 import {filter, map, switchMap, tap} from "rxjs/operators";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -38,15 +39,17 @@ export class PostModalComponent implements OnInit {
 
   public formControls: typeof CommentControls = CommentControls;
 
-  public comments: Observable<Comment[]> = this.crudService.handleData<Comment>(Collections.COMMENTS);
+  public comments: Observable<CommentStore[]> = this.crudService.handleData<CommentStore>(Collections.COMMENTS);
 
   public userPhoto: string = ''
 
   constructor(private dialogRef: MatDialog,
               private authService: AuthService,
-              private crudService: CrudService) { }
+              private crudService: CrudService,
+              private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     this.commentsForm.valueChanges.subscribe(value => console.log(value));
     this.commentsForm.addControl(CommentControls.text, new FormControl("", Validators.required));
     this.authService.user$.subscribe((value: firebase.User | null) => {
@@ -65,7 +68,8 @@ export class PostModalComponent implements OnInit {
         userName: this.userName,
         text: this.commentsForm?.controls[CommentControls.text].value,
         time: new Date().getTime(),
-        postId: this.postId
+        postId: this.postId,
+        userEmail: this.userEmail
       }
       console.log(this.userEmail)
       console.log(comment)
@@ -88,6 +92,10 @@ export class PostModalComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  public delete(id: string): void {
+    this.crudService.deleteObject(Collections.COMMENTS, id).subscribe();
   }
 
   public closeDialog(): void{
