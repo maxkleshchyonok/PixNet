@@ -83,7 +83,7 @@
     <div *ngIf="user?.email === post.creator && user?.id === this.activatedRoute.snapshot.paramMap.get('id')">
             <div class="posts">
               <div class="post">
-              <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr)" />
+              <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes.length, post.id)" />
               <p class="postDescr">{{post.postDescr}}</p>
               <div class="like" *ngIf="userId">
                 <button class="liketogg" (click)="updateLikes(post.id)">

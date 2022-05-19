@@ -33,16 +33,16 @@ export class AddPostButtonComponent implements OnInit{
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
   }
 
-  public addPost(): void {
-    const post: Post = {
-      image: "https://www.amadriapark.com/wp-content/uploads/sites/5/2018/08/ap-excursion-Venice.jpg",
-      postDescr: "Holiday in Venice",
-      likes: [],
-      creator: '',
-      // id:''
-    }
-    this.crudService.createObject(Collections.POSTS, post).subscribe((value: DocumentReference<Post>) => console.log(value));
-  }
+  // public addPost(): void {
+  //   const post: Post = {
+  //     image: "https://www.amadriapark.com/wp-content/uploads/sites/5/2018/08/ap-excursion-Venice.jpg",
+  //     postDescr: "Holiday in Venice",
+  //     likes: [],
+  //     creator: '',
+  //     // id:''
+  //   }
+  //   this.crudService.createObject(Collections.POSTS, post).subscribe((value: DocumentReference<Post>) => console.log(value));
+  // }
 
   public openDialog(): void{
     this.dialogRef.open(PopUpComponent)

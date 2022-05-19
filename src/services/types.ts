@@ -17,17 +17,19 @@ export type ID = {
 }
 
 export type Post = {
-  // id: string;
   image: string | null;
   postDescr: string | null;
   likes: string[];
   creator: string;
+  comments: []
 }
 
 export type Comment = {
-  userId: string;
+  userPhoto: string;
+  userName: string
   text: string;
   time: number;
+  postId: string
 }
 
 export type UserStore = User & ID | null;

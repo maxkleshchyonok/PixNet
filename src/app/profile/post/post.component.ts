@@ -50,7 +50,13 @@ export class PostComponent implements OnInit{
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
+      switchMap(() => {
+        return this.crudService.handleData<UserStore>(Collections.USERS,).pipe(
+          tap((currentUser: UserStore[]) => {
+            console.log(currentUser)
 
+          }))
+      }),
       switchMap(() => {
         return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userEmail).pipe(
           tap((currentUser: PostStore[]) => {
@@ -75,7 +81,8 @@ export class PostComponent implements OnInit{
       image: "https://media.istockphoto.com/photos/melbourne-central-business-district-picture-id600688368?k=20&m=600688368&s=612x612&w=0&h=hbN7pEOSGuyzbygdh-vgj5mmBeGne2NHDYlojpfmoTw=",
       postDescr: "Visited Melbourne",
       likes: [],
-      creator: ''
+      creator: '',
+      comments: []
     }
     this.crudService.updateObject(Collections.POSTS, id, post).subscribe();
   }
@@ -107,10 +114,12 @@ export class PostComponent implements OnInit{
     ).subscribe();
   }
 
-  public openPostModal(image: string | null, postDescr: string | null): void{
+  public openPostModal(image: string | null, postDescr: string | null, likes: number, postId: string): void{
     let popUp = this.dialogRef.open(PostModalComponent);
     popUp.componentInstance.image = image;
     popUp.componentInstance.postDescr = postDescr;
+    popUp.componentInstance.likes = likes;
+    popUp.componentInstance.postId = postId
   }
 
 }

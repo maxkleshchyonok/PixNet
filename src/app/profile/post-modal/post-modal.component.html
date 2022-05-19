@@ -1,12 +1,25 @@
-<div class="content">
-  <div class="body">
-      <img class="image" src="{{image}}"/>
-      <p>{{postDescr}}</p>
+<mat-dialog-content class="content">
+  <img class="image" src="{{image}}"/>
+  <p class="description">{{postDescr}}</p>
+  <div class="likes">Likes: {{likes}}</div>
+  <form class="form" [formGroup]="commentsForm">
+    <div class="form_group">
+    <label class="form_label"></label>
+      <input class="input" [formControlName]="formControls.text" placeholder="Add comment...:">
+      <button [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
+              [disabled]="commentsForm.invalid" class="addComment" (click)="submitForm()">+</button>
+    </div>
+  </form>
+  <div class="comment" *ngFor="let comment of (comments | async)">
+    <div *ngIf="comment.postId == postId">
+      <img class="avatar" src="{{comment.userPhoto}}">
+      <p class="name">{{comment.userName}}</p>
+      <p class="commentText">{{comment.text}}</p>
+<!--      <div class="time">{{comment.time}}</div>-->
+    </div>
   </div>
-  <button class="close" (click)="closeDialog()">
-    X
-  </button>
-</div>
-
-
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="close" mat-button mat-dialog-close>X</button>
+</mat-dialog-actions>
 

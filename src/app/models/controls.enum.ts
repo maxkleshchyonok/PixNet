@@ -10,4 +10,8 @@ export enum PostControls{
   // likeNum = 0
 }
 
+export enum CommentControls{
+  text = 'text'
+}
+
 
