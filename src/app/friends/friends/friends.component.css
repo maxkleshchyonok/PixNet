@@ -52,3 +52,21 @@
   top: 30%;
   left: 40%;
 }
+
+@media screen and (max-width: 575px) {
+  .everyUser{
+    margin-bottom: 60%;
+  }
+
+  .name{
+    width: 300px;
+    margin-left: 90%;
+    margin-top: -50%;
+  }
+
+  .avatar{
+    width: 70%;
+    height: 70%;
+  }
+
+}

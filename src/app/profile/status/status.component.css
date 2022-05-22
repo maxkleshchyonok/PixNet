@@ -180,8 +180,8 @@
     position: absolute;
     width: 112px;
     height: 33px;
-    left: 9em;
-    top: 6.75em;
+    margin-left: -350%;
+    margin-top: -200%;
     font-family: "Roboto";
     font-weight: 100;
   }
@@ -193,7 +193,7 @@
     width: 112px;
     height: 33px;
     left: 14em;
-    top: 6.75em;
+    top: 4em;
     font-family: "Roboto";
     font-weight: 100;
   }
@@ -201,8 +201,8 @@
   .fripostLine{
     position: absolute;
     width: 23px;
-    left: 12.7em;
-    top: 7.2em;
+    margin-left: 310%;
+    margin-top: 100%;
     border: 0.5px solid #d4d4d4;
     transform: rotate(-90deg);
   }
@@ -210,9 +210,9 @@
   .line{
     position: absolute;
     /*width: 670%;*/
-    width: 95%;
+    width: 900%;
     height: 0;
-    left: 1%;
+    left: 80%;
     top: 18em;
     border: 0.1px solid #d4d4d4;
   }
@@ -221,8 +221,8 @@
     position: absolute;
     width: 75px;
     height: 25px;
-    left: 3em;
-    top: 15.5em;
+    left: 8em;
+    top: 10em;
     font-family: Roboto;
     font-weight: 100;
     font-size: 15px;
