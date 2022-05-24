@@ -12,9 +12,10 @@
   font-family: Roboto;
   font-weight: 300;
   font-size: 25px;
+  line-height: 110%;
   margin-top: 5%;
   margin-left: 10%;
-  width: 60%;
+  width: 80%;
 }
 
 .close{
@@ -110,4 +111,126 @@
   font-family: Roboto;
   font-weight: 300;
   margin-left: 70%;
+  display: none;
+}
+
+.comment:hover .delete{
+  display: block;
+}
+
+@media screen and (max-width: 575px) {
+  .content{
+    margin-left: 5%;
+  }
+
+
+  .image{
+    max-height: 90%;
+    max-width: 90%;
+    margin-left: 6%;
+  }
+
+  .description{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 25px;
+    margin-top: 5%;
+    margin-left: 10%;
+    width: 60%;
+  }
+
+  .close{
+    margin-left: 95%;
+    margin-top: -150%;
+    background: transparent;
+    border: none !important;
+    position: relative;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .likes{
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 25px;
+    margin-left: 70%;
+    margin-top: -3%;
+  }
+
+  .form{
+    position: relative;
+    margin-left: 34%;
+    margin-top: 2%;
+  }
+
+  .input{
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 16px;
+    border: 0.5px solid #B1B1B1;
+    border-radius: 15px;
+    outline: none;
+  }
+
+  .addComment{
+    margin-left: 2%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    outline: none;
+    background-color: #E998F6;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 20px;
+  }
+
+  .comment{
+    margin-left: 20%;
+    margin-bottom: 5%;
+  }
+
+  .avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 5%;
+  }
+
+  .commentText{
+    width: 50%;
+    font-size: 23px;
+    font-weight: 100;
+    position: relative;
+    margin-left: 15%;
+    margin-top: -17%;
+  }
+
+  .name{
+    width: 10%;
+    font-size: 13px;
+  }
+
+  .post{
+    background-color: #E998F6;
+    transition: 1s;
+  }
+
+  .postBlock{
+    background-color: #c2c2c2;
+    transition: 1s;
+  }
+
+  .delete{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 300;
+    margin-left: 70%;
+  }
 }

@@ -13,6 +13,7 @@ import {PopUpComponent} from "../pop-up/pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
 import {PostModalComponent} from "../post-modal/post-modal.component";
 import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-post',
@@ -27,6 +28,8 @@ export class PostComponent implements OnInit{
 
   public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
 
+  private subscriptions: Array<Subscription> = []
+
   public showingUserEmail: string = '';
 
   public isLike: boolean = false;
@@ -35,7 +38,22 @@ export class PostComponent implements OnInit{
 
   public userEmail: string = '';
 
-  public postsOnScreen: PostStore[] = []
+   public postAuthor: string = ''
+
+  public postsOnScreen: PostStore[] = [];
+
+  public postsOnScreenTest: PostStore[] = [{
+    image: "https://firebasestorage.googleapis.com/v0/b/pixnet-1b58e.appspot.com/o/test%2F1652881892905_ava2.PNG?alt=media&token=4145d54c-d7dd-4885-acc9-9e21ce613b35",
+    id: "gjnlepcFrhgaDn5TPtHE",
+    comments: [],
+    creator: "kleshchyonok@gmail.com",
+    likes: [],
+    postDescr: "skiing"
+  }]
+
+  public testUserEmail: string = 'kleshchyonok@gmail.com'
+
+  public userOnScreenEmail: string | undefined = ''
 
   constructor(private authService: AuthService,
               private crudService: CrudService,
@@ -46,7 +64,7 @@ export class PostComponent implements OnInit{
   ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
-
+    console.log(this.userEmail)
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -54,15 +72,20 @@ export class PostComponent implements OnInit{
         return this.crudService.handleData<UserStore>(Collections.USERS,).pipe(
           tap((currentUser: UserStore[]) => {
             console.log(currentUser)
-
+            currentUser.forEach( (user) => {
+              if(user?.id == this.activatedRoute.snapshot.paramMap.get('id')){
+                this.userOnScreenEmail = user?.email
+              }
+            } )
           }))
       }),
       switchMap(() => {
-        return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userEmail).pipe(
-          tap((currentUser: PostStore[]) => {
-            console.log(currentUser[0])
-            if(currentUser[0].creator == this.userEmail){this.postsOnScreen = currentUser;}
-            }))
+        return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
+          tap((currentPosts: PostStore[]) => {
+            console.log(currentPosts)
+              this.postsOnScreen = currentPosts
+            })
+        )
       })
     ).subscribe();
   }
@@ -120,6 +143,10 @@ export class PostComponent implements OnInit{
     popUp.componentInstance.postDescr = postDescr;
     popUp.componentInstance.likes = likes;
     popUp.componentInstance.postId = postId
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe())
   }
 
 }

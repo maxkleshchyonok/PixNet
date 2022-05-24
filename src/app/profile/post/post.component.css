@@ -10,7 +10,7 @@
 .container{
  width: 100%;
   height: 100%;
-  margin-top: -3%;
+  margin-top: 35%;
   margin-left: 12%;
 
 }
@@ -164,8 +164,8 @@
 
   .allpost{
     position: absolute;
-    left: -1.5em;
-    top: 20em;
+    left: 2%;
+    top: 50%;
   }
 
   .posts{
@@ -181,8 +181,8 @@
     /*align-items: center;*/
     /*width: 30%;*/
     /*height: 80%;*/
-    width: 35%;
-    height: 400px;
+    width: 110%;
+    height: 500px;
     border: 0.5px solid #B1B1B1;
     box-sizing: border-box;
     box-shadow: 2px 5px 10px 3px #B1B1B1;
