@@ -38,20 +38,7 @@ export class PostComponent implements OnInit{
 
   public userEmail: string = '';
 
-   public postAuthor: string = ''
-
   public postsOnScreen: PostStore[] = [];
-
-  public postsOnScreenTest: PostStore[] = [{
-    image: "https://firebasestorage.googleapis.com/v0/b/pixnet-1b58e.appspot.com/o/test%2F1652881892905_ava2.PNG?alt=media&token=4145d54c-d7dd-4885-acc9-9e21ce613b35",
-    id: "gjnlepcFrhgaDn5TPtHE",
-    comments: [],
-    creator: "kleshchyonok@gmail.com",
-    likes: [],
-    postDescr: "skiing"
-  }]
-
-  public testUserEmail: string = 'kleshchyonok@gmail.com'
 
   public userOnScreenEmail: string | undefined = ''
 

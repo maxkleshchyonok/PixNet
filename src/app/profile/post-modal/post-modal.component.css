@@ -15,7 +15,7 @@
   line-height: 110%;
   margin-top: 5%;
   margin-left: 10%;
-  width: 80%;
+  width: 60%;
 }
 
 .close{
@@ -69,7 +69,7 @@
 
 .comment{
  margin-left: 20%;
- margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .avatar{
@@ -84,13 +84,14 @@
   font-size: 23px;
   font-weight: 100;
   position: relative;
-  margin-left: 15%;
-  margin-top: -17%;
+  margin-left: 11%;
+  margin-top: -16%;
 }
 
 .name{
   width: 10%;
   font-size: 13px;
+  margin-bottom: 5%;
 }
 
 .post{
@@ -104,6 +105,8 @@
 }
 
 .delete{
+  width: 10px;
+  height: 10px;
   cursor: pointer;
   border: none;
   background-color: transparent;
@@ -111,12 +114,13 @@
   font-family: Roboto;
   font-weight: 300;
   margin-left: 70%;
-  display: none;
+  margin-top: -3%;
+  /*display: none;*/
 }
 
-.comment:hover .delete{
-  display: block;
-}
+/*.comment:hover .delete{*/
+/*  display: block;*/
+/*}*/
 
 @media screen and (max-width: 575px) {
   .content{

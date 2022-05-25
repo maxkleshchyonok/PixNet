@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import { PopUpComponent } from './profile/pop-up/pop-up.component';
 import { PostModalComponent } from './profile/post-modal/post-modal.component';
+import { SearchComponent } from './header/search/search.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PostModalComponent } from './profile/post-modal/post-modal.component';
     StartPageComponent,
     PopUpComponent,
     PostModalComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
