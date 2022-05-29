@@ -1,19 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Posts} from "../../../Store";
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 // import {Post} from "./post";
 import firebase from "firebase/compat";
 import {CrudService} from "../../../services/crud/crud.service";
 import {Collections} from "../../../services/crud/collections";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {AuthService} from "../../../services/auth/auth.service";
-import {Post, PostStore, User, UserStore} from "../../../services/types";
+import {Post, PostStore, UserStore} from "../../../services/types";
 import {filter, map, switchMap, tap} from "rxjs/operators";
-import Firestore = firebase.firestore.Firestore;
-import {PopUpComponent} from "../pop-up/pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
 import {PostModalComponent} from "../post-modal/post-modal.component";
 import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-post',
@@ -21,6 +17,13 @@ import {Subscription} from "rxjs";
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit{
+
+  @Input()
+  public postImg: string | null = '';
+  @Input()
+  public postID: string = '';
+  @Input()
+  public postDescr: string | null = '';
 
   public user: firebase.User | null = null;
 
@@ -42,6 +45,8 @@ export class PostComponent implements OnInit{
 
   public userOnScreenEmail: string | undefined = ''
 
+
+
   constructor(private authService: AuthService,
               private crudService: CrudService,
               private dialogRef: MatDialog,
@@ -49,6 +54,7 @@ export class PostComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    console.log(this.postDescr)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     console.log(this.userEmail)

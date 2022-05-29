@@ -1,25 +1,23 @@
 <app-header></app-header>
 <div class="all">
-<div class="container" *ngFor="let user of (users | async)">
-  <nav>
-  <div class="everyUser" routerLink="/profile/{{user?.id}}">
-    <img class="avatar" src="{{user?.img!}}"/>
-    <div class="name">{{user?.name!}}</div>
+  <h1 class="recommended_users">You may also know:</h1>
+  <h1 class="subscriptions">Your subscriptions:</h1>
+  <div class="container_recomend" *ngFor="let user of (users | async)">
+    <nav>
+      <div class="everyUser" routerLink="/profile/{{user?.id}}">
+        <img class="avatar" src="{{user?.img!}}"/>
+        <div class="name">{{user?.name!}}</div>
+      </div>
+    </nav>
   </div>
-  </nav>
+  <div class="container_friends" *ngFor="let user of friendsList">
+    <nav>
+      <div class="everyUser" routerLink="/profile/{{user?.id}}">
+        <img class="avatar" src="{{user?.img!}}"/>
+        <div class="name">{{user?.name!}}</div>
+      </div>
+    </nav>
+  </div>
+  <div class="line"></div>
 </div>
-</div>
-
-
-<!--<app-header></app-header>-->
-<!--<div class="all">-->
-<!--<div class="container" *ngFor="let user of (users | async)">-->
-<!--  <nav>-->
-<!--  <div class="everyUser" *ngIf="user?.id === friends" routerLink="/profile/{{user?.id}}">-->
-<!--    <img class="avatar" src="{{user?.img!}}"/>-->
-<!--    <div class="name">{{user?.name!}}</div>-->
-<!--  </div>-->
-<!--  </nav>-->
-<!--</div>-->
-<!--</div>-->
 

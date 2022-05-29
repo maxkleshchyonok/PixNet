@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {UserStore} from "../../../services/types";
-import {of} from "rxjs";
 import {CrudService} from "../../../services/crud/crud.service";
 import {Collections} from "../../../services/crud/collections";
 import {ReplaySubject} from "rxjs";
@@ -28,7 +27,7 @@ export class SearchComponent implements OnInit {
         return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
           map((users: UserStore[]) => {
             return users.filter((i: UserStore) => {
-              return i?.name.trim().toLowerCase().includes(value)
+              return i?.name?.trim().toLowerCase().includes(value)
             })
           })
         )

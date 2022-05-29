@@ -1,0 +1,24 @@
+<div class="content">
+  <form class="form" [formGroup]="myForm">
+    <div class="form_group">
+      <label for="file">Choose new photo:
+      </label>
+      <input type="file"
+             id="file"
+             [formControlName]="formControls.image"
+             (change)="onFileSelected($event)"
+             name="image"
+             autocomplete="off"
+             accept="image/png, image/jpeg"
+      />
+    </div>
+    <div class="form_group">
+      <label class="form_label">
+      </label>
+      <input class="form_input" [formControlName]="formControls.status" placeholder="Create a status...">
+    </div>
+  </form>
+  <ng-container *ngFor="let user of (users | async)">
+  <button *ngIf="user?.email == this.userEmail" (click)="submitForm(user?.id!)">go</button>
+  </ng-container>
+</div>

@@ -25,6 +25,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { PopUpComponent } from './profile/pop-up/pop-up.component';
 import { PostModalComponent } from './profile/post-modal/post-modal.component';
 import { SearchComponent } from './header/search/search.component';
+import { EditUserComponent } from './profile/edit-user/edit-user.component';
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { SearchComponent } from './header/search/search.component';
     PopUpComponent,
     PostModalComponent,
     SearchComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ import { SearchComponent } from './header/search/search.component';
     AngularFireStorageModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

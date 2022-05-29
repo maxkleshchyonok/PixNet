@@ -1,4 +1,7 @@
-.container{
+.container_recomend{
+  position: relative;
+  left: 55%;
+  top: -7%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 2em;
@@ -6,11 +9,46 @@
   list-style-type: none;
 }
 
+.recommended_users{
+  position: relative;
+  left: 55%;
+  top: -6%;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 32px;
+}
+
+.subscriptions{
+  position: relative;
+  top: -12%;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 32px;
+}
+
+.container_friends{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  top: -75%;
+}
+
+.line{
+  position: absolute;
+  left: 36%;
+  top: -5%;
+  width: 1px;
+  height: 100%;
+  background-color: #B1B1B1;
+}
+
 .all{
   position: absolute;
   width: 100%;
   height: 100%;
-  top:100px;
+  top: 20%;
   margin-left: 10%;
   margin-top: 2%;
 }

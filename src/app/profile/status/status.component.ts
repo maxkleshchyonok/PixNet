@@ -9,6 +9,8 @@ import {CrudService} from "../../../services/crud/crud.service";
 import {filter, map, switchMap, tap} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {PostStore, UserStore} from "../../../services/types";
+import {MatDialog} from "@angular/material/dialog";
+import {EditUserComponent} from "../edit-user/edit-user.component";
 
 
 @Component({
@@ -45,11 +47,14 @@ export class StatusComponent implements OnInit {
 
   public userOnScreen: string | null = this.activatedRoute.snapshot.paramMap.get('id');
 
+  public userOnScreenEmail: string | undefined = '';
+
 
   constructor(private authService: AuthService,
               private router: Router,
               private crudService: CrudService,
-              public activatedRoute: ActivatedRoute) {
+              public activatedRoute: ActivatedRoute,
+              private dialogRef: MatDialog) {
   }
 
   public ngOnInit(): void {
@@ -63,7 +68,17 @@ export class StatusComponent implements OnInit {
       switchMap(() => {
         return this.crudService.handleIdData<UserStore>(Collections.USERS, '==', this.userID).pipe(
           tap((userFromStore: UserStore[]) => {
-            this.isFollow = userFromStore[0]?.followers.includes(this.user?.uid!);
+            this.isFollow = userFromStore[0]?.followers?.includes(this.user?.uid!);
+          }))
+      }),
+      switchMap(() => {
+        return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
+          tap((userFromStore: UserStore[]) => {
+            userFromStore.forEach((user) => {
+              if(user?.id == this.userOnScreen){
+                this.userOnScreenEmail = user?.email
+              }
+            })
           }))
       }),
       switchMap(() => {
@@ -81,13 +96,13 @@ export class StatusComponent implements OnInit {
   public updateFollowers(id: string) {
     this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
       map((userFromStore: UserStore | undefined) => {
-        const userIndex = userFromStore?.followers.indexOf(this.user?.uid!);
+        const userIndex = userFromStore?.followers?.indexOf(this.user?.uid!);
         if (userIndex === -1) {
           return {
-            followers: userFromStore?.followers.concat(this.user?.uid!),
+            followers: userFromStore?.followers?.concat(this.user?.uid!),
           }
         } else {
-          const newArr: string[] | undefined = userFromStore?.followers.splice(userIndex!, 1);
+          const newArr: string[] | undefined = userFromStore?.followers?.splice(userIndex!, 1);
           return {
             followers: userFromStore?.followers,
           }
@@ -102,13 +117,13 @@ export class StatusComponent implements OnInit {
     this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
       map((userFromStore: UserStore | undefined) => {
 
-        const userIndex = userFromStore?.following.indexOf(this.userOnScreen!);
+        const userIndex = userFromStore?.following?.indexOf(this.userOnScreenEmail!);
         if (userIndex === -1) {
           return {
-            following: userFromStore?.following.concat(this.userOnScreen!),
+            following: userFromStore?.following?.concat(this.userOnScreenEmail!),
           }
         } else {
-          const newArr: string[] | undefined = userFromStore?.following.splice(userIndex!, 1);
+          const newArr: string[] | undefined = userFromStore?.following?.splice(userIndex!, 1);
           return {
             following: userFromStore?.following,
           }
@@ -118,6 +133,8 @@ export class StatusComponent implements OnInit {
       )).subscribe()
   }
 
-
+  public openDialog(): void{
+    this.dialogRef.open(EditUserComponent)
+  }
 
 }

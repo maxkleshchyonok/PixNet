@@ -1,7 +1,7 @@
 <div class="container">
   <div class="allpost">
     <ul class="posts">
-      <li class="post" *ngFor="let post of (postsOnScreen)">
+      <li class="post" *ngFor="let post of postsOnScreen ">
         <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes.length, post.id)" />
         <p class="postDescr">{{post.postDescr}}</p>
         <div class="like" *ngIf="userId">
@@ -21,7 +21,9 @@
   </div>
 </div>
 
-
+<!--<div class="container>">-->
+<!--  ervosi-->
+<!--</div>-->
 
 <!--<div class="container" >-->
 <!--  <div class="allpost">-->

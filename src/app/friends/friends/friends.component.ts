@@ -22,26 +22,39 @@ export class FriendsComponent implements OnInit {
 
   public userEmail: string = '';
 
-  public authID: string | undefined = '';
+  public friendsList: UserStore[] = [];
 
   constructor(private crudService: CrudService,
               private authService: AuthService) {
   }
 
   public ngOnInit(): void {
-    // this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
-    // console.log(this.userEmail)
-    // this.authService.user$.pipe(
-    //   tap((value: firebase.User | null) => this.user = value),
-    //   filter((value: firebase.User | null) => !!value),
-    //   switchMap(() => {
-    //     return this.crudService.handleEmailData<UserStore>(Collections.USERS, '==', this.userEmail).pipe(
-    //       tap((currentUser: UserStore[]) => {
-    //         console.log(currentUser[0]?.following)
-    //         this.friends = currentUser[0]?.following}))
-    //   })
-    // ).subscribe();
-    // console.log(this.friends)
+    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
+    console.log(this.userEmail)
+    this.authService.user$.pipe(
+      tap((value: firebase.User | null) => this.user = value),
+      filter((value: firebase.User | null) => !!value),
+      switchMap(() => {
+        return this.crudService.handleEmailData<UserStore>(Collections.USERS, '==', this.userEmail).pipe(
+          tap((currentUser: UserStore[]) => {
+            console.log(currentUser)
+            console.log(currentUser[0]?.following)
+            this.friends = currentUser[0]?.following}))
+      }),
+      switchMap(() => {
+        return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
+          tap((currentUser: UserStore[]) => {
+            currentUser.forEach((user) => {
+              this.friends?.forEach((friend) =>{
+                if(user?.email == friend){
+                  this.friendsList.push(user)
+                }
+              })
+            })
+          }))
+      }),
+    ).subscribe();
   }
+
 
 }

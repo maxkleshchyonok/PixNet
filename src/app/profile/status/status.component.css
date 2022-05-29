@@ -119,6 +119,20 @@
   background: linear-gradient(135deg, #E998F6 -40%, rgba(233, 152, 246, 0) 92.5%);
 }
 
+.edit_button{
+  position: relative;
+  margin-left: 5%;
+  top: 7%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.edit_button_img{
+  width: 30px;
+  height: 30px;
+}
+
 
 @media screen and (max-width: 575px) {
   .profInfo{
