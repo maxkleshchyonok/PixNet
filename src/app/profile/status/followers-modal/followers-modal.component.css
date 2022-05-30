@@ -1,0 +1,21 @@
+.person{
+  width: 400px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  cursor: pointer;
+}
+
+.avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.person_name{
+  margin-left: 3%;
+  margin-top: 3%;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 24px;
+}

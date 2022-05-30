@@ -1,0 +1,33 @@
+.filepick{
+  margin-bottom: 4%;
+}
+
+.form_input{
+  width: 100%;
+  padding: 0 0 10px 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: transparent;
+  outline: none;
+  transition: 0.3s;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.form{
+  margin-bottom: 4%;
+}
+
+.update_button{
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 17px;
+  color :#fff ;
+  background: #E998F6;
+  outline: none;
+  cursor: pointer;
+}

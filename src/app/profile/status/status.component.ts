@@ -11,6 +11,8 @@ import {Observable} from "rxjs";
 import {PostStore, UserStore} from "../../../services/types";
 import {MatDialog} from "@angular/material/dialog";
 import {EditUserComponent} from "../edit-user/edit-user.component";
+import {FollowersModalComponent} from "./followers-modal/followers-modal.component";
+import {FollowingModalComponent} from "./following-modal/following-modal.component";
 
 
 @Component({
@@ -96,10 +98,10 @@ export class StatusComponent implements OnInit {
   public updateFollowers(id: string) {
     this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
       map((userFromStore: UserStore | undefined) => {
-        const userIndex = userFromStore?.followers?.indexOf(this.user?.uid!);
+        const userIndex = userFromStore?.followers?.indexOf(this.userEmail);
         if (userIndex === -1) {
           return {
-            followers: userFromStore?.followers?.concat(this.user?.uid!),
+            followers: userFromStore?.followers?.concat(this.userEmail),
           }
         } else {
           const newArr: string[] | undefined = userFromStore?.followers?.splice(userIndex!, 1);
@@ -135,6 +137,16 @@ export class StatusComponent implements OnInit {
 
   public openDialog(): void{
     this.dialogRef.open(EditUserComponent)
+  }
+
+  public openFollowers(users: string[] | undefined): void{
+    let popUp = this.dialogRef.open(FollowersModalComponent);
+    popUp.componentInstance.followers = users;
+  }
+
+  public openFollowing(users: string[] | undefined): void{
+    let popUp = this.dialogRef.open(FollowingModalComponent);
+    popUp.componentInstance.following = users;
   }
 
 }

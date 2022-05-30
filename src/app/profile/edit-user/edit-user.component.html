@@ -4,6 +4,7 @@
       <label for="file">Choose new photo:
       </label>
       <input type="file"
+             class="filepick"
              id="file"
              [formControlName]="formControls.image"
              (change)="onFileSelected($event)"
@@ -19,6 +20,6 @@
     </div>
   </form>
   <ng-container *ngFor="let user of (users | async)">
-  <button *ngIf="user?.email == this.userEmail" (click)="submitForm(user?.id!)">go</button>
+  <button class="update_button" *ngIf="user?.email == this.userEmail" (click)="submitForm(user?.id!)">Update</button>
   </ng-container>
 </div>

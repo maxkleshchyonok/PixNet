@@ -133,6 +133,17 @@
   height: 30px;
 }
 
+.open_button{
+  border: none;
+  background-color: transparent;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+
+
 
 @media screen and (max-width: 575px) {
   .profInfo{

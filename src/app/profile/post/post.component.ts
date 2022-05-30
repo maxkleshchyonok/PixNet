@@ -46,7 +46,6 @@ export class PostComponent implements OnInit{
   public userOnScreenEmail: string | undefined = ''
 
 
-
   constructor(private authService: AuthService,
               private crudService: CrudService,
               private dialogRef: MatDialog,

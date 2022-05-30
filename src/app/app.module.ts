@@ -27,6 +27,8 @@ import { PostModalComponent } from './profile/post-modal/post-modal.component';
 import { SearchComponent } from './header/search/search.component';
 import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import { FollowersModalComponent } from './profile/status/followers-modal/followers-modal.component';
+import { FollowingModalComponent } from './profile/status/following-modal/following-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
     PostModalComponent,
     SearchComponent,
     EditUserComponent,
+    FollowersModalComponent,
+    FollowingModalComponent,
   ],
   imports: [
     BrowserModule,

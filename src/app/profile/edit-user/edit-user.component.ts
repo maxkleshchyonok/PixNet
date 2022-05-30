@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EditUserControls, PostControls} from "../../models/controls.enum";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import firebase from "firebase/compat";
@@ -31,7 +31,7 @@ export class EditUserComponent implements OnInit {
 
   public userEmail: string | undefined = '';
 
-  public imageLink: string | null = "";
+  public imageLink: string | null | undefined = "";
 
   public progress: string | undefined = "";
 
@@ -43,13 +43,15 @@ export class EditUserComponent implements OnInit {
 
   public name: string | undefined = '';
 
-  public userID: string | undefined = ''
+  public userID: string | undefined = '';
 
+  public defaultImage: string | undefined = '';
 
   constructor(private dialogRef: MatDialog,
               private authService: AuthService,
               private crudService: CrudService,
-              private uploadService: UploadService) { }
+              private uploadService: UploadService) {
+  }
 
   ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
@@ -66,12 +68,13 @@ export class EditUserComponent implements OnInit {
         return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
           tap((userFromStore: UserStore[]) => {
             console.log(userFromStore)
-            userFromStore.forEach((user) =>{
-              if(user?.email == this.userEmail){
-                  this.followers = user?.followers;
-                  this.following = user?.following;
-                  this.name = user?.name;
-                  this.userID = user?.userID
+            userFromStore.forEach((user) => {
+              if (user?.email == this.userEmail) {
+                this.followers = user?.followers;
+                this.following = user?.following;
+                this.name = user?.name;
+                this.userID = user?.userID;
+                this.defaultImage = user?.img
               }
             })
           }))
@@ -79,24 +82,6 @@ export class EditUserComponent implements OnInit {
     ).subscribe();
     console.log(this.name)
   }
-
-  // public submitForm(): void {
-  //   if (this.myForm.valid) {
-  //     const user: User = {
-  //       img: this.imageLink!,
-  //       status: this.myForm?.controls[EditUserControls.status].value,
-  //       followers: this.followers,
-  //       following: this.following,
-  //       email: this?.userEmail!,
-  //     }
-  //     console.log(this.userEmail)
-  //     this.update(user);
-  //     this.myForm?.reset();
-  //     this.dialogRef.closeAll()
-  //   } else {
-  //     alert("Error")
-  //   }
-  // }
 
   public submitForm(id: string): void {
     this.update(id)
@@ -116,10 +101,6 @@ export class EditUserComponent implements OnInit {
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
   }
 
-  // public update(user: User): void {
-  //   this.crudService.updateObject(Collections.USERS, user).subscribe((value: DocumentReference<User>) => console.log(value));
-  // }
-
   public onFileSelected(event: Event): void {
     if (event) {
       const eventTarget = (<HTMLInputElement>event?.target);
@@ -134,6 +115,7 @@ export class EditUserComponent implements OnInit {
           .subscribe(([percent, link]) => {
             this.progress = percent;
             this.imageLink = link;
+
           });
       }
     }

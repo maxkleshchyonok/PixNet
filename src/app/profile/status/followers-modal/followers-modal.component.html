@@ -1,0 +1,8 @@
+<ng-container *ngFor="let follower of followersList">
+  <nav>
+  <div class="person" routerLink="/profile/{{follower?.id}}">
+      <img class="avatar" src="{{follower?.img}}">
+      <h1 class="person_name">{{follower?.name}}</h1>
+  </div>
+  </nav>
+</ng-container>
