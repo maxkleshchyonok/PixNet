@@ -63,10 +63,10 @@
 }
 
 .avatar{
-  width: 25%;
-  height: 25%;
+  width: 93px;
+  height: 93px;
   border-radius: 50%;
-
+  object-fit: cover;
 }
 
 .name{

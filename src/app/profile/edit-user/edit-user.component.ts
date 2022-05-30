@@ -103,8 +103,9 @@ export class EditUserComponent implements OnInit {
   }
 
   public update(id: string): void {
+    console.log(this.following)
     const user: User = {
-      userID: this.userID,
+      userID: this.userId,
       name: this.name,
       img: this.imageLink!,
       status: this.myForm?.controls[EditUserControls.status].value,
