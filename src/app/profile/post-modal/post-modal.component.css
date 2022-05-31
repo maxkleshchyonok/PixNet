@@ -30,12 +30,25 @@
     cursor: pointer;
 }
 
+.liked_by_button{
+  padding: 5px 10px;
+  border: 1px solid #B1B1B1;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 19px;
+  color: black;
+  background: linear-gradient(135deg, #E998F6 -28.5%, rgba(233, 152, 246, 0) 92.5%);
+  outline: none;
+  cursor: pointer;
+}
+
 .likes{
   font-family: Roboto;
   font-weight: 300;
   font-size: 25px;
-  margin-left: 70%;
-  margin-top: -3%;
+  margin-left: 75%;
+  margin-top: -6%;
 }
 
 .form{

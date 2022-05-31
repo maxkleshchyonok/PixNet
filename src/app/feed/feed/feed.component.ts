@@ -9,6 +9,7 @@ import {filter, map, switchMap, take, tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
 import {PostModalComponent} from "../../profile/post-modal/post-modal.component";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-feed',
@@ -46,6 +47,8 @@ export class FeedComponent implements OnInit{
 
   public feedPosts: PostStore[] = [];
 
+  public feedPostsTest: Observable<PostStore[]> = new Observable<PostStore[]>()
+
   public feedPeople: string[] | undefined = [];
 
 
@@ -60,7 +63,7 @@ export class FeedComponent implements OnInit{
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     console.log(this.userEmail)
 
-    this.authService.user$.pipe(
+     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
       switchMap(() => {
@@ -113,7 +116,7 @@ export class FeedComponent implements OnInit{
     ).subscribe();
   }
 
-  public openPostModal(image: string | null, postDescr: string | null, likes: number, postId: string): void{
+  public openPostModal(image: string | null, postDescr: string | null, likes: string[] | undefined, postId: string): void{
     let popUp = this.dialogRef.open(PostModalComponent);
     popUp.componentInstance.image = image;
     popUp.componentInstance.postDescr = postDescr;

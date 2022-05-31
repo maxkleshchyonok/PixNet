@@ -11,6 +11,7 @@ import DocumentReference = firebase.firestore.DocumentReference;
 import {Observable, of} from "rxjs";
 import {filter, map, switchMap, tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
+import {LikesModalComponent} from "./likes-modal/likes-modal.component";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class PostModalComponent implements OnInit {
   @Input()
   public postDescr: string | null = '';
   @Input()
-  public likes: number = 0;
+  public likes: string[] | undefined = [];
   @Input()
   public postId: string = ''
 
@@ -100,6 +101,12 @@ export class PostModalComponent implements OnInit {
 
   public closeDialog(): void{
     this.dialogRef.closeAll()
+  }
+
+  public openLikesModal(): void{
+    let popUp = this.dialogRef.open(LikesModalComponent);
+    popUp.componentInstance.likes = this.likes;
+
   }
 
 }

@@ -29,6 +29,7 @@ import { EditUserComponent } from './profile/edit-user/edit-user.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import { FollowersModalComponent } from './profile/status/followers-modal/followers-modal.component';
 import { FollowingModalComponent } from './profile/status/following-modal/following-modal.component';
+import { LikesModalComponent } from './profile/post-modal/likes-modal/likes-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FollowingModalComponent } from './profile/status/following-modal/follow
     EditUserComponent,
     FollowersModalComponent,
     FollowingModalComponent,
+    LikesModalComponent,
   ],
   imports: [
     BrowserModule,

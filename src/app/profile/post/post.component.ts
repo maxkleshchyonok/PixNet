@@ -6,10 +6,11 @@ import {Collections} from "../../../services/crud/collections";
 import {Observable, Subscription} from "rxjs";
 import {AuthService} from "../../../services/auth/auth.service";
 import {Post, PostStore, UserStore} from "../../../services/types";
-import {filter, map, switchMap, tap} from "rxjs/operators";
+import {filter, map, switchMap, take, tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {PostModalComponent} from "../post-modal/post-modal.component";
 import {ActivatedRoute} from "@angular/router";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-post',
@@ -45,6 +46,8 @@ export class PostComponent implements OnInit{
 
   public userOnScreenEmail: string | undefined = ''
 
+  public postsOnScreenTest: Observable<PostStore[]> = new Observable<PostStore[]>();
+
 
   constructor(private authService: AuthService,
               private crudService: CrudService,
@@ -57,7 +60,7 @@ export class PostComponent implements OnInit{
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     console.log(this.userEmail)
-    this.authService.user$.pipe(
+    this.postsOnScreenTest = this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
       switchMap(() => {
@@ -74,12 +77,13 @@ export class PostComponent implements OnInit{
       switchMap(() => {
         return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
           tap((currentPosts: PostStore[]) => {
-            console.log(currentPosts)
-              this.postsOnScreen = currentPosts
+              console.log(currentPosts)
+            // this.postsOnScreenTest = of(currentPosts);
+              // this.postsOnScreen = currentPosts
             })
         )
       })
-    ).subscribe();
+    )
   }
 
   public delete(id: string): void {
@@ -109,12 +113,12 @@ export class PostComponent implements OnInit{
       switchMap((value: firebase.User | null) => {
         return this.crudService.getUserDoc<PostStore>(Collections.POSTS, id).pipe(
           map((post) => {
-            const userIndex = post?.likes.indexOf(value?.uid!);
+            const userIndex = post?.likes.indexOf(value?.email!);
             console.log(userIndex);
             if (userIndex === -1) {
               this.isLike = true;
               console.log(this.isLike)
-              return post?.likes.concat(value?.uid!)
+              return post?.likes.concat(value?.email!)
             } else {
               const newArr: any = post?.likes.splice(userIndex! ,1);
               this.isLike = false;
@@ -129,7 +133,7 @@ export class PostComponent implements OnInit{
     ).subscribe();
   }
 
-  public openPostModal(image: string | null, postDescr: string | null, likes: number, postId: string): void{
+  public openPostModal(image: string | null, postDescr: string | null, likes: string[] | undefined, postId: string): void{
     let popUp = this.dialogRef.open(PostModalComponent);
     popUp.componentInstance.image = image;
     popUp.componentInstance.postDescr = postDescr;
