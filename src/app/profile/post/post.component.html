@@ -1,29 +1,7 @@
-<!--<div class="container">-->
-<!--  <div class="allpost">-->
-<!--    <ul class="posts">-->
-<!--      <li class="post" *ngFor="let post of postsOnScreen ">-->
-<!--        <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes.length, post.id)" />-->
-<!--        <p class="postDescr">{{post.postDescr}}</p>-->
-<!--        <div class="like" *ngIf="userId">-->
-<!--          <button class="liketogg" (click)="updateLikes(post.id)">-->
-<!--            <img class="likeButt"-->
-<!--                 src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">-->
-<!--          </button>-->
-<!--          <p class="likeNum">{{post.likes.length}}</p>-->
-<!--        </div>-->
-<!--        <div class="delete" *ngIf="post.creator == userEmail">-->
-<!--          <button class="deletebutt" (click)="delete(post.id)">X</button>-->
-<!--        </div>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-<!--</div>-->
-
-
 <div class="container">
   <div class="allpost">
     <ul class="posts">
-      <li class="post" *ngFor="let post of (postsOnScreenTest | async) ">
+      <li class="post" *ngFor="let post of postsOnScreen ">
         <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes, post.id)" />
         <p class="postDescr">{{post.postDescr}}</p>
         <div class="like" *ngIf="userId">
@@ -40,3 +18,28 @@
     </ul>
   </div>
 </div>
+
+
+
+
+
+<!--<div class="allpost">-->
+<!--    <ng-container *ngFor="let post of (posts | async)">-->
+<!--        <ng-container *ngIf="userOnScreenEmail == post.creator">-->
+<!--          <div class="post">-->
+<!--            <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes, post.id)" />-->
+<!--            <p class="postDescr">{{post.postDescr}}</p>-->
+<!--            <div class="like" *ngIf="userId">-->
+<!--              <button class="liketogg" (click)="updateLikes(post.id)">-->
+<!--                <img class="likeButt"-->
+<!--                     src="{{!post.likes.includes(userId) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">-->
+<!--              </button>-->
+<!--              <p class="likeNum">{{post.likes.length}}</p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--        </ng-container>-->
+<!--      </ng-container>-->
+<!--</div>-->
+
+

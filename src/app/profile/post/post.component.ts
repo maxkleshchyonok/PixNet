@@ -60,7 +60,7 @@ export class PostComponent implements OnInit{
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     console.log(this.userEmail)
-    this.postsOnScreenTest = this.authService.user$.pipe(
+    this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
       switchMap(() => {
@@ -78,12 +78,12 @@ export class PostComponent implements OnInit{
         return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
           tap((currentPosts: PostStore[]) => {
               console.log(currentPosts)
-            // this.postsOnScreenTest = of(currentPosts);
-              // this.postsOnScreen = currentPosts
+              this.postsOnScreen = currentPosts
             })
         )
       })
-    )
+    ).subscribe()
+    console.log(this.postsOnScreen)
   }
 
   public delete(id: string): void {
@@ -95,16 +95,6 @@ export class PostComponent implements OnInit{
     this.isLike = !this.isLike
   }
 
-  public update(id: string): void {
-    const post: Post = {
-      image: "https://media.istockphoto.com/photos/melbourne-central-business-district-picture-id600688368?k=20&m=600688368&s=612x612&w=0&h=hbN7pEOSGuyzbygdh-vgj5mmBeGne2NHDYlojpfmoTw=",
-      postDescr: "Visited Melbourne",
-      likes: [],
-      creator: '',
-      comments: []
-    }
-    this.crudService.updateObject(Collections.POSTS, id, post).subscribe();
-  }
 
   public updateLikes(id: string): any {
     console.log(id)

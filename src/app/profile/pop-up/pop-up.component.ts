@@ -32,6 +32,8 @@ export class PopUpComponent implements OnInit {
 
   public userEmail: string | undefined = '';
 
+  public creatorId: string | undefined = '';
+
   public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS)
 
   constructor(private dialogRef: MatDialog,
@@ -45,7 +47,7 @@ export class PopUpComponent implements OnInit {
     this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
     this.myForm.addControl(PostControls.postDescr, new FormControl("", Validators.required));
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
-
+    this.authService.user$.subscribe((value: firebase.User | null) => this.creatorId = value?.uid!);
   }
 
   public submitForm(): void {

@@ -96,12 +96,12 @@ export class FeedComponent implements OnInit{
       switchMap((value: firebase.User | null) => {
         return this.crudService.getUserDoc<PostStore>(Collections.POSTS, id).pipe(
           map((post) => {
-            const userIndex = post?.likes.indexOf(value?.uid!);
+            const userIndex = post?.likes.indexOf(value?.email!);
             console.log(userIndex);
             if (userIndex === -1) {
               this.isLike = true;
               console.log(this.isLike)
-              return post?.likes.concat(value?.uid!)
+              return post?.likes.concat(value?.email!)
             } else {
               const newArr: any = post?.likes.splice(userIndex! ,1);
               this.isLike = false;

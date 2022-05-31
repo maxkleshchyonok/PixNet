@@ -7,9 +7,13 @@
 
 .allpost{
   position: absolute;
-  left: 7%;
-  top: 15%;
-
+  margin-top: 10%;
+  margin-left: 5%;
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 3%;
+  grid-row-gap: 5%;
 }
 
 .posts{
@@ -25,6 +29,9 @@
 
 .post{
   position: static;
+  /*margin-top: 10%;*/
+  /*margin-left: 3%;*/
+  /*margin-bottom: 3%;*/
   display: inline-block;
   width: 300px;
   height: 385px;
@@ -48,8 +55,10 @@
   position: absolute;
   width: 180px;
   height: 38px;
-  margin-left: 3em;
-  margin-top: 22em;
+  /*margin-left: 3em;*/
+  /*margin-top: 22em;*/
+  margin-top: -2.4%;
+  margin-left: 4.2%;
   padding-bottom: 50px;
   white-space: nowrap;
   overflow: hidden;
@@ -59,8 +68,27 @@
   font-weight: 300;
   font-size: 15px;
   line-height: 15px;
-
   color: #000000;
+}
+
+.person{
+  cursor: pointer;
+}
+
+.avatar{
+  position: relative;
+  margin-top: 108%;
+  margin-left: 4%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name{
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
 }
 
 .delete{
@@ -103,9 +131,11 @@
 }
 
 .liketogg{
-  position: relative;
-  margin-top: 105%;
-  margin-left: 80%;
+  position: absolute;
+  /*margin-top: 105%;*/
+  /*margin-left: 80%;*/
+  margin-top: -3%;
+  margin-left: 15.7%;
   background: transparent;
   border: none !important;
   cursor: pointer;
@@ -117,9 +147,11 @@
 }
 
 .likeNum{
-  position: relative;
-  margin-left: 85%;
-  margin-top: -0.1%;
+  position: absolute;
+  /*margin-left: 85%;*/
+  /*margin-top: -0.1%;*/
+  margin-left: 16.8%;
+  margin-top: -1%;
 }
 
 
