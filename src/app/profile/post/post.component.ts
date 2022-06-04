@@ -25,6 +25,8 @@ export class PostComponent implements OnInit{
   public postID: string = '';
   @Input()
   public postDescr: string | null = '';
+  // @Input()
+  // public postsOnScreen: PostStore[] = [];
 
   public user: firebase.User | null = null;
 
@@ -60,6 +62,7 @@ export class PostComponent implements OnInit{
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     console.log(this.userEmail)
+
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -69,7 +72,7 @@ export class PostComponent implements OnInit{
             console.log(currentUser)
             currentUser.forEach( (user) => {
               if(user?.id == this.activatedRoute.snapshot.paramMap.get('id')){
-                this.userOnScreenEmail = user?.email
+                this.userOnScreenEmail = user?.email;
               }
             } )
           }))
@@ -83,7 +86,6 @@ export class PostComponent implements OnInit{
         )
       })
     ).subscribe()
-    console.log(this.postsOnScreen)
   }
 
   public delete(id: string): void {

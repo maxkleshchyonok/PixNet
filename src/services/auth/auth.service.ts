@@ -34,7 +34,7 @@ export class AuthService {
                 status: '',
                 userID: userFromLogin?.uid!,
                 followers: [],
-                following: []
+                following: [],
               }
               return user;
             }

@@ -51,6 +51,8 @@ export class StatusComponent implements OnInit {
 
   public userOnScreenEmail: string | undefined = '';
 
+  public postsOnScreen: PostStore[] = [];
+
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -88,7 +90,15 @@ export class StatusComponent implements OnInit {
           tap((currentUser: UserStore[]) => {
             console.log(currentUser[0]?.id)
             this.authID = currentUser[0]?.id}))
-      })
+      }),
+      // switchMap(() => {
+      //   return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
+      //     tap((currentPosts: PostStore[]) => {
+      //       console.log(currentPosts)
+      //       this.postsOnScreen = currentPosts
+      //     })
+      //   )
+      // })
     ).subscribe();
 
 
@@ -134,6 +144,7 @@ export class StatusComponent implements OnInit {
       switchMap(newFollowing => this.crudService.updateObject(Collections.USERS, id, {...newFollowing})
       )).subscribe()
   }
+
 
   public openDialog(): void{
     this.dialogRef.open(EditUserComponent)

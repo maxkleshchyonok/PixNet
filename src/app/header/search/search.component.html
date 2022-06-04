@@ -1,12 +1,38 @@
+<!--<div class="container">-->
+<!--  <input type="text" class="input" placeholder="Search for..."-->
+<!--  (keyup)="showResult($event)">-->
+<!--  <div class="search_result" *ngIf="isResults">-->
+<!--      <ng-container *ngFor="let user of (users | async)">-->
+<!--        <div routerLink="/profile/{{user?.id}}" (click)="isResults=false">-->
+<!--          <img class="image" src="{{user?.img}}"/>-->
+<!--          <p class="name">{{user?.name}}</p>-->
+<!--        </div>-->
+<!--      </ng-container>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--  <input type="text" class="input" placeholder="Search for..."-->
+<!--  (keyup)="showResult($event)">-->
+<!--  <div class="search_result" *ngIf="isResults">-->
+<!--      <ng-container *ngFor="let user of (users | async)">-->
+<!--        <div routerLink="/profile/{{user?.id}}" (click)="isResults=false">-->
+<!--          <img class="image" src="{{user?.img}}"/>-->
+<!--          <p class="name">{{user?.name}}</p>-->
+<!--        </div>-->
+<!--      </ng-container>-->
+<!--  </div>-->
+<!--</div>-->
+
 <div class="container">
   <input type="text" class="input" placeholder="Search for..."
-  (keyup)="showResult($event)">
-  <div class="search_result" *ngIf="isResults">
-      <li *ngFor="let user of (users | async)">
-        <a routerLink="/profile/{{user?.id}}" (click)="isResults=false">
-          <img class="image" src="{{user?.img}}"/>
-          <p class="name">{{user?.name}}</p>
-        </a>
-      </li>
+         (keyup)="showResult($event)">
+  <div class="list" *ngIf="isResults">
+    <ng-container *ngFor="let user of (users | async)">
+      <div class="item" routerLink="/profile/{{user?.id}}" (click)="isResults=false">
+        <img class="image" src="{{user?.img}}"/>
+        <p class="name">{{user?.name}}</p>
+      </div>
+    </ng-container>
   </div>
 </div>

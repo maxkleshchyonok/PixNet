@@ -188,7 +188,7 @@
     width: 30px;
     height: 40px;
     margin-left: 15%;
-    margin-top: 6%;
+    margin-top: 3%;
     font-family: 'Roboto';
     font-weight: 100;
     font-size: 28px;
@@ -219,11 +219,11 @@
   }
 
   .menu{
-    position: absolute;
+    position: fixed;
     width: 60px;
     height: 60px;
-    left: 30%;
-    top: 50%;
+    left: 100px;
+    top: 10px;
 
   }
 

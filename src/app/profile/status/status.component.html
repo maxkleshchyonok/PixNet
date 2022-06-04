@@ -21,8 +21,9 @@
     <button *ngIf="userEmail != user?.email"
             class="button" [ngClass]="{'followup':isFollow==true,'unfollow':isFollow==false}"
             (click)="updateFollowers(user?.id!);  updateFollowing(authID!)">
-      {{!user?.followers?.includes(userId!) ? 'Follow' : 'Unfollow'}}
+      {{!user?.followers?.includes(userEmail) ? 'Follow' : 'Unfollow'}}
     </button>
     <div class="line"></div>
   </div>
 </div>
+<!--<app-post [postsOnScreen]="this.postsOnScreen"></app-post>-->

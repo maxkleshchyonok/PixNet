@@ -74,7 +74,7 @@ export class EditUserComponent implements OnInit {
                 this.following = user?.following;
                 this.name = user?.name;
                 this.userID = user?.userID;
-                this.defaultImage = user?.img
+                this.defaultImage = user?.img;
               }
             })
           }))

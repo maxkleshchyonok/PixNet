@@ -10,7 +10,7 @@ export type User = {
   email: string;
   status: string;
   followers: string[] | undefined;
-  following: string[] | undefined
+  following: string[] | undefined;
 };
 
 export type ID = {
