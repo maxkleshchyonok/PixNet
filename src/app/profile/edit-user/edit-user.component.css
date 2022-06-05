@@ -31,3 +31,31 @@
   outline: none;
   cursor: pointer;
 }
+
+.post{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 16px;
+  color :#fff ;
+  background: #E998F6;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.postBlock{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 16px;
+  color :#fff ;
+  background: #bfbfbf;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}

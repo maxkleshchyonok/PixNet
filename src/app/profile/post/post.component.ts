@@ -46,6 +46,8 @@ export class PostComponent implements OnInit{
 
   public postsOnScreen: PostStore[] = [];
 
+  userOnScreenId: string | null = this.activatedRoute.snapshot.paramMap.get('id');
+
   public userOnScreenEmail: string | undefined = ''
 
   public postsOnScreenTest: Observable<PostStore[]> = new Observable<PostStore[]>();
@@ -62,7 +64,28 @@ export class PostComponent implements OnInit{
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
     console.log(this.userEmail)
-
+    this.activatedRoute.params.pipe(
+      switchMap((value) => {
+        return this.crudService.handleData<UserStore>(Collections.USERS,).pipe(
+          tap((currentUser: UserStore[]) => {
+            console.log(currentUser)
+            currentUser.forEach( (user) => {
+              if(user?.id == value['id']){
+                this.userOnScreenEmail = user?.email;
+              }
+            } )
+          }))
+      }),
+      switchMap(() => {
+        return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
+          tap((currentPosts: PostStore[]) => {
+            console.log(currentPosts)
+            this.postsOnScreen = currentPosts
+          })
+        )
+      })
+    ).subscribe((value) => {
+      console.log(value)})
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -77,14 +100,6 @@ export class PostComponent implements OnInit{
             } )
           }))
       }),
-      switchMap(() => {
-        return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
-          tap((currentPosts: PostStore[]) => {
-              console.log(currentPosts)
-              this.postsOnScreen = currentPosts
-            })
-        )
-      })
     ).subscribe()
   }
 
