@@ -66,6 +66,20 @@ export class StatusComponent implements OnInit {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
 
     console.log(this.userId + ' айди моё')
+
+    this.activatedRoute.params.pipe(
+      switchMap((value) => {
+        return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
+          tap((userFromStore: UserStore[]) => {
+            userFromStore.forEach((user) => {
+              if(user?.id == value['id']){
+                this.userOnScreenEmail = user?.email
+              }
+            })
+          }))
+      }),
+    ).subscribe()
+
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -75,30 +89,22 @@ export class StatusComponent implements OnInit {
             this.isFollow = userFromStore[0]?.followers?.includes(this.user?.uid!);
           }))
       }),
-      switchMap(() => {
-        return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
-          tap((userFromStore: UserStore[]) => {
-            userFromStore.forEach((user) => {
-              if(user?.id == this.userOnScreen){
-                this.userOnScreenEmail = user?.email
-              }
-            })
-          }))
-      }),
+      // switchMap(() => {
+      //   return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
+      //     tap((userFromStore: UserStore[]) => {
+      //       userFromStore.forEach((user) => {
+      //         if(user?.id == this.userOnScreen){
+      //           this.userOnScreenEmail = user?.email
+      //         }
+      //       })
+      //     }))
+      // }),
       switchMap(() => {
         return this.crudService.handleEmailData<UserStore>(Collections.USERS, '==', this.userEmail).pipe(
           tap((currentUser: UserStore[]) => {
             console.log(currentUser[0]?.id)
             this.authID = currentUser[0]?.id}))
       }),
-      // switchMap(() => {
-      //   return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
-      //     tap((currentPosts: PostStore[]) => {
-      //       console.log(currentPosts)
-      //       this.postsOnScreen = currentPosts
-      //     })
-      //   )
-      // })
     ).subscribe();
 
 
