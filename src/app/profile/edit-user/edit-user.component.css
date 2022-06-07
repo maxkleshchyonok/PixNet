@@ -1,5 +1,5 @@
 .filepick{
-  margin-bottom: 4%;
+  /*margin-bottom: 4%;*/
 }
 
 .form_input{
@@ -13,6 +13,15 @@
   font-family: Roboto;
   font-size: 17px;
   font-weight: 300;
+}
+
+.form_group{
+  margin-top: 5%;
+}
+
+.progress{
+  background-color: #E998F6;
+  height: 5px;
 }
 
 .form{

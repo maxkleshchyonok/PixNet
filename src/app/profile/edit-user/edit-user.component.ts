@@ -60,6 +60,7 @@ export class EditUserComponent implements OnInit {
     this.myForm.valueChanges.subscribe(value => console.log(value));
     this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
     this.myForm.addControl(EditUserControls.status, new FormControl("", Validators.required));
+    this.myForm.addControl(EditUserControls.name, new FormControl("", Validators.required))
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
@@ -91,7 +92,8 @@ export class EditUserComponent implements OnInit {
     console.log(this.following)
     const user: User = {
       userID: this.userId,
-      name: this.name,
+      // name: this.name,
+      name: this.myForm?.controls[EditUserControls.name].value,
       img: this.imageLink!,
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,

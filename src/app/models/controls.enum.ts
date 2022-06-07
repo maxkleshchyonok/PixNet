@@ -16,6 +16,7 @@ export enum CommentControls{
 
 export enum EditUserControls{
   image = "image",
-  status = "status"
+  status = "status",
+  name = "name"
 }
 
