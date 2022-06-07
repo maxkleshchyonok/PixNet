@@ -1,9 +1,7 @@
 <div class="header">
   <nav>
-    <div routerLink="/feed">
-    <img class="headLogo" src="../../assets/img/logo.png" alt="logo"/>
-    <p class="logoText">Pix</p>
-    </div>
+    <img routerLink="/feed" class="headLogo" src="../../assets/img/logo.png" alt="logo"/>
+    <p routerLink="/feed" class="logoText">Pix</p>
   </nav>
   <app-search></app-search>
   <ng-container *ngFor="let user of (users | async)">
