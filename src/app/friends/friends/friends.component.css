@@ -30,15 +30,6 @@
   font-size: 32px;
 }
 
-/*.container_friends{*/
-/*  position: relative;*/
-/*  display: grid;*/
-/*  grid-template-columns: repeat(4, 1fr);*/
-/*  grid-column-gap: 2em;*/
-/*  grid-row-gap: 2em;*/
-/*  top: -75%;*/
-/*}*/
-
 .container_friends{
   position: relative;
   margin-top: -2%;

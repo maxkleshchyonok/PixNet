@@ -28,13 +28,6 @@ export class HeaderComponent implements OnInit {
               private crudService: CrudService) {
   }
 
-  // public ngOnInit(): void {
-  //   this.authService.user$.subscribe((value: firebase.User | null) => {
-  //       this.user = value;
-  //       console.log(value?.displayName)
-  //     }
-  //   )
-  // }
 
   public ngOnInit() {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)

@@ -42,20 +42,10 @@ export class StartPageComponent implements OnInit {
 
   }
 
-  // ngOnInit(): void {
-  //   this.authService.user$.pipe(
-  //     tap((value: firebase.User | null) => this.user = value),
-  //     switchMap((user) => this.crudService.createObject(Collections.USERS, user))
-  //   ).subscribe()
-  // }
 
   public login(): void {
     this.authService.googleSignIn().subscribe()
   }
 
-
-  // public logout(): void{
-  //   this.authService.signOut().subscribe(()=> this.router.navigate(["/"]))
-  // }
 
 }

@@ -1,9 +1,13 @@
 <div class="header">
-  <img class="headLogo" src="../../assets/img/logo.png" alt="logo"/>
-  <p class="logoText">Pix</p>
+  <nav>
+    <div routerLink="/feed">
+    <img class="headLogo" src="../../assets/img/logo.png" alt="logo"/>
+    <p class="logoText">Pix</p>
+    </div>
+  </nav>
   <app-search></app-search>
   <ng-container *ngFor="let user of (users | async)">
-    <ul class="navlist" *ngIf="userEmail === user?.email" >
+    <ul class="navlist" *ngIf="userEmail === user?.email">
       <li>
         <nav>
           <a class="feed" routerLink="/feed">Feed</a>
@@ -20,7 +24,8 @@
         </nav>
       </li>
       <li>
-        <button class="logoutButton" (click)="logout()"><img class="logoutIcon" src="../../assets/img/logout.png"></button>
+        <button class="logoutButton" (click)="logout()"><img class="logoutIcon" src="../../assets/img/logout.png">
+        </button>
       </li>
       <li>
         <a class="menu">

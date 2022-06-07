@@ -25,8 +25,6 @@ export class PostComponent implements OnInit{
   public postID: string = '';
   @Input()
   public postDescr: string | null = '';
-  // @Input()
-  // public postsOnScreen: PostStore[] = [];
 
   public user: firebase.User | null = null;
 

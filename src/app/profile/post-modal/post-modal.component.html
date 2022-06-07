@@ -17,8 +17,10 @@
       <img class="avatar" src="{{comment.userPhoto}}">
       <p class="name">{{comment.userName}}</p>
       <p class="commentText">{{comment.text}}</p>
-<!--      <div class="time">{{comment.time}}</div>-->
-      <button  class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">X</button>
+      <div class="time">{{comment.time | date: 'd.M.yy, H:m'}}</div>
+      <button  class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">
+        <img class="trashbin" src="src/assets/img/icon-delete.jpg">
+      </button>
     </div>
   </div>
 </mat-dialog-content>

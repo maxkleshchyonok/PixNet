@@ -89,16 +89,6 @@ export class StatusComponent implements OnInit {
             this.isFollow = userFromStore[0]?.followers?.includes(this.user?.uid!);
           }))
       }),
-      // switchMap(() => {
-      //   return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
-      //     tap((userFromStore: UserStore[]) => {
-      //       userFromStore.forEach((user) => {
-      //         if(user?.id == this.userOnScreen){
-      //           this.userOnScreenEmail = user?.email
-      //         }
-      //       })
-      //     }))
-      // }),
       switchMap(() => {
         return this.crudService.handleEmailData<UserStore>(Collections.USERS, '==', this.userEmail).pipe(
           tap((currentUser: UserStore[]) => {
@@ -106,9 +96,6 @@ export class StatusComponent implements OnInit {
             this.authID = currentUser[0]?.id}))
       }),
     ).subscribe();
-
-
-
   }
 
   public updateFollowers(id: string) {

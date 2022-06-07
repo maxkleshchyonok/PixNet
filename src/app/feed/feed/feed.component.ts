@@ -51,6 +51,8 @@ export class FeedComponent implements OnInit{
 
   public feedPeople: string[] | undefined = [];
 
+  public noFeedYet: string = 'No feed yet. Add friends to see their updates';
+
 
   constructor(private authService: AuthService,
               private crudService: CrudService,
@@ -61,8 +63,6 @@ export class FeedComponent implements OnInit{
   ngOnInit(): void {
     this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
-    console.log(this.userEmail)
-
      this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -87,7 +87,9 @@ export class FeedComponent implements OnInit{
         )
       })
     ).subscribe();
-
+    // setTimeout(function () {
+    //   document.getElementById('hideBlock').style.display = 'block'
+    // }, 1500)
   }
 
   public updateLikes(id: string): any {
@@ -123,6 +125,8 @@ export class FeedComponent implements OnInit{
     popUp.componentInstance.likes = likes;
     popUp.componentInstance.postId = postId
   }
+
+
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe())

@@ -13,6 +13,7 @@
   height: 60px;
   left: 5em;
   top: 0.3em;
+  cursor: pointer;
 }
 
 .logoText{
@@ -25,6 +26,7 @@
   font-size: 36px;
   line-height: 0;
   color: #000000;
+  cursor: pointer;
 }
 
 .logoutButton{
@@ -222,9 +224,7 @@
     position: fixed;
     width: 60px;
     height: 60px;
-    left: 100px;
-    top: 10px;
-
+    left: 10px;
   }
 
   .humburg{
@@ -262,8 +262,9 @@
     z-index: 1;
   }
 
-  .logoutBut{
-    margin-left: -0.4em;
+  .logoutButton{
+    margin-left: -5%;
+    margin-top: -1%;
     border: none;
     background-color: transparent;
     font-family: Roboto;
