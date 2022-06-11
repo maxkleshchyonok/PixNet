@@ -5,6 +5,7 @@ import {UserStore} from "../../../../services/types";
 import {Collections} from "../../../../services/crud/collections";
 import {CrudService} from "../../../../services/crud/crud.service";
 import {AuthService} from "../../../../services/auth/auth.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-followers-modal',
@@ -21,7 +22,8 @@ export class FollowersModalComponent implements OnInit {
   public followersList: UserStore[] = [];
 
   constructor(private crudService: CrudService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.authService.user$.pipe(
@@ -40,6 +42,10 @@ export class FollowersModalComponent implements OnInit {
           }))
       })
     ).subscribe();
+  }
+
+  public closeDialog(): void{
+    this.dialogRef.closeAll()
   }
 
 }

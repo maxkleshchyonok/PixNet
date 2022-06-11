@@ -46,8 +46,10 @@ export class PopUpComponent implements OnInit {
     this.myForm.valueChanges.subscribe(value => console.log(value));
     this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
     this.myForm.addControl(PostControls.postDescr, new FormControl("", Validators.required));
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
-    this.authService.user$.subscribe((value: firebase.User | null) => this.creatorId = value?.uid!);
+    this.authService.user$.subscribe((value: firebase.User | null) => {
+      this.userEmail = value?.email!;
+      this.creatorId = value?.uid!;
+    });
   }
 
   public submitForm(): void {

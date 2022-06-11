@@ -5,6 +5,7 @@ import {AuthService} from "../../../../services/auth/auth.service";
 import {filter, switchMap, tap} from "rxjs/operators";
 import firebase from "firebase/compat";
 import {Collections} from "../../../../services/crud/collections";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-following-modal',
@@ -21,7 +22,8 @@ export class FollowingModalComponent implements OnInit {
   public followingList: UserStore[] = [];
 
   constructor(private crudService: CrudService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.authService.user$.pipe(
@@ -40,6 +42,10 @@ export class FollowingModalComponent implements OnInit {
           }))
       })
     ).subscribe();
+  }
+
+  public closeDialog(): void{
+    this.dialogRef.closeAll()
   }
 
 }
