@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EditUserControls, PostControls} from "../../models/controls.enum";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import firebase from "firebase/compat";
 import {MatDialog} from "@angular/material/dialog";
 import {AuthService} from "../../../services/auth/auth.service";

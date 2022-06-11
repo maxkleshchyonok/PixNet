@@ -4,7 +4,7 @@
       <li class="post" *ngFor="let post of postsOnScreen ">
         <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes, post.id)" />
         <p class="postDescr">{{post.postDescr}}</p>
-        <div class="like" *ngIf="userId">
+        <div class="like">
           <button class="liketogg" (click)="updateLikes(post.id)">
             <img class="likeButt"
                  src="{{!post.likes.includes(userEmail) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">

@@ -1,30 +1,41 @@
-<mat-dialog-content class="content">
-  <img class="image" src="{{image}}"/>
-  <p class="description">{{postDescr}}</p>
-  <div class="likes">
-    <button class="liked_by_button" (click)="openLikesModal()">Liked by</button>
-  </div>
-  <form class="form" [formGroup]="commentsForm">
-    <div class="form_group">
-    <label class="form_label"></label>
-      <input class="input" [formControlName]="formControls.text" placeholder="Add comment...:">
-      <button [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
-              [disabled]="commentsForm.invalid" class="addComment" (click)="submitForm()">+</button>
+<div class="container">
+  <div class="content">
+    <div class="photo">
+      <img src="{{image}}">
     </div>
-  </form>
-  <div class="comment" *ngFor="let comment of (comments | async)">
-    <div *ngIf="comment.postId == postId">
-      <img class="avatar" src="{{comment.userPhoto}}">
-      <p class="name">{{comment.userName}}</p>
-      <p class="commentText">{{comment.text}}</p>
-      <div class="time">{{comment.time | date: 'd.M.yy, H:m'}}</div>
-      <button  class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">
-        <img class="trashbin" src="src/assets/img/icon-delete.jpg">
-      </button>
+    <div class="all_about">
+      <div class="information">
+          <div class="close_but" mat-dialog-close>X</div>
+        <div class="description">{{postDescr}}</div>
+      </div>
+      <form class="form" [formGroup]="commentsForm">
+        <div class="form_group">
+          <label class="form_label"></label>
+          <input class="input" [formControlName]="formControls.text" placeholder="Add comment...">
+          <button [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
+                  [disabled]="commentsForm.invalid" class="addComment" (click)="submitForm()">+
+          </button>
+        </div>
+      </form>
+      <div class="comments">
+        <cdk-virtual-scroll-viewport appendOnly itemSize="20" class="viewport">
+          <ng-container *ngFor="let comment of (comments | async)">
+            <ng-container *ngIf="comment.postId == postId">
+          <div class="comment">
+            <div class="logo">
+              <img class="avatar" src="{{comment.userPhoto}}">
+            </div>
+            <div class="text">{{comment.text}} </div>
+            <div class="info">
+              <div class="date">{{comment.time | date: 'd.M.yy, H:mm'}}</div>
+            </div>
+                    <button class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">X
+                    </button>
+          </div>
+            </ng-container>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
+      </div>
     </div>
   </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button class="close" mat-button mat-dialog-close>X</button>
-</mat-dialog-actions>
-
+</div>
