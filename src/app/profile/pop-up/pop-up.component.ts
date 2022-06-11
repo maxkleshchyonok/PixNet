@@ -45,7 +45,8 @@ export class PopUpComponent implements OnInit {
   public ngOnInit(): void {
     this.myForm.valueChanges.subscribe(value => console.log(value));
     this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
-    this.myForm.addControl(PostControls.postDescr, new FormControl("", Validators.required));
+    this.myForm.addControl(PostControls.postDescr, new FormControl("",
+      Validators.compose( [Validators.required, Validators.maxLength(400)])));
     this.authService.user$.subscribe((value: firebase.User | null) => {
       this.userEmail = value?.email!;
       this.creatorId = value?.uid!;
