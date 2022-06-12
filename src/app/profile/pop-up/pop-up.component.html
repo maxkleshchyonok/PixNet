@@ -18,7 +18,7 @@
       </label>
       <input class="form_input" [formControlName]="formControls.postDescr" placeholder="Post description:">
       <div *ngIf="isControlValid(formControls.postDescr)">
-        <div class="notification">Please provide post description</div>
+        <div class="notification">Incorrect description!</div>
       </div>
     </div>
     <button  [ngClass]="{'post': myForm.invalid==false, 'postBlock':myForm.invalid==true}"

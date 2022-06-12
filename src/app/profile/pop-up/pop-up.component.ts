@@ -86,7 +86,7 @@ export class PopUpComponent implements OnInit {
   }
 
   public closeDialog(): void{
-    this.dialogRef.closeAll()
+    this.dialogRef.closeAll();
   }
 
   public onFileSelected(event: Event): void {

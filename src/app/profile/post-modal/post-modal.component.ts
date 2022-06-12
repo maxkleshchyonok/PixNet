@@ -99,11 +99,24 @@ export class PostModalComponent implements OnInit {
     this.crudService.deleteObject(Collections.COMMENTS, id).subscribe();
   }
 
-  public closeDialog(): void{
+  public closeDialog(): void {
     this.dialogRef.closeAll()
   }
 
-  public openLikesModal(): void{
+  public openDialog(image: string | null, postDescr: string | null, likes: string[] | undefined, postId: string): void {
+    let popUp = this.dialogRef.open(PostModalComponent);
+    popUp.componentInstance.image = image;
+    popUp.componentInstance.postDescr = postDescr;
+    popUp.componentInstance.likes = likes;
+    popUp.componentInstance.postId = postId
+  }
+
+  public sendFunctions():void{
+    this.submitForm();
+    this.openDialog(this.image, this.postDescr, this.likes, this.postId);
+  }
+
+  public openLikesModal(): void {
     let popUp = this.dialogRef.open(LikesModalComponent);
     popUp.componentInstance.likes = this.likes;
 

@@ -13,7 +13,7 @@
           <label class="form_label"></label>
           <input class="input" [formControlName]="formControls.text" placeholder="Add comment...">
           <button [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
-                  [disabled]="commentsForm.invalid" class="addComment" (click)="submitForm()">+
+                  [disabled]="commentsForm.invalid" class="addComment" (click)="sendFunctions()">+
           </button>
         </div>
       </form>
