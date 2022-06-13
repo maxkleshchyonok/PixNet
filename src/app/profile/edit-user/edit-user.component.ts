@@ -12,7 +12,6 @@ import {combineLatest, takeWhile} from "rxjs";
 import DocumentReference = firebase.firestore.DocumentReference;
 import {filter, switchMap, tap} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -56,7 +55,7 @@ export class EditUserComponent implements OnInit {
               private authService: AuthService,
               private crudService: CrudService,
               private uploadService: UploadService,
-              private activatedRoute: ActivatedRoute) {
+              ) {
   }
 
   ngOnInit(): void {
@@ -69,10 +68,6 @@ export class EditUserComponent implements OnInit {
       console.log(value)
     });
     console.log(this.name)
-    // this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
-    // this.myForm.addControl(EditUserControls.status, new FormControl(''));
-    // this.myForm.addControl(EditUserControls.name, new FormControl('',
-    //   Validators.compose( [Validators.required, Validators.minLength(1), Validators.maxLength(35)])))
     this.myForm.addControl(PostControls.image, new FormControl(""));
     this.myForm.addControl(EditUserControls.status, new FormControl(''));
     this.myForm.addControl(EditUserControls.name, new FormControl('',
@@ -107,7 +102,7 @@ export class EditUserComponent implements OnInit {
 
   public submitForm(id: string, name: string | undefined, status: string | undefined, image: string | undefined): void {
     if (this.myForm.valid) {
-      this.update(id)
+      // this.update(id)
 
       if (this.myForm.controls[EditUserControls.image].value == '' && this.myForm.controls[EditUserControls.status].value == ''){
         this.updateImageStatus(image, id, status)
@@ -128,6 +123,11 @@ export class EditUserComponent implements OnInit {
       if (this.myForm.controls[EditUserControls.name].value != '' && this.myForm.controls[EditUserControls.image].value != ''){
         this.updateEmptyStatus(status, id)
       }
+      if(this.myForm.controls[EditUserControls.name].value != '' &&
+        this.myForm.controls[EditUserControls.image].value != '' &&
+        this.myForm.controls[EditUserControls.status].value != ''){
+        this.updateAll(id)
+      }
     }
     this.closeDialog()
   }
@@ -137,6 +137,19 @@ export class EditUserComponent implements OnInit {
     const user: User = {
       userID: this.userId,
       // name: this.name,
+      name: this.myForm?.controls[EditUserControls.name].value,
+      image: this.imageLink!,
+      status: this.myForm?.controls[EditUserControls.status].value,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateAll(id: string): void {
+    const user: User = {
+      userID: this.userId,
       name: this.myForm?.controls[EditUserControls.name].value,
       image: this.imageLink!,
       status: this.myForm?.controls[EditUserControls.status].value,
