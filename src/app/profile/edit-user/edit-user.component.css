@@ -68,3 +68,8 @@
   cursor: pointer;
   transition: 0.3s;
 }
+
+.notification{
+  font-family: Roboto;
+  color: #f56868;
+}

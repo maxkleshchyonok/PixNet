@@ -6,12 +6,13 @@ import {MatDialog} from "@angular/material/dialog";
 import {AuthService} from "../../../services/auth/auth.service";
 import {CrudService} from "../../../services/crud/crud.service";
 import {UploadService} from "../../../services/crud/upload.service";
-import {Post, User, UserStore} from "../../../services/types";
+import {Post, PostStore, User, UserStore} from "../../../services/types";
 import {Collections} from "../../../services/crud/collections";
 import {combineLatest, takeWhile} from "rxjs";
 import DocumentReference = firebase.firestore.DocumentReference;
 import {filter, switchMap, tap} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -47,20 +48,35 @@ export class EditUserComponent implements OnInit {
 
   public defaultImage: string | undefined = '';
 
+  public testName: string = "maximM";
+
+  public userOnScreenId: string = '';
+
   constructor(private dialogRef: MatDialog,
               private authService: AuthService,
               private crudService: CrudService,
-              private uploadService: UploadService) {
+              private uploadService: UploadService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
+    this.authService.user$.subscribe((value: firebase.User | null) =>{
+      this.userId = value?.uid!;
+      this.userEmail = value?.email!;
+    })
 
-    this.myForm.valueChanges.subscribe(value => console.log(value));
-    this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
-    this.myForm.addControl(EditUserControls.status, new FormControl("", Validators.required));
-    this.myForm.addControl(EditUserControls.name, new FormControl("", Validators.required))
+    this.myForm.valueChanges.subscribe(value => {
+      console.log(value)
+    });
+    console.log(this.name)
+    // this.myForm.addControl(PostControls.image, new FormControl("", Validators.required));
+    // this.myForm.addControl(EditUserControls.status, new FormControl(''));
+    // this.myForm.addControl(EditUserControls.name, new FormControl('',
+    //   Validators.compose( [Validators.required, Validators.minLength(1), Validators.maxLength(35)])))
+    this.myForm.addControl(PostControls.image, new FormControl(""));
+    this.myForm.addControl(EditUserControls.status, new FormControl(''));
+    this.myForm.addControl(EditUserControls.name, new FormControl('',
+      Validators.compose( [Validators.maxLength(35)])))
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
@@ -70,22 +86,50 @@ export class EditUserComponent implements OnInit {
           tap((userFromStore: UserStore[]) => {
             console.log(userFromStore)
             userFromStore.forEach((user) => {
+              this.userOnScreenId = user?.id!;
               if (user?.email == this.userEmail) {
                 this.followers = user?.followers;
                 this.following = user?.following;
                 this.name = user?.name;
                 this.userID = user?.userID;
-                this.defaultImage = user?.img;
+                this.defaultImage = user?.image;
+                console.log(this.name)
               }
             })
-          }))
+          }
+          ))
       }),
     ).subscribe();
     console.log(this.name)
   }
 
-  public submitForm(id: string): void {
-    this.update(id)
+
+
+  public submitForm(id: string, name: string | undefined, status: string | undefined, image: string | undefined): void {
+    if (this.myForm.valid) {
+      this.update(id)
+
+      if (this.myForm.controls[EditUserControls.image].value == '' && this.myForm.controls[EditUserControls.status].value == ''){
+        this.updateImageStatus(image, id, status)
+      }
+      if(this.myForm.controls[EditUserControls.name].value == '' && this.myForm.controls[EditUserControls.image].value == ''){
+        this.updateNameImage(name, id, image)
+      }
+      if(this.myForm.controls[EditUserControls.status].value == '' && this.myForm.controls[EditUserControls.name].value == ''){
+        this.updateStatusName(status, id, name)
+      }
+      if (this.myForm.controls[EditUserControls.name].value != '' &&
+        this.myForm.controls[EditUserControls.status].value != ''){
+        this.updateEmptyImage(image, id)
+      }
+      if (this.myForm.controls[EditUserControls.image].value != '' && this.myForm.controls[EditUserControls.status].value != ''){
+        this.updateEmptyName(name, id)
+      }
+      if (this.myForm.controls[EditUserControls.name].value != '' && this.myForm.controls[EditUserControls.image].value != ''){
+        this.updateEmptyStatus(status, id)
+      }
+    }
+    this.closeDialog()
   }
 
   public update(id: string): void {
@@ -94,13 +138,102 @@ export class EditUserComponent implements OnInit {
       userID: this.userId,
       // name: this.name,
       name: this.myForm?.controls[EditUserControls.name].value,
-      img: this.imageLink!,
+      image: this.imageLink!,
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,
       following: this.following,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateNameImage(name: string | undefined, id: string, image: string | undefined): void {
+    const user: User = {
+      userID: this.userId,
+      name: name,
+      image: image!,
+      status: this.myForm?.controls[EditUserControls.status].value,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateImageStatus(image: string | undefined, id: string, status: string | undefined): void {
+    const user: User = {
+      userID: this.userId,
+      name: this.myForm?.controls[EditUserControls.name].value,
+      image: image!,
+      status: status!,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateStatusName(status: string | undefined, id: string, name: string | undefined): void {
+    const user: User = {
+      userID: this.userId,
+      name: name,
+      image: this.imageLink!,
+      status: status!,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateEmptyImage(image: string | undefined, id: string): void {
+    console.log(id)
+    const user: User = {
+      userID: this.userId,
+      // name: this.name,
+      name: this.myForm?.controls[EditUserControls.name].value,
+      image: image!,
+      status: this.myForm?.controls[EditUserControls.status].value,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateEmptyName(name: string | undefined, id: string): void {
+    const user: User = {
+      userID: this.userId,
+      name: name,
+      image: this.imageLink!,
+      status: this.myForm?.controls[EditUserControls.status].value,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateEmptyStatus(status: string | undefined, id: string): void {
+    const user: User = {
+      userID: this.userId,
+      name: this.myForm?.controls[EditUserControls.name].value,
+      image: this.imageLink!,
+      status: status!,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public isControlValid(controlName: string): boolean {
+    const control: AbstractControl | undefined = this.myForm?.controls[controlName];
+    if (control) {
+      return control.invalid && (control.dirty || control.touched);
+    } else {
+      return false;
+    }
   }
 
   public onFileSelected(event: Event): void {
@@ -121,6 +254,10 @@ export class EditUserComponent implements OnInit {
           });
       }
     }
+  }
+
+  public closeDialog(): void {
+    this.dialogRef.closeAll();
   }
 
 }

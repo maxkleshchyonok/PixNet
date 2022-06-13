@@ -4,7 +4,7 @@
   <div class="container_friends" *ngFor="let user of friendsList">
     <nav>
       <div class="everyUser" routerLink="/profile/{{user?.id}}">
-        <img class="avatar" src="{{user?.img!}}"/>
+        <img class="avatar" src="{{user?.image!}}"/>
         <div class="name">{{user?.name!}}</div>
       </div>
     </nav>
@@ -15,7 +15,7 @@
   <div class="each_recommended" *ngFor="let user of (users | async)">
     <nav>
       <div class="everyUser" routerLink="/profile/{{user?.id}}">
-        <img class="avatar" src="{{user?.img!}}"/>
+        <img class="avatar" src="{{user?.image!}}"/>
         <div class="name">{{user?.name!}}</div>
       </div>
     </nav>

@@ -18,6 +18,9 @@
       <label class="form_label">
       </label>
       <input class="form_input" [formControlName]="formControls.name" placeholder="Enter new name...">
+      <div *ngIf="isControlValid(formControls.name)">
+        <div class="notification">Incorrect name!</div>
+      </div>
     </div>
     <div class="form_group">
       <label class="form_label">
@@ -26,6 +29,9 @@
     </div>
   </form>
   <ng-container *ngFor="let user of (users | async)">
-  <button class="update_button" *ngIf="user?.email == this.userEmail" (click)="submitForm(user?.id!)">Update</button>
+  <button class="update_button" *ngIf="user?.email == this.userEmail"
+          [ngClass]="{'post': myForm.invalid==false, 'postBlock':myForm.invalid==true}"
+          [disabled]="myForm.invalid"
+          (click)="submitForm(user?.id!, user?.name, user?.status, user?.image)">Update</button>
   </ng-container>
 </div>

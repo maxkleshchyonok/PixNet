@@ -1,7 +1,7 @@
 <ng-container *ngFor="let following of followingList">
   <nav>
     <div class="person" routerLink="/profile/{{following?.id}}" (click)="closeDialog()">
-      <img class="avatar" src="{{following?.img}}">
+      <img class="avatar" src="{{following?.image}}">
       <h1 class="person_name">{{following?.name}}</h1>
     </div>
   </nav>

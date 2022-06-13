@@ -8,7 +8,7 @@
                 <img class="postImg" src="{{post.image}}" (click)="openPostModal(post.image, post.postDescr, post.likes, post.id)" />
                 <nav>
                   <div class="person" routerLink="/profile/{{user?.id}}">
-                    <img class="avatar" src="{{user?.img!}}"/>
+                    <img class="avatar" src="{{user?.image!}}"/>
                   </div>
                 </nav>
                 <p class="postDescr">{{post.postDescr}}</p>

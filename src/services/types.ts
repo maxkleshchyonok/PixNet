@@ -5,7 +5,7 @@ export type UserCredential = firebase.auth.UserCredential;
 
 export type User = {
   userID: string | undefined;
-  img: string;
+  image: string;
   name: string | undefined;
   email: string;
   status: string;

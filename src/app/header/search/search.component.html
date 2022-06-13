@@ -4,7 +4,7 @@
   <div class="list" *ngIf="isResults">
     <ng-container *ngFor="let user of (users | async)">
       <div class="item" routerLink="/profile/{{user?.id}}" (click)="isResults=false">
-        <img class="image" src="{{user?.img}}"/>
+        <img class="image" src="{{user?.image}}"/>
         <p class="name">{{user?.name}}</p>
       </div>
     </ng-container>

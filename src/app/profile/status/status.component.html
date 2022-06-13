@@ -1,6 +1,6 @@
 <div *ngFor="let user of (users | async)">
   <div class="profInfo" *ngIf="user?.id! === this.activatedRoute.snapshot.paramMap.get('id') ">
-    <div class="ava"><img class="img" src="{{user?.img}}"/></div>
+    <div class="ava"><img class="img" src="{{user?.image}}"/></div>
     <div class="username">{{user?.name!}}
       <button *ngIf="userEmail == user?.email" class="edit_button" (click)="openDialog()">
         <img class="edit_button_img" src="../../../assets/img/Edit-512.webp"/>
