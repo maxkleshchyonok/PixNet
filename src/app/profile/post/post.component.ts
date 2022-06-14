@@ -44,8 +44,6 @@ export class PostComponent implements OnInit{
 
   public postsOnScreen: PostStore[] = [];
 
-  userOnScreenId: string | null = this.activatedRoute.snapshot.paramMap.get('id');
-
   public userOnScreenEmail: string | undefined = ''
 
   public postsOnScreenTest: Observable<PostStore[]> = new Observable<PostStore[]>();
@@ -59,8 +57,10 @@ export class PostComponent implements OnInit{
 
   ngOnInit(): void {
     console.log(this.postDescr)
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
+    this.authService.user$.subscribe((value: firebase.User | null) => {
+      this.userId = value?.uid!;
+      this.userEmail = value?.email!
+    })
     console.log(this.userEmail)
     this.activatedRoute.params.pipe(
       switchMap((value) => {

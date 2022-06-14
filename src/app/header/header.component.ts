@@ -30,8 +30,9 @@ export class HeaderComponent implements OnInit {
 
 
   public ngOnInit() {
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
+    this.authService.user$.subscribe((value: firebase.User | null) => {
+      this.userEmail = value?.email!
+      this.userId = value?.uid!})
   }
 
   public logout(): void{

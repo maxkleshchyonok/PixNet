@@ -61,8 +61,10 @@ export class FeedComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
+    this.authService.user$.subscribe((value: firebase.User | null) => {
+      this.userEmail = value?.email!;
+      this.userId = value?.uid!;
+    })
      this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -87,9 +89,7 @@ export class FeedComponent implements OnInit{
         )
       })
     ).subscribe();
-    // setTimeout(function () {
-    //   document.getElementById('hideBlock').style.display = 'block'
-    // }, 1500)
+
   }
 
   public updateLikes(id: string): any {
