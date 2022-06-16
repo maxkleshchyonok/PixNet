@@ -5,7 +5,7 @@
     </div>
     <div class="all_about">
       <div class="information">
-          <div class="close_but" mat-dialog-close>X</div>
+        <div class="close_but" mat-dialog-close>X</div>
         <div class="description">{{postDescr}}</div>
       </div>
       <form class="form" [formGroup]="commentsForm">
@@ -21,17 +21,21 @@
         <cdk-virtual-scroll-viewport appendOnly itemSize="20" class="viewport">
           <ng-container *ngFor="let comment of (comments | async)">
             <ng-container *ngIf="comment.postId == postId">
-          <div class="comment">
-            <div class="logo">
-              <img class="avatar" src="{{comment.userPhoto}}">
-            </div>
-            <div class="text">{{comment.text}} </div>
-            <div class="info">
-              <div class="date">{{comment.time | date: 'd.M.yy, H:mm'}}</div>
-            </div>
-                    <button class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">X
-                    </button>
-          </div>
+              <div class="comment">
+                <ng-container *ngFor="let user of (users | async)">
+                <nav *ngIf="user?.email == comment.userEmail">
+                  <div class="logo"  routerLink="/profile/{{user?.id}}" (click)="closeDialog()">
+                    <img class="avatar" src="{{comment.userPhoto}}">
+                  </div>
+                </nav>
+                </ng-container>
+                <div class="text">{{comment.text}} </div>
+                <div class="info">
+                  <div class="date">{{comment.time | date: 'd.M.yy, H:mm'}}</div>
+                </div>
+                <button class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">X
+                </button>
+              </div>
             </ng-container>
           </ng-container>
         </cdk-virtual-scroll-viewport>

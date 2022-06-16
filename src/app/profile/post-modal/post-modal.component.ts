@@ -42,6 +42,8 @@ export class PostModalComponent implements OnInit {
 
   public comments: Observable<CommentStore[]> = this.crudService.handleData<CommentStore>(Collections.COMMENTS);
 
+  public users: Observable<UserStore[]> = this.crudService.handleData<UserStore>(Collections.USERS);
+
   public userPhoto: string = ''
 
   constructor(private dialogRef: MatDialog,

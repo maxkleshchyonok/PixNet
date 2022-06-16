@@ -128,6 +128,11 @@ export class EditUserComponent implements OnInit {
         this.myForm.controls[EditUserControls.status].value != ''){
         this.updateAll(id)
       }
+      if(this.myForm.controls[EditUserControls.name].value == '' &&
+        this.myForm.controls[EditUserControls.image].value == '' &&
+        this.myForm.controls[EditUserControls.status].value == ''){
+        this.updateAllEmpty(image, name, status, id)
+      }
     }
     this.closeDialog()
   }
@@ -153,6 +158,19 @@ export class EditUserComponent implements OnInit {
       name: this.myForm?.controls[EditUserControls.name].value,
       image: this.imageLink!,
       status: this.myForm?.controls[EditUserControls.status].value,
+      followers: this.followers,
+      following: this.following,
+      email: this?.userEmail!,
+    }
+    this.crudService.updateObject(Collections.USERS, id, user).subscribe();
+  }
+
+  public updateAllEmpty(image: string | undefined, name: string | undefined, status: string | undefined, id: string): void {
+    const user: User = {
+      userID: this.userId,
+      name: name,
+      image: image!,
+      status: status!,
       followers: this.followers,
       following: this.following,
       email: this?.userEmail!,

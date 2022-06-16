@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-// import {Post} from "./post";
 import firebase from "firebase/compat";
 import {CrudService} from "../../../services/crud/crud.service";
 import {Collections} from "../../../services/crud/collections";
@@ -10,7 +9,7 @@ import {filter, map, switchMap, take, tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {PostModalComponent} from "../post-modal/post-modal.component";
 import {ActivatedRoute} from "@angular/router";
-import {of} from "rxjs";
+
 
 @Component({
   selector: 'app-post',
