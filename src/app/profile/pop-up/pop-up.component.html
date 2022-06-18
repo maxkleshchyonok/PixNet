@@ -21,8 +21,8 @@
         <div class="notification">Incorrect description!</div>
       </div>
     </div>
-    <button  [ngClass]="{'post': myForm.invalid==false, 'postBlock':myForm.invalid==true}"
-             [disabled]="myForm.invalid" (click)="submitForm()">Post</button>
+    <button  [ngClass]="{'post': myForm.invalid==false, 'postBlock':myForm.invalid==true || progress != '100'}"
+             [disabled]= "myForm.invalid || progress != '100'" (click)="submitForm()">Post</button>
     <button class="close" (click)="closeDialog()">
       Close
     </button>
