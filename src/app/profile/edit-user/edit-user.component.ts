@@ -69,7 +69,7 @@ export class EditUserComponent implements OnInit {
     });
     console.log(this.name)
     this.myForm.addControl(PostControls.image, new FormControl(""));
-    this.myForm.addControl(EditUserControls.status, new FormControl(''));
+    this.myForm.addControl(EditUserControls.status, new FormControl('', Validators.maxLength(140)));
     this.myForm.addControl(EditUserControls.name, new FormControl('',
       Validators.compose( [Validators.maxLength(35)])))
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
@@ -261,6 +261,9 @@ export class EditUserComponent implements OnInit {
   public isControlValid(controlName: string): boolean {
     const control: AbstractControl | undefined = this.myForm?.controls[controlName];
     if (control) {
+      if (control.value && control.value.match(/^[ ]+$/)) {
+        control.setValue(control.value.trim());
+      }
       return control.invalid && (control.dirty || control.touched);
     } else {
       return false;

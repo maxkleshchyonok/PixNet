@@ -12,6 +12,9 @@
         <div class="form_group">
           <label class="form_label"></label>
           <input class="input" [formControlName]="formControls.text" placeholder="Add comment...">
+          <div *ngIf="isControlValid(formControls.text)">
+            <div class="notification"></div>
+          </div>
           <button [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
                   [disabled]="commentsForm.invalid" class="addComment" (click)="sendFunctions()">+
           </button>
@@ -33,7 +36,8 @@
                 <div class="info">
                   <div class="date">{{comment.time | date: 'd.M.yy, H:mm'}}</div>
                 </div>
-                <button class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">X
+                <button class="delete" *ngIf="comment.userEmail == this.userEmail" (click)="delete(comment.id)">
+                  <img src="../../../assets/img/icon-delete.jpg">
                 </button>
               </div>
             </ng-container>

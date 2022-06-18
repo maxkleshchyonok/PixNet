@@ -40,7 +40,7 @@
 }
 
 .photo {
-  flex: 1 1 70%;
+  flex: 1 1 60%;
   display: flex;
   max-height: 700px;
   max-width: 900px;
@@ -53,13 +53,13 @@
 }
 
 .all_about {
-  flex: 1 1 30%;
-  max-width: 300px;
+  flex: 1 1 40%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 0 10px;
+  margin: 0 5%;
   min-height: 100%;
 }
 
@@ -90,6 +90,7 @@
 }
 
 .date {
+  width: 20px;
   font-size: 10px;
   line-height: 14px;
   color: #B1B1B1;
@@ -113,12 +114,12 @@
 }
 
 .viewport::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
   background-color: #f9f9fd;
 }
 
 .viewport::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #E998F6;
 }
 
@@ -129,7 +130,7 @@
 }
 
 .comment {
-  width: 100%;
+  width: 75%;
   display: flex;
   margin: 10px 0;
   align-items: center;
@@ -143,13 +144,13 @@
   font-family: Roboto;
   font-size: 12px;
   margin-top: 9%;
-  margin-left: -8%;
+  margin-left: 3%;
   cursor: pointer;
 }
 
 .delete img{
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 }
 
 .logo {
@@ -171,4 +172,5 @@
   font-weight: 300;
   font-size: 16px;
   color: #4F4F4F;
+  word-wrap: break-word;
 }

@@ -70,7 +70,7 @@
   height: 90px;
   position: absolute;
   margin-left: 11.5em;
-  margin-top: -17em;
+  margin-top: -16.5em;
   font-family: Roboto;
   font-weight: 100;
   font-size: 25px;
@@ -102,6 +102,11 @@
   font-weight: 100;
   font-size: 23px;
   cursor: pointer;
+}
+
+.deletebutt img {
+  width: 20px;
+  height: 20px;
 }
 
 .liketogg{

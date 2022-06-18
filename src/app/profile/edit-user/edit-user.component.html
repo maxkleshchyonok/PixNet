@@ -26,6 +26,9 @@
       <label class="form_label">
       </label>
       <input class="form_input" [formControlName]="formControls.status" placeholder="Create a status...">
+      <div *ngIf="isControlValid(formControls.status)">
+        <div class="notification">Incorrect status!</div>
+      </div>
     </div>
   </form>
   <ng-container *ngFor="let user of (users | async)">
