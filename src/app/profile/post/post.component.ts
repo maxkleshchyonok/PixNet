@@ -67,34 +67,39 @@ export class PostComponent implements OnInit{
         return this.crudService.handleData<UserStore>(Collections.USERS,).pipe(
           tap((currentUser: UserStore[]) => {
             console.log(currentUser)
-            currentUser.forEach( (user) => {
-              if(user?.id == value['id']){
+            console.log('test1')
+            currentUser.forEach((user) => {
+              if (user?.id == value['id']) {
                 this.userOnScreenEmail = user?.email;
               }
-            } )
+            })
           }))
       }),
       switchMap(() => {
         return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
           tap((currentPosts: PostStore[]) => {
-            console.log(currentPosts)
+            console.log('test2')
             this.postsOnScreen = currentPosts
           })
         )
       }),
-      switchMap(() => {
+      switchMap((value) => {
         return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
           tap((userStore: UserStore[]) => {
+            this.isBlocked = false;
             userStore.forEach((user)=>{
+              console.log(this.isBlocked)
               if(user?.email==this.userEmail && user?.blocked?.includes(this.userOnScreenEmail!)){
-                this.isBlocked = true;
+                console.log('test3')
+                  this.isBlocked = true;
               }
             })
           })
         )
       }),
     ).subscribe((value) => {
-      console.log(value)})
+      console.log(value)
+    })
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
@@ -102,11 +107,11 @@ export class PostComponent implements OnInit{
         return this.crudService.handleData<UserStore>(Collections.USERS,).pipe(
           tap((currentUser: UserStore[]) => {
             console.log(currentUser)
-            currentUser.forEach( (user) => {
-              if(user?.id == this.activatedRoute.snapshot.paramMap.get('id')){
+            currentUser.forEach((user) => {
+              if (user?.id == this.activatedRoute.snapshot.paramMap.get('id')) {
                 this.userOnScreenEmail = user?.email;
               }
-            } )
+            })
           }))
       }),
     ).subscribe()
