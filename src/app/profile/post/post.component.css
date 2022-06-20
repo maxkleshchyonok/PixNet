@@ -129,10 +129,14 @@
   margin-top: -0.1%;
 }
 
-
-
-
-
+.block_info{
+  position: absolute;
+  top: 75%;
+  left: 40%;
+  font-family: Roboto;
+  font-size: 50px;
+  font-weight: 100;
+}
 
 
 @media screen and (max-width: 1200px) {

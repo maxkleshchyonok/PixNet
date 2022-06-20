@@ -43,10 +43,11 @@ export class PostComponent implements OnInit{
 
   public postsOnScreen: PostStore[] = [];
 
-  public userOnScreenEmail: string | undefined = ''
+  public userOnScreenEmail: string | undefined = '';
 
-  public postsOnScreenTest: Observable<PostStore[]> = new Observable<PostStore[]>();
+  public blockedList: string[] | undefined = [];
 
+  public isBlocked: boolean = false;
 
   constructor(private authService: AuthService,
               private crudService: CrudService,
@@ -80,7 +81,18 @@ export class PostComponent implements OnInit{
             this.postsOnScreen = currentPosts
           })
         )
-      })
+      }),
+      switchMap(() => {
+        return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
+          tap((userStore: UserStore[]) => {
+            userStore.forEach((user)=>{
+              if(user?.email==this.userEmail && user?.blocked?.includes(this.userOnScreenEmail!)){
+                this.isBlocked = true;
+              }
+            })
+          })
+        )
+      }),
     ).subscribe((value) => {
       console.log(value)})
     this.authService.user$.pipe(

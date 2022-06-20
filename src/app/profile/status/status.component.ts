@@ -138,6 +138,25 @@ export class StatusComponent implements OnInit {
       )).subscribe()
   }
 
+  public addBlocked(id: string): void{
+    console.log(id)
+    this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
+      map((userFromStore: UserStore | undefined) => {
+        const userIndex = userFromStore?.blocked?.indexOf(this.userEmail);
+        if (userIndex === -1) {
+          return {
+            blocked: userFromStore?.blocked?.concat(this.userEmail),
+          }
+        } else {
+          const newArr: string[] | undefined = userFromStore?.blocked?.splice(userIndex!, 1);
+          return {
+            blocked: userFromStore?.blocked,
+          }
+        }
+      }),
+      switchMap(newBlocked => this.crudService.updateObject(Collections.USERS, id, {...newBlocked})
+      )).subscribe()
+  }
 
   public openDialog(): void{
     this.dialogRef.open(EditUserComponent)

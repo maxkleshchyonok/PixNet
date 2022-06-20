@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="isBlocked == false">
   <div class="allpost">
     <ul class="posts">
       <li class="post" *ngFor="let post of postsOnScreen ">
@@ -20,3 +20,6 @@
     </ul>
   </div>
 </div>
+<ng-container *ngIf="isBlocked == true">
+  <h1 class="block_info">You're blocked</h1>
+</ng-container>

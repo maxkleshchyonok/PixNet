@@ -41,6 +41,8 @@ export class EditUserComponent implements OnInit {
 
   public following: string[] | undefined = [];
 
+  public blocked: string[] | undefined = [];
+
   public name: string | undefined = '';
 
   public userID: string | undefined = '';
@@ -85,6 +87,7 @@ export class EditUserComponent implements OnInit {
               if (user?.email == this.userEmail) {
                 this.followers = user?.followers;
                 this.following = user?.following;
+                this.blocked = user?.blocked;
                 this.name = user?.name;
                 this.userID = user?.userID;
                 this.defaultImage = user?.image;
@@ -147,6 +150,7 @@ export class EditUserComponent implements OnInit {
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -160,6 +164,7 @@ export class EditUserComponent implements OnInit {
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -173,6 +178,7 @@ export class EditUserComponent implements OnInit {
       status: status!,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -186,6 +192,7 @@ export class EditUserComponent implements OnInit {
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -199,6 +206,7 @@ export class EditUserComponent implements OnInit {
       status: status!,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -212,6 +220,7 @@ export class EditUserComponent implements OnInit {
       status: status!,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -227,6 +236,7 @@ export class EditUserComponent implements OnInit {
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -240,6 +250,7 @@ export class EditUserComponent implements OnInit {
       status: this.myForm?.controls[EditUserControls.status].value,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();
@@ -253,6 +264,7 @@ export class EditUserComponent implements OnInit {
       status: status!,
       followers: this.followers,
       following: this.following,
+      blocked: this.blocked,
       email: this?.userEmail!,
     }
     this.crudService.updateObject(Collections.USERS, id, user).subscribe();

@@ -11,6 +11,7 @@ export type User = {
   status: string;
   followers: string[] | undefined;
   following: string[] | undefined;
+  blocked: string[] | undefined;
 };
 
 export type ID = {

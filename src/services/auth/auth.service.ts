@@ -35,6 +35,7 @@ export class AuthService {
                 userID: userFromLogin?.uid!,
                 followers: [],
                 following: [],
+                blocked: []
               }
               return user;
             }

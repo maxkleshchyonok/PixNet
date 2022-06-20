@@ -1,3 +1,33 @@
+<!--<div *ngFor="let user of (users | async)">-->
+<!--  <div class="profInfo" *ngIf="user?.id! === this.activatedRoute.snapshot.paramMap.get('id') ">-->
+<!--    <div class="ava"><img class="img" src="{{user?.image}}"/></div>-->
+<!--    <div class="username">{{user?.name!}}-->
+<!--      <button *ngIf="userEmail == user?.email" class="edit_button" (click)="openDialog()">-->
+<!--        <img class="edit_button_img" src="../../../assets/img/Edit-512.webp"/>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    <div class="status">{{user?.status}}</div>-->
+<!--    <div class="friendsNum">{{user?.followers?.length}}-->
+<!--      <button class="open_button" (click)="openFollowers(user?.followers)">-->
+<!--        Followers-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    <div class="fripostLine"></div>-->
+<!--    <div class="postsNum">{{user?.following?.length}}-->
+<!--      <button class="open_button" (click)="openFollowing(user?.following)">-->
+<!--        Following-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    <button *ngIf="userEmail != user?.email"-->
+<!--            class="button" [ngClass]="{'followup':isFollow==true,'unfollow':isFollow==false}"-->
+<!--            (click)="updateFollowers(user?.id!);  updateFollowing(authID!)">-->
+<!--      {{!user?.followers?.includes(userEmail) ? 'Follow' : 'Unfollow'}}-->
+<!--    </button>-->
+<!--    <div class="line"></div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
 <div *ngFor="let user of (users | async)">
   <div class="profInfo" *ngIf="user?.id! === this.activatedRoute.snapshot.paramMap.get('id') ">
     <div class="ava"><img class="img" src="{{user?.image}}"/></div>
@@ -22,6 +52,10 @@
             class="button" [ngClass]="{'followup':isFollow==true,'unfollow':isFollow==false}"
             (click)="updateFollowers(user?.id!);  updateFollowing(authID!)">
       {{!user?.followers?.includes(userEmail) ? 'Follow' : 'Unfollow'}}
+    </button>
+    <button *ngIf="userEmail != user?.email"
+            class="block_button" (click)="addBlocked(user?.id!)">
+            {{!user?.blocked?.includes(userEmail) ? 'Block' : 'Unblock'}}
     </button>
     <div class="line"></div>
   </div>
