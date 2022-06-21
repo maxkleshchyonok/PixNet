@@ -62,11 +62,10 @@ export class StatusComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userId = value?.uid!)
-    this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!)
-
-    console.log(this.userId + ' айди моё')
-
+    this.authService.user$.subscribe((value: firebase.User | null) => {
+      this.userId = value?.uid!;
+      this.userEmail = value?.email!
+    })
     this.activatedRoute.params.pipe(
       switchMap((value) => {
         return this.crudService.handleData<UserStore>(Collections.USERS).pipe(
@@ -118,7 +117,6 @@ export class StatusComponent implements OnInit {
   }
 
   public updateFollowing(id: string) {
-    console.log(id + 'это айди меня')
     this.crudService.getUserDoc<UserStore>(Collections.USERS, id).pipe(
       map((userFromStore: UserStore | undefined) => {
 

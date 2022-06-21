@@ -185,6 +185,7 @@ export class EditUserComponent implements OnInit {
   }
 
   public updateNameImage(name: string | undefined, id: string, image: string | undefined): void {
+    console.log(this.myForm?.controls[EditUserControls.status].value)
     const user: User = {
       userID: this.userId,
       name: name,

@@ -34,7 +34,7 @@
   <ng-container *ngFor="let user of (users | async)">
   <button class="update_button" *ngIf="user?.email == this.userEmail"
           [ngClass]="{'post': myForm.invalid==false, 'postBlock':myForm.invalid==true}"
-          [disabled]="myForm.invalid || progress != '100'"
+          [disabled]="myForm.invalid"
           (click)="submitForm(user?.id!, user?.name, user?.status, user?.image)">Update</button>
   </ng-container>
 </div>

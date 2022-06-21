@@ -66,8 +66,6 @@ export class PostComponent implements OnInit{
       switchMap((value) => {
         return this.crudService.handleData<UserStore>(Collections.USERS,).pipe(
           tap((currentUser: UserStore[]) => {
-            console.log(currentUser)
-            console.log('test1')
             currentUser.forEach((user) => {
               if (user?.id == value['id']) {
                 this.userOnScreenEmail = user?.email;
@@ -78,7 +76,6 @@ export class PostComponent implements OnInit{
       switchMap(() => {
         return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
           tap((currentPosts: PostStore[]) => {
-            console.log('test2')
             this.postsOnScreen = currentPosts
           })
         )
@@ -90,7 +87,6 @@ export class PostComponent implements OnInit{
             userStore.forEach((user)=>{
               console.log(this.isBlocked)
               if(user?.email==this.userEmail && user?.blocked?.includes(this.userOnScreenEmail!)){
-                console.log('test3')
                   this.isBlocked = true;
               }
             })
@@ -138,7 +134,6 @@ export class PostComponent implements OnInit{
             console.log(userIndex);
             if (userIndex === -1) {
               this.isLike = true;
-              console.log(this.isLike)
               return post?.likes.concat(value?.email!)
             } else {
               const newArr: any = post?.likes.splice(userIndex! ,1);
