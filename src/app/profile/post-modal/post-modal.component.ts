@@ -124,7 +124,6 @@ export class PostModalComponent implements OnInit {
   public openLikesModal(): void {
     let popUp = this.dialogRef.open(LikesModalComponent);
     popUp.componentInstance.likes = this.likes;
-
   }
 
 }

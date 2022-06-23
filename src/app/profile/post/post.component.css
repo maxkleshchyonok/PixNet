@@ -124,9 +124,14 @@
 }
 
 .likeNum{
-  position: relative;
-  margin-left: 85%;
-  margin-top: -0.1%;
+  font-size: 14px;
+}
+
+.open_likes_modal_butt{
+  margin-left: 83.5%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .block_info{

@@ -9,6 +9,7 @@ import {filter, map, switchMap, take, tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {PostModalComponent} from "../post-modal/post-modal.component";
 import {ActivatedRoute} from "@angular/router";
+import {LikesModalComponent} from "../post-modal/likes-modal/likes-modal.component";
 
 
 @Component({
@@ -155,6 +156,12 @@ export class PostComponent implements OnInit{
     popUp.componentInstance.postDescr = postDescr;
     popUp.componentInstance.likes = likes;
     popUp.componentInstance.postId = postId
+  }
+
+  public openLikesModal(likes: string[] | undefined): void {
+    let popUp = this.dialogRef.open(LikesModalComponent);
+    popUp.componentInstance.likes = likes;
+
   }
 
   ngOnDestroy(): void {

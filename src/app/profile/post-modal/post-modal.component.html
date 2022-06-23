@@ -15,7 +15,7 @@
           <div *ngIf="isControlValid(formControls.text)">
             <div class="notification"></div>
           </div>
-          <button [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
+          <button  [ngClass]="{'post': commentsForm.invalid==false, 'postBlock':commentsForm.invalid==true}"
                   [disabled]="commentsForm.invalid" class="addComment" (click)="sendFunctions()">+
           </button>
         </div>

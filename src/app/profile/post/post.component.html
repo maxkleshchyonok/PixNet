@@ -9,7 +9,9 @@
             <img class="likeButt"
                  src="{{!post.likes.includes(userEmail) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">
           </button>
-          <p class="likeNum">{{post.likes.length}}</p>
+            <button class="open_likes_modal_butt" (click)="openLikesModal(post.likes)">
+              <p class="likeNum">{{post.likes.length}}</p>
+            </button>
         </div>
         <div class="delete" *ngIf="post.creator == userEmail">
           <button class="deletebutt" (click)="delete(post.id)">
