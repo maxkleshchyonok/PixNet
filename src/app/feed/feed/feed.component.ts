@@ -81,13 +81,16 @@ export class FeedComponent implements OnInit{
             currentPosts.forEach((post) => {
               this.feedPeople?.forEach((user) => {
                 if(post.creator == user){
-                  this.feedPosts?.push(post)
+                 this.feedPosts?.push(post);
                 }
               })
             })
+            return this.feedPosts.sort((a:PostStore, b:PostStore) => {
+              return b.date - a.date;
+            })
           })
         )
-      })
+      }),
     ).subscribe();
 
   }
@@ -126,7 +129,12 @@ export class FeedComponent implements OnInit{
     popUp.componentInstance.postId = postId
   }
 
-
+  public postsOrder(arr: PostStore[]){
+    return arr.sort((a: PostStore, b: PostStore) => {
+      console.log(arr)
+      return b.date - a.date
+    })
+  }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe())

@@ -74,10 +74,18 @@ export class PostComponent implements OnInit{
             })
           }))
       }),
+      // switchMap(() => {
+      //   return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
+      //     tap((currentPosts: PostStore[]) => {
+      //       this.postsOnScreen = currentPosts
+      //     })
+      //   )
+      // }),
       switchMap(() => {
         return this.crudService.handleCreatorData<PostStore>(Collections.POSTS, '==', this.userOnScreenEmail!).pipe(
           tap((currentPosts: PostStore[]) => {
-            this.postsOnScreen = currentPosts
+            this.postsOnScreen = currentPosts;
+            return this.postsOrder(currentPosts)
           })
         )
       }),
@@ -162,6 +170,12 @@ export class PostComponent implements OnInit{
     let popUp = this.dialogRef.open(LikesModalComponent);
     popUp.componentInstance.likes = likes;
 
+  }
+
+  public postsOrder(arr: PostStore[]){
+    return arr.sort((a: PostStore, b: PostStore) => {
+      return b.date - a.date
+    })
   }
 
   ngOnDestroy(): void {

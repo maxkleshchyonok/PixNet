@@ -60,7 +60,8 @@ export class PopUpComponent implements OnInit {
         postDescr: this.myForm?.controls[PostControls.postDescr].value,
         likes: [],
         creator: this?.userEmail!,
-        comments: []
+        comments: [],
+        date: new Date().getTime()
       }
       console.log(this.userEmail)
       console.log(post)

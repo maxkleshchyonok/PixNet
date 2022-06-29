@@ -23,7 +23,8 @@ export type Post = {
   postDescr: string | null;
   likes: string[];
   creator: string;
-  comments: []
+  comments: [],
+  date: number
 }
 
 export type Comment = {
