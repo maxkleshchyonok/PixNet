@@ -73,7 +73,7 @@ export class EditUserComponent implements OnInit {
     this.myForm.addControl(PostControls.image, new FormControl(""));
     this.myForm.addControl(EditUserControls.status, new FormControl('', Validators.maxLength(140)));
     this.myForm.addControl(EditUserControls.name, new FormControl('',
-      Validators.compose( [Validators.maxLength(35)])))
+      Validators.compose( [Validators.maxLength(25)])))
     this.authService.user$.subscribe((value: firebase.User | null) => this.userEmail = value?.email!);
     this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
