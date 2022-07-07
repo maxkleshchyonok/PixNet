@@ -1,6 +1,6 @@
 .container_recomend{
   position: absolute;
-  left: 55%;
+  left: 50%;
   top: 16%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -11,6 +11,7 @@
 
 .each_recommended .name{
   margin-top: 5%;
+  margin-bottom: 30%;
 }
 
 .recommended_users{
@@ -34,8 +35,6 @@
   position: relative;
   margin-top: -2%;
 }
-
-
 
 .line{
   position: relative;
@@ -81,8 +80,13 @@
 
 .name{
   position: absolute;
+  height: 50px;
   margin-left: 8%;
   margin-top: -4%;
+  max-width: 150px;
+  overflow: hidden;
+  word-wrap: break-word;
+  line-height: 25px;
 }
 
 .user{

@@ -20,7 +20,6 @@
                   <p class="likeNum">{{post.likes.length}}</p>
                 </div>
               </div>
-
       </ng-container>
     </ng-container>
   </ng-container>
@@ -29,3 +28,31 @@
 <ng-container *ngIf="feedPeople?.length == 0">
   <h1 class="feed_Info">No feed yet. Add friends to see their updates</h1>
 </ng-container>
+
+<!--<div class="allpost">-->
+<!--  <ng-container *ngFor="let post of feedPosts">-->
+<!--    <div class="post">-->
+<!--      <img class="postImg" src="{{post.image}}"-->
+<!--           (click)="openPostModal(post.image, post.postDescr, post.likes, post.id)"/>-->
+<!--      <nav>-->
+<!--        <ng-container *ngFor="let user of (users | async)">-->
+<!--          <ng-container *ngFor="let feedUser of feedPeople">-->
+<!--            <ng-container *ngIf="feedUser == post.creator && user?.email == post.creator">-->
+<!--              <div class="person" routerLink="/profile/{{user?.id}}">-->
+<!--                <img class="avatar" src="{{user?.image!}}"/>-->
+<!--              </div>-->
+<!--            </ng-container>-->
+<!--          </ng-container>-->
+<!--        </ng-container>-->
+<!--      </nav>-->
+<!--      <p class="postDescr">{{post.postDescr}}</p>-->
+<!--      <div class="like" *ngIf="userId">-->
+<!--        <button class="liketogg" (click)="updateLikes(post.id)">-->
+<!--          <img class="likeButt"-->
+<!--               src="{{!post.likes.includes(userEmail) ? '../../../assets/img/like0.png': '../../../assets/img/like.png'}}">-->
+<!--        </button>-->
+<!--        <p class="likeNum">{{post.likes.length}}</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </ng-container>-->
+<!--</div>-->

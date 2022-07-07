@@ -65,7 +65,7 @@ export class FeedComponent implements OnInit{
       this.userEmail = value?.email!;
       this.userId = value?.uid!;
     })
-     this.authService.user$.pipe(
+    this.authService.user$.pipe(
       tap((value: firebase.User | null) => this.user = value),
       filter((value: firebase.User | null) => !!value),
       switchMap(() => {
@@ -81,7 +81,7 @@ export class FeedComponent implements OnInit{
             currentPosts.forEach((post) => {
               this.feedPeople?.forEach((user) => {
                 if(post.creator == user){
-                 this.feedPosts?.push(post);
+                 this.feedPosts?.unshift(post);
                 }
               })
             })
@@ -92,7 +92,6 @@ export class FeedComponent implements OnInit{
         )
       }),
     ).subscribe();
-
   }
 
   public updateLikes(id: string): any {
@@ -127,13 +126,6 @@ export class FeedComponent implements OnInit{
     popUp.componentInstance.postDescr = postDescr;
     popUp.componentInstance.likes = likes;
     popUp.componentInstance.postId = postId
-  }
-
-  public postsOrder(arr: PostStore[]){
-    return arr.sort((a: PostStore, b: PostStore) => {
-      console.log(arr)
-      return b.date - a.date
-    })
   }
 
   ngOnDestroy(): void {
